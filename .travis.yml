@@ -1,0 +1,11 @@
+ language: node_js
+  node_js:
+  - 0.8
+  - 0.10
+  before_install:
+  - npm install -g dredd
+  script: ./scripts/test
+  services:
+  - mongodb
+  before_script:
+  - mongo mydb_test --eval 'db.addUser("test", "test");'
