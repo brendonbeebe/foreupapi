@@ -1,0 +1,694 @@
+FORMAT: 1A
+HOST: https://mobile.foreupsoftware.com/api_rest/index.php/
+
+# foreUp API
+
+The foreUp API can be used to access sales data, tee time usage, and other information from courses you have permission to access.  
+
+The responses follow the JSONapi spec, read about it here: http://jsonapi.org/.
+
+They have several imeplementations for parsing responses here: http://jsonapi.org/implementations/.
+
+
+
+## Authentication [/tokens]
+
+### Create a New Token [POST]
+
+To authenticate with the api you must first create a JWT using your username/password.  To learn more about JWT go here: https://jwt.io/.
+
++ Request (application/json)
+
+            {
+            "email": "testaccount@test.com",
+            "password": "testaccount@test.com"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+              "data": {
+                "type": "token",
+                "id": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA",
+                "attributes": []
+              }
+            }
+# Group Courses 
+
+## Courses [/courses]
+
+This endpoing will list all the courses which you have access too.
+
+### List All[GET]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+        
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "courses",
+                  "id": "6270",
+                  "attributes": {
+                    "title": "Cascade Golf Course",
+                    "street": "The place",
+                    "city": "Cityville",
+                    "state": "UT",
+                    "zip": "84097",
+                    "phone": "5555555555",
+                    "app_store_description": "",
+                    "app_short_title": "",
+                    "test_flight_email": "",
+                    "course_summary": "",
+                    "base_color": "",
+                    "app_icon_url": "",
+                    "last_updated": null,
+                    "registration_hidden": false,
+                    "published_ios_version": "",
+                    "published_android_version": "0"
+                  }
+                }
+              ]
+            }
+
+## Sales [/courses/{courseId}/sales{?include,startDate,endDate,start,limit}]
+
+### List All [GET]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + limit: 10 (integer, optional)- Total results to show (Max: 100).
+    + start: 0 (integer, optional)- Which result to start on.
+    + startDate : `2016-05-19` (date,optional) - Must limit the sales returned to a single date.
+    + endDate : `2016-05-19` (date,optional) - Must limit the sales returned to a single date.
+    + include : items (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `items`
++ Response 200 (application/json)
+
+            {  
+               "data":[  
+                  {  
+                     "type":"sales",
+                     "id":"5191",
+                     "attributes":{  
+                        "saleTime":{  
+                           "date":"2016-07-06 17:52:37.000000",
+                           "timezone_type":3,
+                           "timezone":"UTC"
+                        },
+                        "comment":"",
+                        "employeeId":12,
+                        "guestCount":0,
+                        "number":485,
+                        "paymentType":"Cash: $127.43<br />",
+                        "refundComment":"",
+                        "refundReason":"",
+                        "terminalId":0,
+                        "total":127.43,
+                        "subtotal":120,
+                        "tax":7.43,
+                        "deleted":false,
+                        "deletedAt":null
+                     },
+                     "relationships":{  
+                        "items":{  
+                           "data":[  
+                              {  
+                                 "type":"sales_items",
+                                 "id":"51911"
+                              },
+                              {  
+                                 "type":"sales_items",
+                                 "id":"51912"
+                              }
+                           ]
+                        }
+                     }
+                  }
+               ],
+               "included":[  
+                  {  
+                     "type":"sales_items",
+                     "id":"51911",
+                     "attributes":{  
+                        "total":"117.43",
+                        "subTotal":"110.00",
+                        "tax":"7.43",
+                        "quantity":"1.00",
+                        "unitPrice":"110.00",
+                        "discountPercent":"0.00",
+                        "profit":"110.00"
+                     }
+                  },
+                  {  
+                     "type":"sales_items",
+                     "id":"51912",
+                     "attributes":{  
+                        "total":"10.00",
+                        "subTotal":"10.00",
+                        "tax":"0.00",
+                        "quantity":"1.00",
+                        "unitPrice":"10.00",
+                        "discountPercent":"0.00",
+                        "profit":"2.00",
+                        "department":"Corporate",
+                        "category":"clearance",
+                        "subcategory":"hats",
+                        "glCode":null,
+                        "itemNumber":null,
+                        "description":"white/black"
+                     }
+                  }
+               ]
+            }
+
+## Tee Sheets [/courses/{courseId}/teesheets]
+
+### Get One [GET]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "teesheets",
+                  "id": "26",
+                  "attributes": {
+                    "title": "Exec 9 holes",
+                    "course_id": 6270
+                  }
+                },
+                {
+                  "type": "teesheets",
+                  "id": "27",
+                  "attributes": {
+                    "title": "Main course 2",
+                    "course_id": 6270
+                  }
+                },
+                {
+                  "type": "teesheets",
+                  "id": "40",
+                  "attributes": {
+                    "title": "Putt putt",
+                    "course_id": 6270
+                  }
+                },
+                {
+                  "type": "teesheets",
+                  "id": "67",
+                  "attributes": {
+                    "title": "Jack Barnes",
+                    "course_id": 6270
+                  }
+                },
+                {
+                  "type": "teesheets",
+                  "id": "71",
+                  "attributes": {
+                    "title": "TESTER",
+                    "course_id": 6270
+                  }
+                }
+              ]
+            }
+# Group Tee Sheets
+
+## Bookings [/courses/{courseId}/teesheets/{teesheetId}/bookings{?include,startDate,endDate,start,limit}]
+
+Bookings don't contain any pricing information are are purely a booking on a courses teesheet.  
+To get pricing information from a booking that's already been paid for you must include the sales relationship.  The sales object will include the customer information, payment details, and item details.
+
+### Get All [GET]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 9039 (integer) - A tee sheet id that the user has permission to access.
+    + limit: 10 (integer, optional)- Total results to show (Max: 100).
+    + start: 0 (integer, optional)- Which result to start on.
+    + startDate : `2016-05-19` (date,optional) - Must limit the sales returned to a single date.
+    + endDate : `2016-05-19` (date,optional) - Must limit the sales returned to a single date.
+    + include : players (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `players`
+            + `sales`
+            + `sales.items`
+            
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "bookings",
+                  "id": "TTID_0117154814d25h0",
+                  "attributes": {
+                    "isReround": false,
+                    "type": "teetime",
+                    "status": "checked in",
+                    "start": {
+                      "date": "2016-09-29 13:26:00.000000",
+                      "timezone_type": 3,
+                      "timezone": "America/Denver"
+                    },
+                    "end": {
+                      "date": "2016-09-29 13:34:00.000000",
+                      "timezone_type": 3,
+                      "timezone": "America/Denver"
+                    },
+                    "duration": 0,
+                    "playerCount": 2,
+                    "holes": 1,
+                    "carts": 0,
+                    "paidPlayerCount": 2,
+                    "noShowCount": 0,
+                    "title": "Hopkins",
+                    "details": "Reserved using online booking @ 2:53pm 1/16 MST",
+                    "side": "front",
+                    "bookingSource": "online",
+                    "lastUpdated": {
+                      "date": "2016-09-29 21:33:01.000000",
+                      "timezone_type": 3,
+                      "timezone": "America/Denver"
+                    },
+                    "dateBooked": {
+                      "date": "2013-01-17 23:48:14.000000",
+                      "timezone_type": 3,
+                      "timezone": "America/Denver"
+                    },
+                    "dateCancelled": null,
+                    "turnTime": null,
+                    "finishTime": null
+                  },
+                  "relationships": {
+                    "players": {
+                      "data": [
+                        {
+                          "type": "people",
+                          "id": "30"
+                        }
+                      ]
+                    },
+                    "sales": {
+                      "data": [
+                        {
+                          "type": "sales",
+                          "id": "5060"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "included": [
+                {
+                  "type": "people",
+                  "id": "30",
+                  "attributes": {
+                    "first_name": "Zipadee",
+                    "last_name": "Hopkins",
+                    "phone_number": "",
+                    "cell_phone_number": "",
+                    "email": "brendon.beebe@gmail.com",
+                    "birthday": null,
+                    "address_1": "",
+                    "address_2": "",
+                    "city": "",
+                    "state": "",
+                    "zip": "",
+                    "country": "",
+                    "comments": ""
+                  }
+                },
+                {
+                  "type": "sales",
+                  "id": "5060",
+                  "attributes": {
+                    "saleTime": {
+                      "date": "2016-09-29 19:33:01.000000",
+                      "timezone_type": 3,
+                      "timezone": "UTC"
+                    },
+                    "comment": "",
+                    "employeeId": 12,
+                    "guestCount": 0,
+                    "number": 354,
+                    "paymentType": "Cash: $0.22<br />",
+                    "refundComment": "",
+                    "refundReason": "",
+                    "terminalId": 1,
+                    "total": 0.22,
+                    "subtotal": 0.2,
+                    "tax": 0.02,
+                    "deleted": false,
+                    "deletedAt": null
+                  }
+                }
+              ]
+            }
+
+## Stats [/courses/{courseId}/teesheets/{teesheetId}/stats{?date}]
+
+### Get All [GET]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 9039 (integer) - A tee sheet id that the user has permission to access.
+    + date : `2016-05-19` (date,optional) - Must limit the stats returned to a single date.
+            
++ Response 200 (application/json)
+
+            {
+              "data": {
+                "type": "teesheet_stats",
+                "id": "2016-09-28",
+                "attributes": {
+                  "bookings": "1",
+                  "occupancy": "0%",
+                  "playerNoShows": "1",
+                  "playersCheckedIn": 0,
+                  "revenue": "$486.30"
+                }
+              }
+            }
+
+# Group Customers
+
+## Customer Collection [/courses/{courseId}/customers{?limit,start}]
+
+### List All [GET]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + start : 0 (integer,optional) - Which result to start on.
+    + limit : 10 (integer,optional) - Total results to show.
+    
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "customers",
+                  "id": "2073",
+                  "attributes": {
+                    "username": "username",
+                    "account_number": "123ABC",
+                    "company_name": "MyCompany",
+                    "taxable": true,
+                    "discount": 0,
+                    "opt_out_email": false,
+                    "opt_out_text": false,
+                    "date_created": null,
+                    "contact_info": {
+                      "id": 2073,
+                      "first_name": "FirstName",
+                      "last_name": "LastName",
+                      "phone_number": "",
+                      "cell_phone_number": "",
+                      "email": "foreup@fake.com",
+                      "birthday": null,
+                      "address_1": "",
+                      "address_2": "",
+                      "city": "",
+                      "state": "AL",
+                      "zip": "",
+                      "country": "",
+                      "comments": "Best customer ever!!"
+                    }
+                  }
+                }
+              ]
+            }
+            
+## Specific Customer [/courses/{courseId}/customers/{customerId}{?include,limit,start}]
+
+### Get One [GET]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+        
++ Parameters
+
+    + courseId : 9039 - A course id that the user has permission to access.
+    + customerId : 2541 - The customer id.
+    + start : 0 (integer,optional) - Which result to start on.
+    + limit : 10 (integer,optional) - Total results to show.
+    + include : sales (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `sales`
+            + `sales.items`
+                
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "customers",
+                  "id": "2073",
+                  "attributes": {
+                    "username": "username",
+                    "account_number": "123ABC",
+                    "company_name": "MyCompany",
+                    "taxable": true,
+                    "discount": 0,
+                    "opt_out_email": false,
+                    "opt_out_text": false,
+                    "date_created": null,
+                    "contact_info": {
+                      "id": 2073,
+                      "first_name": "FirstName",
+                      "last_name": "LastName",
+                      "phone_number": "",
+                      "cell_phone_number": "",
+                      "email": "foreup@fake.com",
+                      "birthday": null,
+                      "address_1": "",
+                      "address_2": "",
+                      "city": "",
+                      "state": "AL",
+                      "zip": "",
+                      "country": "",
+                      "comments": "Best customer ever!!"
+                    }
+                  }
+                }
+              ]
+            }
+            
+## Customer Sales [/courses/{courseId}/customers/{customerId}/sales{?limit,start}]
+
+### List All [GET]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + customerId : 2541 - The customer id.
+    + limit: 10 (integer,optional) - Total results to show (Max: 100).
+    + start: 0 (integer,optional) - Which result to start on.
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "sales",
+                  "id": "5052",
+                  "attributes": {
+                    "saleTime": {
+                      "date": "2016-08-26 16:39:01.000000",
+                      "timezone_type": 3,
+                      "timezone": "UTC"
+                    },
+                    "comment": "",
+                    "employeeId": 185,
+                    "guestCount": 0,
+                    "number": 346,
+                    "paymentType": "Cash: $11.88<br />",
+                    "refundComment": "",
+                    "refundReason": "",
+                    "terminalId": 1,
+                    "total": 10,
+                    "subtotal": 10,
+                    "tax": 0,
+                    "deleted": false,
+                    "deletedAt": null
+                  },
+                  "relationships": {
+                    "items": {
+                      "data": [
+                        {
+                          "type": "sales_items",
+                          "id": "50521"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "included": [
+                {
+                  "type": "sales_items",
+                  "id": "50521",
+                  "attributes": {
+                    "total": 10,
+                    "subTotal": 10,
+                    "tax": 0,
+                    "quantity": 1,
+                    "unitPrice": 10,
+                    "discountPercent": 0,
+                    "profit": 8,
+                    "department": "Pro Shop",
+                    "category": "Equipment",
+                    "subcategory": "Golf Balls",
+                    "glCode": null,
+                    "itemNumber": null,
+                    "description": "Quality Golf Balls"
+                  }
+                }
+              ]
+            }
+                   
+# Group Inventory
+## Item Collection [/courses/{courseId}/items{?limit,start}]
+
+Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Cards.  This does not include tee times which are handled separately.
+
+### List All [GET]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + limit: 10 (integer,optional) - Total results to show (Max: 100).
+    + start: 0 (integer,optional)- Which result to start on.
+    
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "items",
+                  "id": "383",
+                  "attributes": {
+                    "maxDiscount": 100,
+                    "addOnPrice": 0,
+                    "costPrice": 0,
+                    "courseId": 6270,
+                    "quantity": 1000,
+                    "numberOfSides": 0,
+                    "unitPrice": 10000000,
+                    "category": "Services",
+                    "itemNumber": null,
+                    "location": "",
+                    "name": "Joel Ragar",
+                    "subcategory": "",
+                    "department": "Food & Beverage",
+                    "description": "",
+                    "glCode": null,
+                    "usInactive": false,
+                    "doNotPrint": false,
+                    "deleted": true,
+                    "isfoodAndBeverage": false,
+                    "isInvisible": false,
+                    "isFree": false,
+                    "isGiftcard": false,
+                    "isPass": false,
+                    "isSide": false,
+                    "isUnlimited": false,
+                    "isSoupOrSalad": true,
+                    "unitPriceIncludesTAx": false
+                  }
+                }
+              ]
+            }
+            
+
+## Transaction Collection [/courses/{courseId}/inventory{?include,startDate,endDate,limit,start}]
+
+    This is a record of each adjustment made to a courses inventory.  A negative number signifies one less item is available while a positive number means an item was added.
+
+### List All [GET]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + limit: 10 (Integer, optional)- Total results to show (Max: 100).
+    + start: 0 (Integer, optional)- Which result to start on.
+    + startDate : `2016-05-19` (date,optional) - Must limit the sales returned to a single date.
+    + endDate : `2016-05-19` (date,optional) - Must limit the sales returned to a single date.
+    + include : items (enum[string],optional) - Which relationships to include in the response. 
+        + Members
+            + `employees`
+            + `sales`
+            + `items`
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "inventory",
+                  "id": "8810",
+                  "attributes": {
+                    "comment": "Manual Edit of Quantity",
+                    "adjustmentAmount": -1,
+                    "courseId": 6270,
+                    "itemId": 5286,
+                    "itemNumber": 0,
+                    "transDate": {
+                      "date": "2016-09-01 11:31:29.000000",
+                      "timezone_type": 3,
+                      "timezone": "America/Denver"
+                    }
+                  }
+                }
+              ]
+            }
