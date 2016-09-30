@@ -1,6 +1,6 @@
   #!/bin/sh
   PID=$!
-  dredd apiary.apib
+  dredd apiary.apib http://mobile.foreupsoftware.com/index.php/api_rest/
   RESULT=$?
   kill -9 $PID
   exit $RESULT
