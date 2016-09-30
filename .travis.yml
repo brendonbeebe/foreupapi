@@ -5,7 +5,3 @@
   before_install:
   - npm install -g dredd
   script: ./scripts/test
-  services:
-  - mongodb
-  before_script:
-  - mongo mydb_test --eval 'db.addUser("test", "test");'
