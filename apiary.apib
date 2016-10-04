@@ -90,8 +90,8 @@ This endpoing will list all the courses which you have access too.
     + courseId : 9039 - A course id that the user has permission to access.
     + limit: 10 (integer, optional)- Total results to show (Max: 100).
     + start: 0 (integer, optional)- Which result to start on.
-    + startDate : `2016-05-19` (date,optional) - Must limit the sales returned to a single date.
-    + endDate : `2016-05-19` (date,optional) - Must limit the sales returned to a single date.
+    + startDate : `2016-07-06` (date,optional) - Must limit the sales returned to a single date.
+    + endDate : `2016-07-08` (date,optional) - Must limit the sales returned to a single date.
     + include : items (enum[string],optional) - Which relationships to include in response. 
         + Members
             + `items`
@@ -251,8 +251,8 @@ To get pricing information from a booking that's already been paid for you must 
     + teesheetId : 1530 (integer) - A tee sheet id that the user has permission to access.
     + limit: 10 (integer, optional)- Total results to show (Max: 100).
     + start: 0 (integer, optional)- Which result to start on.
-    + startDate : `2016-08-17` (date,optional) - Must limit the sales returned to a single date.
-    + endDate : `2016-08-18` (date,optional) - Must limit the sales returned to a single date.
+    + startDate : `2016-09-29` (date,optional) - Must limit the sales returned to a single date.
+    + endDate : `2016-09-30` (date,optional) - Must limit the sales returned to a single date.
     + include : players (enum[string],optional) - Which relationships to include in response. 
         + Members
             + `players`
@@ -513,7 +513,7 @@ To get pricing information from a booking that's already been paid for you must 
               ]
             }
             
-## Customer Sales [/courses/{courseId}/customers/{customerId}/sales{?limit,start}]
+## Customer Sales [/courses/{courseId}/customers/{customerId}/sales{?include,limit,start}]
 
 ### List All [GET]
 
@@ -525,9 +525,12 @@ To get pricing information from a booking that's already been paid for you must 
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + customerId : 2541 - The customer id.
+    + customerId : 3612897 - The customer id.
     + limit: 10 (integer,optional) - Total results to show (Max: 100).
     + start: 0 (integer,optional) - Which result to start on.
+    + include : items (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `items`
 + Response 200 (application/json)
 
             {
