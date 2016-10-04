@@ -176,7 +176,7 @@ This endpoing will list all the courses which you have access too.
 
 ## Tee Sheets [/courses/{courseId}/teesheets]
 
-### Get One [GET]
+### Get All [GET]
 + Request (application/json)
 
     + Headers
@@ -248,11 +248,11 @@ To get pricing information from a booking that's already been paid for you must 
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 9039 (integer) - A tee sheet id that the user has permission to access.
+    + teesheetId : 1530 (integer) - A tee sheet id that the user has permission to access.
     + limit: 10 (integer, optional)- Total results to show (Max: 100).
     + start: 0 (integer, optional)- Which result to start on.
-    + startDate : `2016-05-19` (date,optional) - Must limit the sales returned to a single date.
-    + endDate : `2016-05-19` (date,optional) - Must limit the sales returned to a single date.
+    + startDate : `2016-08-17` (date,optional) - Must limit the sales returned to a single date.
+    + endDate : `2016-08-18` (date,optional) - Must limit the sales returned to a single date.
     + include : players (enum[string],optional) - Which relationships to include in response. 
         + Members
             + `players`
@@ -382,7 +382,7 @@ To get pricing information from a booking that's already been paid for you must 
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 9039 (integer) - A tee sheet id that the user has permission to access.
+    + teesheetId : 1530 (integer) - A tee sheet id that the user has permission to access.
     + date : `2016-05-19` (date,optional) - Must limit the stats returned to a single date.
             
 + Response 200 (application/json)
@@ -468,7 +468,7 @@ To get pricing information from a booking that's already been paid for you must 
 + Parameters
 
     + courseId : 9039 - A course id that the user has permission to access.
-    + customerId : 2541 - The customer id.
+    + customerId : 3612897 - The customer id.
     + start : 0 (integer,optional) - Which result to start on.
     + limit : 10 (integer,optional) - Total results to show.
     + include : sales (enum[string],optional) - Which relationships to include in response. 
@@ -600,7 +600,7 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
 
     + Headers
     
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzU1MTUzOTYsImV4cCI6MTQ3ODEwNzM5NiwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.3f_PHHBEMDqejnq0kEE3-q26oyK5O6reybRbjw4dGCdPIsc016xIGUto9EBYsmYykTIXo05_hiIqXzvs1nXI8Q
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
