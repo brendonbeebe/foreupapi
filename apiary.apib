@@ -77,9 +77,9 @@ This endpoing will list all the courses which you have access too.
               ]
             }
 
-## Sales [/courses/{courseId}/sales{?include,startDate,endDate,start,limit}]
+## Sales [/courses/{courseId}/sales{?include,startDate,endDate,limit,start}]
 
-### Create [POST]
+### Create [POST /courses/{courseId}/sales]
 + Request (application/json)
 
     + Headers
@@ -445,12 +445,12 @@ To get pricing information from a booking that's already been paid for you must 
 
     + Headers
     
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzY3NDI0MDIsImV4cCI6MTQ3OTMzNDQwMiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTB9.DvELvJjz04B7ytSFGHUQ0dEk3f6VLDA0S77-rRu1QdcilcIHSsTbtTbKPHdTD6cMuJKwk4FXgsSz5SisgCcOuA
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
     + teesheetId : 1530 (integer) - A tee sheet id that the user has permission to access.
-    + date : `2016-05-19` (date,optional) - Must limit the stats returned to a single date.
+    + date : `2016-05-19` (date) - Must limit the stats returned to a single date.
             
 + Response 200 (application/json)
 
