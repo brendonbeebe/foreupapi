@@ -84,13 +84,10 @@ This endpoing will list all the courses which you have access too.
 
     + Headers
     
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzY3NDE0MjQsImV4cCI6MTQ3OTMzMzQyNCwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTB9.Z_O3y0EXiyXQjpAhMyF0uyT7PtoN5jM3zTwNz0vbcwGaVL_3E-65oLEGdEj70nYboY4-GGw33Os8WXd0P69SSQ
+    
+    + Body
         
-+ Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
-
-+ Request (application/json)
-
             {  
               "data":{  
                 "type":"sales",
@@ -148,6 +145,11 @@ This endpoing will list all the courses which you have access too.
                 }
               }
             }
+        
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+
 
 + Response 200 (application/json)
 
