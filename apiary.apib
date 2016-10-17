@@ -79,6 +79,104 @@ This endpoing will list all the courses which you have access too.
 
 ## Sales [/courses/{courseId}/sales{?include,startDate,endDate,start,limit}]
 
+### Create [POST]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+
++ Request (application/json)
+
+            {  
+              "data":{  
+                "type":"sales",
+                "attributes":{  
+                  "saleTime":{  
+                    "date":"2016-07-06 17:52:37.000000",
+                    "timezone_type":3,
+                    "timezone":"UTC"
+                  },
+                  "employeeId":5478650,
+                  "guestCount":0,
+                  "number":485,
+                  "terminalId":6,
+                  "total":127.43,
+                  "subtotal":120,
+                  "tax":7.43,
+                  "items":[  
+                    {  
+                      "type":"sales_items",
+                      "attributes":{  
+                        "itemId":5311,
+                        "total":10,
+                        "subTotal":10,
+                        "tax":0,
+                        "quantity":1,
+                        "unitPrice":10,
+                        "discountPercent":0,
+                        "description":""
+                      }
+                    },
+                    {  
+                      "type":"sales_items",
+                      "attributes":{  
+                        "itemId":5311,
+                        "total":10,
+                        "subTotal":10,
+                        "tax":0,
+                        "quantity":1,
+                        "unitPrice":10,
+                        "discountPercent":0,
+                        "description":""
+                      }
+                    }
+                  ],
+                  "payments":[  
+                    {  
+                      "type":"sales_payments",
+                      "attributes":{  
+                        "paymentAmount":20,
+                        "invoiceId":"1",
+                        "type":"credit_card"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+
++ Response 200 (application/json)
+
+            {
+              "data": {
+                "type": "sales",
+                "id": "23464980",
+                "attributes": {
+                  "saleTime": {
+                    "date": "2016-10-17 21:57:12.000000",
+                    "timezone_type": 3,
+                    "timezone": "UTC"
+                  },
+                  "comment": "",
+                  "employeeId": 5478650,
+                  "guestCount": 0,
+                  "number": 9841,
+                  "paymentType": "Credit Card: $21.00 - ",
+                  "refundComment": "",
+                  "refundReason": "",
+                  "total": 21,
+                  "subtotal": 21,
+                  "tax": 0,
+                  "deleted": false,
+                  "deletedAt": null
+                }
+              }
+            }
+
 ### List All [GET]
 + Request (application/json)
 
@@ -235,7 +333,7 @@ This endpoing will list all the courses which you have access too.
 
 ## Bookings [/courses/{courseId}/teesheets/{teesheetId}/bookings{?include,startDate,endDate,start,limit}]
 
-Bookings don't contain any pricing information are are purely a booking on a courses teesheet.  
+Bookings don't contain any pricing information and are purely the bookings on a teesheet.  
 To get pricing information from a booking that's already been paid for you must include the sales relationship.  The sales object will include the customer information, payment details, and item details.
 
 ### Get All [GET]
