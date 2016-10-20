@@ -848,6 +848,10 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
 
 # Group Webhook
 
+A webhook allows you to recieve instanst feedback when ever something happens on the foreUp system.  See a list of the available events [below](#reference/webhook-events/delete).
+
+We recommend using [Request Bin](https://requestb.in/) to play with the hooks.  It will record all calls from our system to the hook and help you understand how the calls are made.
+
 ## Hooks Collection [/hooks]
 
 ### List All [GET]
@@ -855,7 +859,7 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
 
     + Headers
     
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzcwMDI1NDYsImV4cCI6MTQ3OTU5NDU0NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4fQ.XWAWkxqJFwQilbw1JD4787uTFq9s1lQUPWEjdXl82pL2jipOtzJSxGDSQCa0f7YGH8d8R6F_zBEGLBg7YLST_Q
 
 + Response 200 (application/json)
 
@@ -878,7 +882,7 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
 
     + Headers
     
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzY3NDI0MDIsImV4cCI6MTQ3OTMzNDQwMiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTB9.DvELvJjz04B7ytSFGHUQ0dEk3f6VLDA0S77-rRu1QdcilcIHSsTbtTbKPHdTD6cMuJKwk4FXgsSz5SisgCcOuA
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzcwMDI1NDYsImV4cCI6MTQ3OTU5NDU0NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4fQ.XWAWkxqJFwQilbw1JD4787uTFq9s1lQUPWEjdXl82pL2jipOtzJSxGDSQCa0f7YGH8d8R6F_zBEGLBg7YLST_Q
     
     + Body
         
@@ -910,7 +914,7 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
 
     + Headers
     
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzcwMDI1NDYsImV4cCI6MTQ3OTU5NDU0NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4fQ.XWAWkxqJFwQilbw1JD4787uTFq9s1lQUPWEjdXl82pL2jipOtzJSxGDSQCa0f7YGH8d8R6F_zBEGLBg7YLST_Q
 
 + Response 200 (application/json)
 
