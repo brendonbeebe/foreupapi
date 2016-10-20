@@ -101,9 +101,6 @@ This endpoing will list all the courses which you have access too.
                   "guestCount":0,
                   "number":485,
                   "terminalId":6,
-                  "total":127.43,
-                  "subtotal":120,
-                  "tax":7.43,
                   "items":[  
                     {  
                       "type":"sales_items",
@@ -848,3 +845,133 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
                 }
               ]
             }
+
+# Group Webhook
+
+## Hooks Collection [/hooks]
+
+### List All [GET]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "api_hooks",
+                  "id": "3",
+                  "attributes": {
+                    "url": "http://google.com",
+                    "event": "customer.updated"
+                  }
+                }
+              ]
+            }
+
+
+### Create [POST]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzY3NDI0MDIsImV4cCI6MTQ3OTMzNDQwMiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTB9.DvELvJjz04B7ytSFGHUQ0dEk3f6VLDA0S77-rRu1QdcilcIHSsTbtTbKPHdTD6cMuJKwk4FXgsSz5SisgCcOuA
+    
+    + Body
+        
+            {  
+              "data":{  
+                "type":"api_hooks",
+                "attributes":{  
+                    "url":"http://google.com",
+                    "event":"customer.updated"
+                }
+              }
+            }
+
++ Response 200 (application/json)
+
+            {
+              "data": {
+                "type": "api_hooks",
+                "id": "4",
+                "attributes": {
+                  "url": "http://google.com",
+                  "event": "customer.updated"
+                }
+              }
+            }
+            
+### Delete [DELETE /hooks/{id}]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA
+
++ Response 200 (application/json)
+
+            {
+              "success": true
+            }
+
+
+# Group Webhook Events 
+
+    foreUp’s Event Webhook will notify a URL of your choice via HTTP POST with information about events that occur in a course.
+        These events include:
+    
+## Customer Updated (Event key: customer.updated)
+
+This event triggers when a customer is edited
+
+* From within the customer module
+* From the tee sheet
+* From logging into online booking and editing their own information
+
+        {
+            "event":"customer.updated",
+            "course_id":"6270",
+            "id":"342234432"
+        }
+
+## Tee Time Updated (Event key: teetime.updated)
+
+The only way to know how a tee time has changed is by issueing a seperate call to our servers to get information on the tee time.  We recommend refreshing your local information about a tee time every time this calls comes through.
+
+This event triggers when:
+
+* An employee clicks the update button in the tee sheet
+* The tee time is moved from within the tee sheet
+
+        {
+            "event":"teetime.updated",
+            "course_id":"6270",
+            "id":"342234432"
+        }
+        
+## Tee Time Deleted (Event key: customer.deleted)
+
+This triggers when:
+
+* A customer cancels the tee time from online booking
+* An employee deletes the time
+
+        {
+            "event":"teetime.deleted",
+            "course_id":"6270",
+            "id":"342234432"
+        }
+        
+## Sale Created (Event key: sale.created)
+
+Sales may or may not have a customer attached.  This event triggers any time a sale is complete through the POS.
+
+        {
+            "event":"sale.created",
+            "course_id":"6270",
+            "id":"342234432"
+        }
