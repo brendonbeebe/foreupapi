@@ -77,11 +77,14 @@ This endpoing will list all the courses which you have access too.
               ]
             }
 
+
 ## Sales [/courses/{courseId}/sales{?include,startDate,endDate,start,limit}]
 
 ### Create [POST /courses/{courseId}/sales]
 + Request (application/json)
 
+    + Attributes (Sales)
+        
     + Headers
     
             x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzY3NDI0MDIsImV4cCI6MTQ3OTMzNDQwMiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTB9.DvELvJjz04B7ytSFGHUQ0dEk3f6VLDA0S77-rRu1QdcilcIHSsTbtTbKPHdTD6cMuJKwk4FXgsSz5SisgCcOuA
@@ -127,7 +130,7 @@ This endpoing will list all the courses which you have access too.
                       "type":"sales_payments",
                       "attributes":{  
                         "paymentAmount":20,
-                        "invoiceId":"1", //Unique Identifier for the payment
+                        "invoiceId":"1",
                         "type":"credit_card"
                       }
                     }
@@ -972,3 +975,36 @@ Sales may or may not have a customer attached.  This event triggers any time a s
             "course_id":"6270",
             "id":"342234432"
         }
+        
+# Data Structures
+
+## Sales (object)
++ employeeId:  "5478650" (string,required) - The id of the employee completing the sale
++ guestCount:  3 (number,optional) - Number of guests on the sale.  Used in reporting.
++ number:  485 (number,required) - The customer facing sale number. Used on reciepts
++ terminalid: 6 (number,required) - The id of the terminal this sale will be recorded under.
++ items (array)
+    + (Sales Items)
++ payments (array)
+    + (Payments)
+
+## Sales Items
++ itemId:  5311 (number,required) - A valid item id currently found in the courses inventory.
++ total:  10 (number,required) - Total price of the item ie, subTotal + tax
++ subTotal:  10 (number,required) - Quantity * Unit Price.
++ tax:  0 (number,required) - Total tax for this line item.
++ quantity:  1 (number,required) - Total items purchased.
++ unitPrice:  10 (number,required) - Price per individual item sold.
++ description:  Cool Item (string,optional) - Optional message to save with the item.
+
+## Payments
++ paymentAmount:  20 (number,required) - Total amount paid for by this payment type.
++ invoiceId:  1 (number,required) - A unique identifier the course can link back to their payment processor.
++ type : credit_card (enum[string],required) - Identifier showing how the payment was processed
+    + Members
+        + `credit_card`
+        + `cash`
+        + `change`
+        + `member_account`
+        + `gift_card`
+        + `punch_card`
