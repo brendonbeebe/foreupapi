@@ -420,6 +420,16 @@ Bookings don't contain any pricing information and are purely the bookings on a 
 To get pricing information from a booking that's already been paid for you must include the sales relationship.  The sales object will include the customer information, payment details, and item details.
 
 ### Get All [GET]
+
+###How should I distinguish green fees from other item?
+Green fees and carts will have a category of "Green Fees" and "Carts" respectively.  The department can be customized but a course can't adjust the category.
+
+###Is it possible to include players and sales.items at the same time ?
+Yes, add this to your query: include=players,sales,sales.items
+
+###How do you identify the booking type? (Customer, Member, Public, etc)
+The sales_items object containes an attribute "PriceClass" that designates the green fee type.
+
 + Request (application/json)
 
     + Headers
@@ -526,11 +536,11 @@ To get pricing information from a booking that's already been paid for you must 
 
     + Headers
     
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 1530 (integer) - A tee sheet id that the user has permission to access.
+    + teesheetId : 1562 (integer) - A tee sheet id that the user has permission to access.
     + date : `2016-05-19` (date) - Must limit the stats returned to a single date.
             
 + Response 200 (application/json)
