@@ -83,7 +83,9 @@ This endpoint will list all the courses which you have access too.
         
 + Response 200 (application/json)
 
-    + Attributes (Courses)
+    + Attributes
+        + data (array)
+            +  (Courses)
 
 
 ## Sales [/courses/{courseId}/sales{?include,startDate,endDate,start,limit}]
@@ -94,7 +96,7 @@ You are only able to adjust the unit price and quantity of an item within a sale
 
 + Request (application/json)
 
-    + Attributes (Sales)
+    + Attributes (Sales Request)
         
     + Headers
     
@@ -151,7 +153,9 @@ You are only able to adjust the unit price and quantity of an item within a sale
 
 + Response 200 (application/json)
 
-    + Attributes (Sales Response )
+    + Attributes
+        + data (array)
+            +  (Sales)
 
 ### List All [GET]
 + Request (application/json)
@@ -173,26 +177,12 @@ You are only able to adjust the unit price and quantity of an item within a sale
             + `bookings`
 + Response 200 (application/json)
 
-    + Attributes (Sales Response )
+    + Attributes
+        + data (array)
+            +  (Sales)
 
 ## Tee Sheets [/courses/{courseId}/teesheets]
 
-+ Model
-    
-    + Body
-
-            {
-              "data": [
-                {
-                  "type": "teesheets",
-                  "id": "26",
-                  "attributes": {
-                    "title": "Exec 9 holes",
-                    "course_id": 6270
-                  }
-                }
-              ]
-            }
 
 ### Get All [GET]
 + Request (application/json)
@@ -206,26 +196,12 @@ You are only able to adjust the unit price and quantity of an item within a sale
 
 + Response 200 (application/json)
 
-    [Tee Sheets][]
+    + Attributes
+        + data (array)
+            +  (Tee Sheets)
 
 ## Terminals [/courses/{courseId}/terminals]
 
-+ Model
-    
-    + Body
-
-            {
-              "data": [
-                {
-                  "type": "terminals",
-                  "id": "6",
-                  "attributes": {
-                    "label": "Pro Shop"
-                  }
-                }
-              ]
-            }  
-
 ### Get All [GET]
 + Request (application/json)
 
@@ -238,7 +214,9 @@ You are only able to adjust the unit price and quantity of an item within a sale
 
 + Response 200 (application/json)
 
-    [Terminals][]        
+    + Attributes
+        + data (array)
+            +  (Terminals)
 
 
 ## Employees [/courses/{courseId}/employees{?include,start,limit}]
@@ -339,7 +317,9 @@ The sales_items object containes an attribute "PriceClass" that designates the g
             
 + Response 200 (application/json)
 
-    + Attributes (Bookings)
+    + Attributes
+        + data (array)
+            +  (Bookings)
 
 ## Stats [/courses/{courseId}/teesheets/{teesheetId}/stats{?date}]
 
@@ -503,64 +483,9 @@ The sales_items object containes an attribute "PriceClass" that designates the g
             + `items`
 + Response 200 (application/json)
 
-            {
-              "data": [
-                {
-                  "type": "sales",
-                  "id": "5052",
-                  "attributes": {
-                    "saleTime": {
-                      "date": "2016-08-26 16:39:01.000000",
-                      "timezone_type": 3,
-                      "timezone": "UTC"
-                    },
-                    "comment": "",
-                    "employeeId": 185,
-                    "guestCount": 0,
-                    "number": 346,
-                    "paymentType": "Cash: $11.88<br />",
-                    "refundComment": "",
-                    "refundReason": "",
-                    "total": 10,
-                    "subtotal": 10,
-                    "tax": 0,
-                    "deleted": false,
-                    "deletedAt": null
-                  },
-                  "relationships": {
-                    "items": {
-                      "data": [
-                        {
-                          "type": "sales_items",
-                          "id": "50521"
-                        }
-                      ]
-                    }
-                  }
-                }
-              ],
-              "included": [
-                {
-                  "type": "sales_items",
-                  "id": "50521",
-                  "attributes": {
-                    "total": 10,
-                    "subTotal": 10,
-                    "tax": 0,
-                    "quantity": 1,
-                    "unitPrice": 10,
-                    "discountPercent": 0,
-                    "profit": 8,
-                    "department": "Pro Shop",
-                    "category": "Equipment",
-                    "subcategory": "Golf Balls",
-                    "glCode": null,
-                    "itemNumber": null,
-                    "description": "Quality Golf Balls"
-                  }
-                }
-              ]
-            }
+    + Attributes
+        + data (array)
+            +  (Sales)
                    
 # Group Inventory
 ## Item Collection [/courses/{courseId}/items{?limit,start}]
@@ -805,47 +730,122 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
 
 
-## Sales (object)
-+ data (object)
-    + type: sales (string,required)
-    + attributes (object)
-        + employeeId:  "5478650" (string,required) - The id of the employee completing the sale
-        + guestCount:  3 (number,optional) - Number of guests on the sale.  Used in reporting.
-        + number:  485 (number,required) - The customer facing sale number. Used on reciepts
-        + terminalid: 6 (number,required) - The id of the terminal this sale will be recorded under.
-        + items (array)
-            + (Sales Items)
-        + payments (array)
-            + (Payments)
 
-## Sales Response (object)
-+ data (object)
-    + type: sales (string,required)
-    + id: 1 (string, optional)
-    + attributes (object)
-        + employeeId:  "5478650" (string,required) - The id of the employee completing the sale
-        + guestCount:  3 (number,optional) - Number of guests on the sale.  Used in reporting.
-        + number:  485 (number,required) - The customer facing sale number. Used on reciepts
-        + paymentType: `Credit Card: $21.00` (string) 
-        + refundComment: `` (string)
-        + refundReason: `` (string)
-        + total: 21 (number)
-        + subtotal: 21 (number)
-        + tax: 0 (number)
-        + deleted: false (boolean)
-        + deletedAt (Date Time)
-    + relationships (object)
-        + items (object)
-        + terminals (object)
-        + bookings (object)
-+ included (object)
+## Sales (object)
++ type: sales (string,required)
++ id: 1 (string, optional)
++ attributes (object)
+    + employeeId:  "5478650" (string,required) - The id of the employee completing the sale
+    + guestCount:  3 (number,optional) - Number of guests on the sale.  Used in reporting.
+    + number:  485 (number,required) - The customer facing sale number. Used on reciepts
+    + paymentType: `Credit Card: $21.00` (string) 
+    + refundComment: `` (string)
+    + refundReason: `` (string)
+    + total: 21 (number)
+    + subtotal: 21 (number)
+    + tax: 0 (number)
+    + deleted: false (boolean)
+    + deletedAt (Date Time)
++ relationships (object)
+    + items (object)
+    + terminals (object)
+    + bookings (object)
+
+
 
 
 ## Sales Items
-+ itemId:  5311 (number,required) - A valid item id currently found in the courses inventory.
-+ quantity:  1 (number,required) - Total items purchased.
-+ unitPrice:  10 (number,required) - Price per individual item sold with tax
-+ description:  Cool Item (string,optional) - Optional message to save with the item.
++ type: sales_items (enum,required) - Type of Object
++ id: 183873271 (string,required) - Unique idenetifier for a course
++ attributes (object)
+    + total: 52.38 (number),
+    + subTotal: 47.62 (number),
+    + tax: 2.38 (number),
+    + quantity: 1 (number),
+    + unitPrice: 50 (number),
+    + discountPercent: 0 (number),
+    + profit: 47.62 (number),
+    + department: `Public Green Fees` (string),
+    + category: `Green Fees` (string),
+    + subcategory: `` (string),
+    + glCode: `` (string),
+    + itemNumber: `9039_seasonal_1` (string),
+    + itemId: 122925 (number),
+    + name: `18 Holes` (string)
+    + description: `` (string)
+    + priceClass: `Non-Res. - Adult` (string)
+    + priceClassId: 5 (string)
+
+
+## Courses (object)
++ type: courses (enum,required) - Type of Object
++ id: 6270 (string,required) - Unique idenetifier for a course
++ attributes (object)
+    + title: Cascade (string) - Name of course
+    + street: The place (string) - Street address of the course
+    + city: Cityville (string) - City of the course
+    + state: UT (string) - State of the course
+    + zip: 84097 (string) - Zip of the course
+    + phone: 1231231234 (string)
+    + course_summary: ``(string) - Brief summary of the course
+    + base_color: ``(string) - Color used in mobile app
+
+## Tee Sheets (object)
++ type: terminals (enum,required)
++ id: 6 (string,required)
++ attributes (object)
+    + title: Exec 9 holes (string)
+    + course_id: 6279 (string)
+
+## Terminals (object)
++ type: terminals (string,required)
++ id: 6 (string,required)
++ attributes (object)
+    + title: Pro Shop (string)
+
+## Date Time (object)
++ date: `2016-09-29 13:26:00.000000` (string)
++ timezone_type: 3 (number)
++ timezone: `American/Denver` (string)
+
+## Bookings (object)
++ type: bookings (string,required)
++ id: TTID_0117154814d25h0 (string,required) - Unique idenetifier for a booking
++ attributes (object)
+    + isReround: false (boolean) - A reround is usually tied to the original booking to mark what time they'll start on the back 9 
+    + type: teetime (enum[string])
+        + Members
+            + `teetime`
+            + `league`
+            + `shotgun`
+            + `event`
+            + `tournament`
+            + `closed`
+    + status: checked in (enum[string])
+        + Members
+            + `checked in`
+            + ``
+            + `teed off`
+    + duration: 1 (number) - The number of increments the booking takes up
+    + playerCount: 2 (number)
+    + holes: 18 (number)
+    + carts: 4 (number)
+    + paidPlayerCount: 2 (number)
+    + noShowCount: 2 (number)
+    + title: Hopkins (string)
+    + details: `Reserved using online booking @ 2:53pm` (string)
+    + side: front (string)
+    + bookingSource: online (enum[string])
+    + start (Date Time)
+    + end (Date Time)
+    + lastUpdated  (Date Time)
+    + dateBooked  (Date Time)
+    + dateCancelled (Date Time)
+    + turnTime (Date Time)
+    + finishTime (Date Time)
++ relationships (object)
+    + players (object)
+    + sales (object)
 
 ## Payments
 + paymentAmount:  20 (number,required) - Total amount paid for by this payment type.
@@ -859,62 +859,22 @@ Sales may or may not have a customer attached.  This event triggers any time a s
         + `gift_card`
         + `punch_card`
 
-## Courses (object)
-+ data (object)
-    + type: courses (enum,required) - Type of Object
-    + id: 6270 (string,required) - Unique idenetifier for a course
-    + attributes (object)
-        + title: Cascade (string) - Name of course
-        + street: The place (string) - Street address of the course
-        + city: Cityville (string) - City of the course
-        + state: UT (string) - State of the course
-        + zip: 84097 (string) - Zip of the course
-        + phone: 1231231234 (string)
-        + course_summary: ``(string) - Brief summary of the course
-        + base_color: ``(string) - Color used in mobile app
 
-## Date Time (object)
-+ date: `2016-09-29 13:26:00.000000` (string)
-+ timezone_type: 3 (number)
-+ timezone: `American/Denver` (string)
+## Sales Items Request
++ itemId:  5311 (number,required) - A valid item id currently found in the courses inventory.
++ quantity:  1 (number,required) - Total items purchased.
++ unitPrice:  10 (number,required) - Price per individual item sold with tax
++ description:  Cool Item (string,optional) - Optional message to save with the item.
 
-## Bookings (object)
+## Sales Request (object)
 + data (object)
-    + type: bookings (string,required)
-    + id: TTID_0117154814d25h0 (string,required) - Unique idenetifier for a booking
+    + type: sales (string,required)
     + attributes (object)
-        + isReround: false (boolean) - A reround is usually tied to the original booking to mark what time they'll start on the back 9 
-        + type: teetime (enum[string])
-            + Members
-                + `teetime`
-                + `league`
-                + `shotgun`
-                + `event`
-                + `tournament`
-                + `closed`
-        + status: checked in (enum[string])
-            + Members
-                + `checked in`
-                + ``
-                + `teed off`
-        + duration: 1 (number) - The number of increments the booking takes up
-        + playerCount: 2 (number)
-        + holes: 18 (number)
-        + carts: 4 (number)
-        + paidPlayerCount: 2 (number)
-        + noShowCount: 2 (number)
-        + title: Hopkins (string)
-        + details: `Reserved using online booking @ 2:53pm` (string)
-        + side: front (string)
-        + bookingSource: online (enum[string])
-        + start (Date Time)
-        + end (Date Time)
-        + lastUpdated  (Date Time)
-        + dateBooked  (Date Time)
-        + dateCancelled (Date Time)
-        + turnTime (Date Time)
-        + finishTime (Date Time)
-    + relationships (object)
-        + players (object)
-        + sales (object)
-+ included (object)
+        + employeeId:  "5478650" (string,required) - The id of the employee completing the sale
+        + guestCount:  3 (number,optional) - Number of guests on the sale.  Used in reporting.
+        + number:  485 (number,required) - The customer facing sale number. Used on reciepts
+        + terminalid: 6 (number,required) - The id of the terminal this sale will be recorded under.
+        + items (array)
+            + (Sales Items Request)
+        + payments (array)
+            + (Payments)
