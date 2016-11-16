@@ -43,14 +43,9 @@ To authenticate with the api you must first create a JWT using your username/pas
 
 This endpoint will list all the courses which you have access too.
 
-### List All[GET]
-+ Request (application/json)
-
-    + Headers
++ Model
     
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
-+ Response 200 (application/json)
+    + Body
 
             {
               "data": [
@@ -79,8 +74,51 @@ This endpoint will list all the courses which you have access too.
               ]
             }
 
+### List All[GET]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Response 200 (application/json)
+
+    [Courses][]
+
 
 ## Sales [/courses/{courseId}/sales{?include,startDate,endDate,start,limit}]
+
++ Model
+    
+    + Body
+
+            {  
+               "data":[  
+                  {  
+                     "type":"sales",
+                     "id":"5191",
+                     "attributes":{  
+                        "saleTime":{  
+                           "date":"2016-07-06 17:52:37.000000",
+                           "timezone_type":3,
+                           "timezone":"UTC"
+                        },
+                        "comment":"",
+                        "employeeId":12,
+                        "guestCount":0,
+                        "number":485,
+                        "paymentType":"Cash: $127.43<br />",
+                        "refundComment":"",
+                        "refundReason":"",
+                        "total":127.43,
+                        "subtotal":120,
+                        "tax":7.43,
+                        "deleted":false,
+                        "deletedAt":null
+                     }
+                  }
+               ]
+            }
 
 ### Create [POST /courses/{courseId}/sales]
 
@@ -187,99 +225,17 @@ You are only able to adjust the unit price and quantity of an item within a sale
     + include : items (enum[string],optional) - Which relationships to include in response. 
         + Members
             + `items`
+            + `terminals`
+            + `bookings`
 + Response 200 (application/json)
 
-            {  
-               "data":[  
-                  {  
-                     "type":"sales",
-                     "id":"5191",
-                     "attributes":{  
-                        "saleTime":{  
-                           "date":"2016-07-06 17:52:37.000000",
-                           "timezone_type":3,
-                           "timezone":"UTC"
-                        },
-                        "comment":"",
-                        "employeeId":12,
-                        "guestCount":0,
-                        "number":485,
-                        "paymentType":"Cash: $127.43<br />",
-                        "refundComment":"",
-                        "refundReason":"",
-                        "total":127.43,
-                        "subtotal":120,
-                        "tax":7.43,
-                        "deleted":false,
-                        "deletedAt":null
-                     },
-                     "relationships":{  
-                        "items":{  
-                           "data":[  
-                              {  
-                                 "type":"sales_items",
-                                 "id":"51911"
-                              },
-                              {  
-                                 "type":"sales_items",
-                                 "id":"51912"
-                              }
-                           ]
-                        }
-                     }
-                  }
-               ],
-               "included":[  
-                  {  
-                     "type":"sales_items",
-                     "id":"51911",
-                     "attributes":{  
-                        "total":"117.43",
-                        "subTotal":"110.00",
-                        "tax":"7.43",
-                        "quantity":"1.00",
-                        "unitPrice":"110.00",
-                        "discountPercent":"0.00",
-                        "profit":"110.00"
-                     }
-                  },
-                  {  
-                     "type":"sales_items",
-                     "id":"51912",
-                     "attributes":{  
-                        "total":"10.00",
-                        "subTotal":"10.00",
-                        "tax":"0.00",
-                        "quantity":"1.00",
-                        "unitPrice":"10.00",
-                        "discountPercent":"0.00",
-                        "profit":"2.00",
-                        "department":"Corporate",
-                        "category":"clearance",
-                        "subcategory":"hats",
-                        "glCode":null,
-                        "itemNumber":null,
-                        "itemId": 5098,
-                        "name": "Bermuda Sands Sweatshirt",
-                        "description":"white/black"
-                     }
-                  }
-               ]
-            }
+    [Sales][]
 
 ## Tee Sheets [/courses/{courseId}/teesheets]
 
-### Get All [GET]
-+ Request (application/json)
-
-    + Headers
++ Model
     
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
-+ Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
-
-+ Response 200 (application/json)
+    + Body
 
             {
               "data": [
@@ -290,43 +246,9 @@ You are only able to adjust the unit price and quantity of an item within a sale
                     "title": "Exec 9 holes",
                     "course_id": 6270
                   }
-                },
-                {
-                  "type": "teesheets",
-                  "id": "27",
-                  "attributes": {
-                    "title": "Main course 2",
-                    "course_id": 6270
-                  }
-                },
-                {
-                  "type": "teesheets",
-                  "id": "40",
-                  "attributes": {
-                    "title": "Putt putt",
-                    "course_id": 6270
-                  }
-                },
-                {
-                  "type": "teesheets",
-                  "id": "67",
-                  "attributes": {
-                    "title": "Jack Barnes",
-                    "course_id": 6270
-                  }
-                },
-                {
-                  "type": "teesheets",
-                  "id": "71",
-                  "attributes": {
-                    "title": "TESTER",
-                    "course_id": 6270
-                  }
                 }
               ]
             }
-
-## Terminals [/courses/{courseId}/terminals]
 
 ### Get All [GET]
 + Request (application/json)
@@ -339,6 +261,14 @@ You are only able to adjust the unit price and quantity of an item within a sale
     + courseId : 9039 - A course id that the user has permission to access.
 
 + Response 200 (application/json)
+
+    [Tee Sheets][]
+
+## Terminals [/courses/{courseId}/terminals]
+
++ Model
+    
+    + Body
 
             {
               "data": [
@@ -348,19 +278,9 @@ You are only able to adjust the unit price and quantity of an item within a sale
                   "attributes": {
                     "label": "Pro Shop"
                   }
-                },
-                {
-                  "type": "terminals",
-                  "id": "936",
-                  "attributes": {
-                    "label": "JH Terminal"
-                  }
                 }
               ]
-            }           
-
-
-## Employees [/courses/{courseId}/employees{?include,start,limit}]
+            }  
 
 ### Get All [GET]
 + Request (application/json)
@@ -371,10 +291,17 @@ You are only able to adjust the unit price and quantity of an item within a sale
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + limit: 10 (integer, optional)- Total results to show (Max: 100).
-    + start: 0 (integer, optional)- Which result to start on.
 
 + Response 200 (application/json)
+
+    [Terminals][]        
+
+
+## Employees [/courses/{courseId}/employees{?include,start,limit}]
+
++ Model
+    
+    + Body
 
             {
               "data": [
@@ -412,6 +339,23 @@ You are only able to adjust the unit price and quantity of an item within a sale
               ]
             }
 
+### Get All [GET]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + limit: 10 (integer, optional)- Total results to show (Max: 100).
+    + start: 0 (integer, optional)- Which result to start on.
+
++ Response 200 (application/json)
+
+    [Employees][]
+
+
 # Group Tee Sheets
 
 ## Bookings [/courses/{courseId}/teesheets/{teesheetId}/bookings{?include,startDate,endDate,start,limit}]
@@ -448,7 +392,6 @@ The sales_items object containes an attribute "PriceClass" that designates the g
             + `players`
             + `sales`
             + `sales.items`
-            + `bookings`
             
 + Response 200 (application/json)
 
