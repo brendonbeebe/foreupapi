@@ -45,7 +45,7 @@ This endpoint will list all the courses which you have access too.
 
 + Model
     
-    + Body
+    + Body 
 
             {
               "data": [
@@ -83,42 +83,10 @@ This endpoint will list all the courses which you have access too.
         
 + Response 200 (application/json)
 
-    [Courses][]
+    + Attributes (Courses)
 
 
 ## Sales [/courses/{courseId}/sales{?include,startDate,endDate,start,limit}]
-
-+ Model
-    
-    + Body
-
-            {  
-               "data":[  
-                  {  
-                     "type":"sales",
-                     "id":"5191",
-                     "attributes":{  
-                        "saleTime":{  
-                           "date":"2016-07-06 17:52:37.000000",
-                           "timezone_type":3,
-                           "timezone":"UTC"
-                        },
-                        "comment":"",
-                        "employeeId":12,
-                        "guestCount":0,
-                        "number":485,
-                        "paymentType":"Cash: $127.43<br />",
-                        "refundComment":"",
-                        "refundReason":"",
-                        "total":127.43,
-                        "subtotal":120,
-                        "tax":7.43,
-                        "deleted":false,
-                        "deletedAt":null
-                     }
-                  }
-               ]
-            }
 
 ### Create [POST /courses/{courseId}/sales]
 
@@ -183,31 +151,7 @@ You are only able to adjust the unit price and quantity of an item within a sale
 
 + Response 200 (application/json)
 
-            {
-              "data": {
-                "type": "sales",
-                "id": "23464980",
-                "attributes": {
-                  "saleTime": {
-                    "date": "2016-10-17 21:57:12.000000",
-                    "timezone_type": 3,
-                    "timezone": "UTC"
-                  },
-                  "comment": "",
-                  "employeeId": 5478650,
-                  "guestCount": 0,
-                  "number": 9841,
-                  "paymentType": "Credit Card: $21.00 - ",
-                  "refundComment": "",
-                  "refundReason": "",
-                  "total": 21,
-                  "subtotal": 21,
-                  "tax": 0,
-                  "deleted": false,
-                  "deletedAt": null
-                }
-              }
-            }
+    + Attributes (Sales Response )
 
 ### List All [GET]
 + Request (application/json)
@@ -229,7 +173,7 @@ You are only able to adjust the unit price and quantity of an item within a sale
             + `bookings`
 + Response 200 (application/json)
 
-    [Sales][]
+    + Attributes (Sales Response )
 
 ## Tee Sheets [/courses/{courseId}/teesheets]
 
@@ -395,83 +339,7 @@ The sales_items object containes an attribute "PriceClass" that designates the g
             
 + Response 200 (application/json)
 
-            {
-              "data": [
-                {
-                  "type": "bookings",
-                  "id": "TTID_0117154814d25h0",
-                  "attributes": {
-                    "isReround": false,
-                    "type": "teetime",
-                    "status": "checked in",
-                    "start": {
-                      "date": "2016-09-29 13:26:00.000000",
-                      "timezone_type": 3,
-                      "timezone": "America/Denver"
-                    },
-                    "end": {
-                      "date": "2016-09-29 13:34:00.000000",
-                      "timezone_type": 3,
-                      "timezone": "America/Denver"
-                    },
-                    "duration": 0,
-                    "playerCount": 2,
-                    "holes": 1,
-                    "carts": 0,
-                    "paidPlayerCount": 2,
-                    "noShowCount": 0,
-                    "title": "Hopkins",
-                    "details": "Reserved using online booking @ 2:53pm 1/16 MST",
-                    "side": "front",
-                    "bookingSource": "online",
-                    "lastUpdated": {
-                      "date": "2016-09-29 21:33:01.000000",
-                      "timezone_type": 3,
-                      "timezone": "America/Denver"
-                    },
-                    "dateBooked": {
-                      "date": "2013-01-17 23:48:14.000000",
-                      "timezone_type": 3,
-                      "timezone": "America/Denver"
-                    },
-                    "dateCancelled": null,
-                    "turnTime": null,
-                    "finishTime": null
-                  },
-                  "relationships": {
-                    "players": {
-                      "data": [
-                        {
-                          "type": "people",
-                          "id": "30"
-                        }
-                      ]
-                    }
-                  }
-                }
-              ],
-              "included": [
-                {
-                  "type": "people",
-                  "id": "30",
-                  "attributes": {
-                    "first_name": "Zipadee",
-                    "last_name": "Hopkins",
-                    "phone_number": "",
-                    "cell_phone_number": "",
-                    "email": "brendon.beebe@gmail.com",
-                    "birthday": null,
-                    "address_1": "",
-                    "address_2": "",
-                    "city": "",
-                    "state": "",
-                    "zip": "",
-                    "country": "",
-                    "comments": ""
-                  }
-                }
-              ]
-            }
+    + Attributes (Bookings)
 
 ## Stats [/courses/{courseId}/teesheets/{teesheetId}/stats{?date}]
 
@@ -938,14 +806,40 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 
 
 ## Sales (object)
-+ employeeId:  "5478650" (string,required) - The id of the employee completing the sale
-+ guestCount:  3 (number,optional) - Number of guests on the sale.  Used in reporting.
-+ number:  485 (number,required) - The customer facing sale number. Used on reciepts
-+ terminalid: 6 (number,required) - The id of the terminal this sale will be recorded under.
-+ items (array)
-    + (Sales Items)
-+ payments (array)
-    + (Payments)
++ data (object)
+    + type: sales (string,required)
+    + attributes (object)
+        + employeeId:  "5478650" (string,required) - The id of the employee completing the sale
+        + guestCount:  3 (number,optional) - Number of guests on the sale.  Used in reporting.
+        + number:  485 (number,required) - The customer facing sale number. Used on reciepts
+        + terminalid: 6 (number,required) - The id of the terminal this sale will be recorded under.
+        + items (array)
+            + (Sales Items)
+        + payments (array)
+            + (Payments)
+
+## Sales Response (object)
++ data (object)
+    + type: sales (string,required)
+    + id: 1 (string, optional)
+    + attributes (object)
+        + employeeId:  "5478650" (string,required) - The id of the employee completing the sale
+        + guestCount:  3 (number,optional) - Number of guests on the sale.  Used in reporting.
+        + number:  485 (number,required) - The customer facing sale number. Used on reciepts
+        + paymentType: `Credit Card: $21.00` (string) 
+        + refundComment: `` (string)
+        + refundReason: `` (string)
+        + total: 21 (number)
+        + subtotal: 21 (number)
+        + tax: 0 (number)
+        + deleted: false (boolean)
+        + deletedAt (Date Time)
+    + relationships (object)
+        + items (object)
+        + terminals (object)
+        + bookings (object)
++ included (object)
+
 
 ## Sales Items
 + itemId:  5311 (number,required) - A valid item id currently found in the courses inventory.
@@ -964,3 +858,63 @@ Sales may or may not have a customer attached.  This event triggers any time a s
         + `member_account`
         + `gift_card`
         + `punch_card`
+
+## Courses (object)
++ data (object)
+    + type: courses (enum,required) - Type of Object
+    + id: 6270 (string,required) - Unique idenetifier for a course
+    + attributes (object)
+        + title: Cascade (string) - Name of course
+        + street: The place (string) - Street address of the course
+        + city: Cityville (string) - City of the course
+        + state: UT (string) - State of the course
+        + zip: 84097 (string) - Zip of the course
+        + phone: 1231231234 (string)
+        + course_summary: ``(string) - Brief summary of the course
+        + base_color: ``(string) - Color used in mobile app
+
+## Date Time (object)
++ date: `2016-09-29 13:26:00.000000` (string)
++ timezone_type: 3 (number)
++ timezone: `American/Denver` (string)
+
+## Bookings (object)
++ data (object)
+    + type: bookings (string,required)
+    + id: TTID_0117154814d25h0 (string,required) - Unique idenetifier for a booking
+    + attributes (object)
+        + isReround: false (boolean) - A reround is usually tied to the original booking to mark what time they'll start on the back 9 
+        + type: teetime (enum[string])
+            + Members
+                + `teetime`
+                + `league`
+                + `shotgun`
+                + `event`
+                + `tournament`
+                + `closed`
+        + status: checked in (enum[string])
+            + Members
+                + `checked in`
+                + ``
+                + `teed off`
+        + duration: 1 (number) - The number of increments the booking takes up
+        + playerCount: 2 (number)
+        + holes: 18 (number)
+        + carts: 4 (number)
+        + paidPlayerCount: 2 (number)
+        + noShowCount: 2 (number)
+        + title: Hopkins (string)
+        + details: `Reserved using online booking @ 2:53pm` (string)
+        + side: front (string)
+        + bookingSource: online (enum[string])
+        + start (Date Time)
+        + end (Date Time)
+        + lastUpdated  (Date Time)
+        + dateBooked  (Date Time)
+        + dateCancelled (Date Time)
+        + turnTime (Date Time)
+        + finishTime (Date Time)
+    + relationships (object)
+        + players (object)
+        + sales (object)
++ included (object)
