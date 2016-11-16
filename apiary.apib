@@ -43,37 +43,6 @@ To authenticate with the api you must first create a JWT using your username/pas
 
 This endpoint will list all the courses which you have access too.
 
-+ Model
-    
-    + Body 
-
-            {
-              "data": [
-                {
-                  "type": "courses",
-                  "id": "6270",
-                  "attributes": {
-                    "title": "Cascade Golf Course",
-                    "street": "The place",
-                    "city": "Cityville",
-                    "state": "UT",
-                    "zip": "84097",
-                    "phone": "5555555555",
-                    "app_store_description": "",
-                    "app_short_title": "",
-                    "test_flight_email": "",
-                    "course_summary": "",
-                    "base_color": "",
-                    "app_icon_url": "",
-                    "last_updated": null,
-                    "registration_hidden": false,
-                    "published_ios_version": "",
-                    "published_android_version": "0"
-                  }
-                }
-              ]
-            }
-
 ### List All[GET]
 + Request (application/json)
 
@@ -84,8 +53,7 @@ This endpoint will list all the courses which you have access too.
 + Response 200 (application/json)
 
     + Attributes
-        + data (array)
-            +  (Courses)
+        + data (array[Courses])
 
 
 ## Sales [/courses/{courseId}/sales{?include,startDate,endDate,start,limit}]
@@ -154,8 +122,7 @@ You are only able to adjust the unit price and quantity of an item within a sale
 + Response 200 (application/json)
 
     + Attributes
-        + data (array)
-            +  (Sales)
+        + data (array[Sales])
 
 ### List All [GET]
 + Request (application/json)
@@ -178,8 +145,7 @@ You are only able to adjust the unit price and quantity of an item within a sale
 + Response 200 (application/json)
 
     + Attributes
-        + data (array)
-            +  (Sales)
+        + data (array[Sales])
 
 ## Tee Sheets [/courses/{courseId}/teesheets]
 
@@ -197,8 +163,7 @@ You are only able to adjust the unit price and quantity of an item within a sale
 + Response 200 (application/json)
 
     + Attributes
-        + data (array)
-            +  (Tee Sheets)
+        + data (array[Tee Sheets])
 
 ## Terminals [/courses/{courseId}/terminals]
 
@@ -215,8 +180,7 @@ You are only able to adjust the unit price and quantity of an item within a sale
 + Response 200 (application/json)
 
     + Attributes
-        + data (array)
-            +  (Terminals)
+        + data (array[Terminals])
 
 
 ## Employees [/courses/{courseId}/employees{?include,start,limit}]
@@ -318,8 +282,7 @@ The sales_items object containes an attribute "PriceClass" that designates the g
 + Response 200 (application/json)
 
     + Attributes
-        + data (array)
-            +  (Bookings)
+        + data (array[Bookings])
 
 ## Stats [/courses/{courseId}/teesheets/{teesheetId}/stats{?date}]
 
@@ -484,8 +447,7 @@ The sales_items object containes an attribute "PriceClass" that designates the g
 + Response 200 (application/json)
 
     + Attributes
-        + data (array)
-            +  (Sales)
+        + data (array[Sales])
                    
 # Group Inventory
 ## Item Collection [/courses/{courseId}/items{?limit,start}]
