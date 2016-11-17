@@ -5,3 +5,9 @@
   - chmod a+x ./scripts/test
   - npm install -g dredd
   script: ./scripts/test
+  notifications:
+    email:
+      recipients:
+        - brendon@foreup.com
+      on_success: [always|never|change] # default: change
+      on_failure: always # default: always
