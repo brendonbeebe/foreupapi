@@ -693,11 +693,6 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
     
     + Attributes
         + data (Seasonal Timeframes)
-        + relationships
-            + classes
-                + data (object, optional)
-                    + type: classes (string, optional)
-                    + id: 1 (string, optional)
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
@@ -723,11 +718,6 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
     
     + Attributes
         + data (Seasonal Timeframes)
-        + relationships
-            + classes
-                + data (object, required)
-                    + type: classes (string, required)
-                    + id: 5 (string, required)
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
@@ -984,6 +974,11 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + startTime: 0 (number)
     + endTime: 2400 (number)
     + `default`: false (boolean)
++ relationships (object)
+    + classes (object)
+        + data (object, required)
+            + type: classes (string, required)
+            + id: 5 (string, required)
 
 ## Date Time (object)
 + date: `2016-09-29 13:26:00.000000` (string)
