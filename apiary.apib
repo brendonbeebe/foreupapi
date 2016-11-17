@@ -182,7 +182,6 @@ You are only able to adjust the unit price and quantity of an item within a sale
     + Attributes
         + data (array[Terminals])
 
-
 ## Employees [/courses/{courseId}/employees{?include,start,limit}]
 
 + Model
@@ -552,6 +551,199 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
               ]
             }
 
+# Group Beta
+
+## Seasons [/courses/{courseId}/teesheets/{teesheetId}/seasons{?include}]
+
+### Get All [GET]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 1526
+    + include : classes (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `classes`
+    
++ Response 200 (application/json)
+
+    + Attributes
+        + data (array[Seasons])
+
+### Get One [GET /courses/{courseId}/teesheets/{teesheetId}/seasons/{seasonId}{?include}]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 1526
+    + seasonId : 2446
+    + include : classes (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `classes`
+    
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Seasons)
+        
+### Update [PATCH /courses/{courseId}/teesheets/{teesheetId}/seasons/{seasonId}{?include}]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+     
+    + Attributes
+        + data (Seasons)
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 1526
+    + seasonId : 2446
+    + include : classes (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `classes`
+    
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Seasons)
+        
+### Create [POST /courses/{courseId}/teesheets/{teesheetId}/seasons{?include}]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+     
+    + Attributes
+        + data (Seasons)
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 1526
+    + include : classes (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `classes`
+    
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Seasons)
+        
+## Seasonal Timeframes [/courses/{courseId}/teesheets/{teesheetId}/seasons/{seasonId}/timeframes{?include}]
+
+### Get All [GET]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 1530
+    + seasonId : 1530
+    + include : classes (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `classes`
+            + `seasons`
+    
++ Response 200 (application/json)
+
+    + Attributes
+        + data (array[Seasonal Timeframes])
+        
+### Get One [GET /courses/{courseId}/teesheets/{teesheetId}/seasons/{seasonId}/timeframes/{timeframeId}{?include}]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 1530
+    + seasonId : 1530
+    + timeframeId : 1530
+    + include : classes (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `classes`
+            + `seasons`
+    
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Seasonal Timeframes)
+        
+### Update [PATCH /courses/{courseId}/teesheets/{teesheetId}/seasons/{seasonId}/timeframes/{timeframeId}{?include}]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+    
+    + Attributes
+        + data (Seasonal Timeframes)
+        + relationships
+            + classes
+                + data (object, optional)
+                    + type: classes (string, optional)
+                    + id: 1 (string, optional)
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 1530
+    + seasonId : 1530
+    + timeframeId : 1530
+    + include : classes (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `classes`
+            + `seasons`
+    
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Seasonal Timeframes)
+        
+### Create [POST /courses/{courseId}/teesheets/{teesheetId}/seasons/{seasonId}/timeframes/{timeframeId}{?include}]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+    
+    + Attributes
+        + data (Seasonal Timeframes)
+        + relationships
+            + classes
+                + data (object, required)
+                    + type: classes (string, required)
+                    + id: 1 (string, required)
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 1530
+    + seasonId : 1530
+    + timeframeId : 1530
+    + include : classes (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `classes`
+            + `seasons`
+    
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Seasonal Timeframes)
+
 # Group Webhook
 
 A webhook allows you to recieve instanst feedback when ever something happens on the foreUp system.  See a list of the available events [below](#reference/webhook-events/delete).
@@ -764,10 +956,42 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + attributes (object)
     + title: Pro Shop (string)
 
+## Seasons
++ type: seasons (string,required)
++ id: 2 (string,optional)
++ attributes (object)
+    + name: Default Season (string)
+    + startDate (object)
+        + date: `0000-01-01`
+    + endDate (object)
+        + date: `0000-12-31`
+
+## Seasonal Timeframes
++ type: timeframes (string,required)
++ id: 8 (string,optional)
++ attributes (object)
+    + name: Default (string)
+    + monday: false (boolean)
+    + tuesday: false (boolean)
+    + wednesday: false (boolean)
+    + thursday: false (boolean)
+    + friday: false (boolean)
+    + saturday: false (boolean)
+    + sunday: false (boolean)
+    + 9holePrice: 10 (number)
+    + 9cartPrice: 15 (number)
+    + 18holePrice: 25 (number)
+    + 18cartPrice: 30 (number)
+    + startTime: 0 (number)
+    + endTime: 2400 (number)
+    + `default`: false (boolean)
+
 ## Date Time (object)
 + date: `2016-09-29 13:26:00.000000` (string)
 + timezone_type: 3 (number)
 + timezone: `American/Denver` (string)
+
+
 
 ## Bookings (object)
 + type: bookings (string,required)
