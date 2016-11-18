@@ -316,6 +316,22 @@ The sales_items object containes an attribute "PriceClass" that designates the g
               }
             }
 
+# Group Teetime Pricing
+
+Tee time pricing is extremely flexible. There are three important parts to tee time pricing.
+
+- Price Clases
+    * A course can have as many price classes as they want.  These are essentially customer categories such as member, guest, senior, junior, etc
+- Season
+    * This is a date range such as, winter, summer, august, etc. 
+- Time Frames
+    * Each season can have multiple time frames. Time frames are a time range, examples include twilight, afternoon, evening, etc.
+    * Time Frames contain the price, there is a default time frame for each price class / season.
+
+
+
+[![name](https://s3-us-west-2.amazonaws.com/foreup.course.images/Blank+Diagram+-+Page+1.png)](https://s3-us-west-2.amazonaws.com/foreup.course.images/Blank+Diagram+-+Page+1.png) 
+
 ## Seasons [/courses/{courseId}/teesheets/{teesheetId}/seasons{?include}]
 
 ### Get All [GET]
