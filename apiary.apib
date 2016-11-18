@@ -316,246 +316,6 @@ The sales_items object containes an attribute "PriceClass" that designates the g
               }
             }
 
-# Group Customers
-
-## Customer Collection [/courses/{courseId}/customers{?limit,start}]
-
-### List All [GET]
-
-+ Request (application/json)
-
-    + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
-+ Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
-    + start : 0 (integer,optional) - Which result to start on.
-    + limit : 10 (integer,optional) - Total results to show.
-    
-+ Response 200 (application/json)
-
-            {
-              "data": [
-                {
-                  "type": "customers",
-                  "id": "2073",
-                  "attributes": {
-                    "username": "username",
-                    "account_number": "123ABC",
-                    "company_name": "MyCompany",
-                    "taxable": true,
-                    "discount": 0,
-                    "opt_out_email": false,
-                    "opt_out_text": false,
-                    "date_created": null,
-                    "contact_info": {
-                      "id": 2073,
-                      "first_name": "FirstName",
-                      "last_name": "LastName",
-                      "phone_number": "",
-                      "cell_phone_number": "",
-                      "email": "foreup@fake.com",
-                      "birthday": null,
-                      "address_1": "",
-                      "address_2": "",
-                      "city": "",
-                      "state": "AL",
-                      "zip": "",
-                      "country": "",
-                      "comments": "Best customer ever!!"
-                    }
-                  }
-                }
-              ]
-            }
-            
-## Specific Customer [/courses/{courseId}/customers/{customerId}{?include,limit,start}]
-
-### Get One [GET]
-
-+ Request (application/json)
-
-    + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
-+ Parameters
-
-    + courseId : 9039 - A course id that the user has permission to access.
-    + customerId : 3612897 - The customer id.
-    + start : 0 (integer,optional) - Which result to start on.
-    + limit : 10 (integer,optional) - Total results to show.
-    + include : sales (enum[string],optional) - Which relationships to include in response. 
-        + Members
-            + `sales`
-            + `sales.items`
-                
-+ Response 200 (application/json)
-
-            {
-              "data": [
-                {
-                  "type": "customers",
-                  "id": "2073",
-                  "attributes": {
-                    "username": "username",
-                    "account_number": "123ABC",
-                    "company_name": "MyCompany",
-                    "taxable": true,
-                    "discount": 0,
-                    "opt_out_email": false,
-                    "opt_out_text": false,
-                    "date_created": null,
-                    "contact_info": {
-                      "id": 2073,
-                      "first_name": "FirstName",
-                      "last_name": "LastName",
-                      "phone_number": "",
-                      "cell_phone_number": "",
-                      "email": "foreup@fake.com",
-                      "birthday": null,
-                      "address_1": "",
-                      "address_2": "",
-                      "city": "",
-                      "state": "AL",
-                      "zip": "",
-                      "country": "",
-                      "comments": "Best customer ever!!"
-                    }
-                  }
-                }
-              ]
-            }
-            
-## Customer Sales [/courses/{courseId}/customers/{customerId}/sales{?include,limit,start}]
-
-### List All [GET]
-
-+ Request (application/json)
-
-    + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
-+ Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
-    + customerId : 3612897 - The customer id.
-    + limit: 10 (integer,optional) - Total results to show (Max: 100).
-    + start: 0 (integer,optional) - Which result to start on.
-    + include : items (enum[string],optional) - Which relationships to include in response. 
-        + Members
-            + `items`
-+ Response 200 (application/json)
-
-    + Attributes
-        + data (array[Sales])
-                   
-# Group Inventory
-## Item Collection [/courses/{courseId}/items{?limit,start}]
-
-Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Cards.  This does not include tee times which are handled separately.
-
-### List All [GET]
-+ Request (application/json)
-
-    + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
-+ Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
-    + limit: 10 (integer,optional) - Total results to show (Max: 100).
-    + start: 0 (integer,optional)- Which result to start on.
-    
-+ Response 200 (application/json)
-
-            {
-              "data": [
-                {
-                  "type": "items",
-                  "id": "383",
-                  "attributes": {
-                    "maxDiscount": 100,
-                    "addOnPrice": 0,
-                    "costPrice": 0,
-                    "courseId": 6270,
-                    "quantity": 1000,
-                    "numberOfSides": 0,
-                    "unitPrice": 10000000,
-                    "category": "Services",
-                    "itemNumber": null,
-                    "location": "",
-                    "name": "Joel Ragar",
-                    "subcategory": "",
-                    "department": "Food & Beverage",
-                    "description": "",
-                    "glCode": null,
-                    "usInactive": false,
-                    "doNotPrint": false,
-                    "deleted": true,
-                    "isfoodAndBeverage": false,
-                    "isInvisible": false,
-                    "isFree": false,
-                    "isGiftcard": false,
-                    "isPass": false,
-                    "isSide": false,
-                    "isUnlimited": false,
-                    "isSoupOrSalad": true,
-                    "unitPriceIncludesTAx": false
-                  }
-                }
-              ]
-            }
-            
-
-## Transaction Collection [/courses/{courseId}/inventory{?include,startDate,endDate,limit,start}]
-
-    This is a record of each adjustment made to a courses inventory.  A negative number signifies one less item is available while a positive number means an item was added.
-
-### List All [GET]
-+ Request (application/json)
-
-    + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
-+ Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
-    + limit: 10 (Integer, optional)- Total results to show (Max: 100).
-    + start: 0 (Integer, optional)- Which result to start on.
-    + startDate : `2016-05-19` (date,optional) - Must limit the sales returned to a single date.
-    + endDate : `2016-05-19` (date,optional) - Must limit the sales returned to a single date.
-    + include : items (enum[string],optional) - Which relationships to include in the response. 
-        + Members
-            + `employees`
-            + `sales`
-            + `items`
-+ Response 200 (application/json)
-
-            {
-              "data": [
-                {
-                  "type": "inventory",
-                  "id": "8810",
-                  "attributes": {
-                    "comment": "Manual Edit of Quantity",
-                    "adjustmentAmount": -1,
-                    "courseId": 6270,
-                    "itemId": 5286,
-                    "itemNumber": 0,
-                    "transDate": {
-                      "date": "2016-09-01 11:31:29.000000",
-                      "timezone_type": 3,
-                      "timezone": "America/Denver"
-                    }
-                  }
-                }
-              ]
-            }
-
-# Group Beta
-
 ## Seasons [/courses/{courseId}/teesheets/{teesheetId}/seasons{?include}]
 
 ### Get All [GET]
@@ -735,6 +495,246 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
 
     + Attributes
         + data (Seasonal Timeframes)
+
+# Group Customers
+
+## Customer Collection [/courses/{courseId}/customers{?limit,start}]
+
+### List All [GET]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + start : 0 (integer,optional) - Which result to start on.
+    + limit : 10 (integer,optional) - Total results to show.
+    
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "customers",
+                  "id": "2073",
+                  "attributes": {
+                    "username": "username",
+                    "account_number": "123ABC",
+                    "company_name": "MyCompany",
+                    "taxable": true,
+                    "discount": 0,
+                    "opt_out_email": false,
+                    "opt_out_text": false,
+                    "date_created": null,
+                    "contact_info": {
+                      "id": 2073,
+                      "first_name": "FirstName",
+                      "last_name": "LastName",
+                      "phone_number": "",
+                      "cell_phone_number": "",
+                      "email": "foreup@fake.com",
+                      "birthday": null,
+                      "address_1": "",
+                      "address_2": "",
+                      "city": "",
+                      "state": "AL",
+                      "zip": "",
+                      "country": "",
+                      "comments": "Best customer ever!!"
+                    }
+                  }
+                }
+              ]
+            }
+            
+## Specific Customer [/courses/{courseId}/customers/{customerId}{?include,limit,start}]
+
+### Get One [GET]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Parameters
+
+    + courseId : 9039 - A course id that the user has permission to access.
+    + customerId : 3612897 - The customer id.
+    + start : 0 (integer,optional) - Which result to start on.
+    + limit : 10 (integer,optional) - Total results to show.
+    + include : sales (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `sales`
+            + `sales.items`
+                
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "customers",
+                  "id": "2073",
+                  "attributes": {
+                    "username": "username",
+                    "account_number": "123ABC",
+                    "company_name": "MyCompany",
+                    "taxable": true,
+                    "discount": 0,
+                    "opt_out_email": false,
+                    "opt_out_text": false,
+                    "date_created": null,
+                    "contact_info": {
+                      "id": 2073,
+                      "first_name": "FirstName",
+                      "last_name": "LastName",
+                      "phone_number": "",
+                      "cell_phone_number": "",
+                      "email": "foreup@fake.com",
+                      "birthday": null,
+                      "address_1": "",
+                      "address_2": "",
+                      "city": "",
+                      "state": "AL",
+                      "zip": "",
+                      "country": "",
+                      "comments": "Best customer ever!!"
+                    }
+                  }
+                }
+              ]
+            }
+            
+## Customer Sales [/courses/{courseId}/customers/{customerId}/sales{?include,limit,start}]
+
+### List All [GET]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + customerId : 3612897 - The customer id.
+    + limit: 10 (integer,optional) - Total results to show (Max: 100).
+    + start: 0 (integer,optional) - Which result to start on.
+    + include : items (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `items`
++ Response 200 (application/json)
+
+    + Attributes
+        + data (array[Sales])
+ 
+
+                   
+# Group Inventory
+## Item Collection [/courses/{courseId}/items{?limit,start}]
+
+Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Cards.  This does not include tee times which are handled separately.
+
+### List All [GET]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + limit: 10 (integer,optional) - Total results to show (Max: 100).
+    + start: 0 (integer,optional)- Which result to start on.
+    
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "items",
+                  "id": "383",
+                  "attributes": {
+                    "maxDiscount": 100,
+                    "addOnPrice": 0,
+                    "costPrice": 0,
+                    "courseId": 6270,
+                    "quantity": 1000,
+                    "numberOfSides": 0,
+                    "unitPrice": 10000000,
+                    "category": "Services",
+                    "itemNumber": null,
+                    "location": "",
+                    "name": "Joel Ragar",
+                    "subcategory": "",
+                    "department": "Food & Beverage",
+                    "description": "",
+                    "glCode": null,
+                    "usInactive": false,
+                    "doNotPrint": false,
+                    "deleted": true,
+                    "isfoodAndBeverage": false,
+                    "isInvisible": false,
+                    "isFree": false,
+                    "isGiftcard": false,
+                    "isPass": false,
+                    "isSide": false,
+                    "isUnlimited": false,
+                    "isSoupOrSalad": true,
+                    "unitPriceIncludesTAx": false
+                  }
+                }
+              ]
+            }
+            
+
+## Transaction Collection [/courses/{courseId}/inventory{?include,startDate,endDate,limit,start}]
+
+    This is a record of each adjustment made to a courses inventory.  A negative number signifies one less item is available while a positive number means an item was added.
+
+### List All [GET]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + limit: 10 (Integer, optional)- Total results to show (Max: 100).
+    + start: 0 (Integer, optional)- Which result to start on.
+    + startDate : `2016-05-19` (date,optional) - Must limit the sales returned to a single date.
+    + endDate : `2016-05-19` (date,optional) - Must limit the sales returned to a single date.
+    + include : items (enum[string],optional) - Which relationships to include in the response. 
+        + Members
+            + `employees`
+            + `sales`
+            + `items`
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "inventory",
+                  "id": "8810",
+                  "attributes": {
+                    "comment": "Manual Edit of Quantity",
+                    "adjustmentAmount": -1,
+                    "courseId": 6270,
+                    "itemId": 5286,
+                    "itemNumber": 0,
+                    "transDate": {
+                      "date": "2016-09-01 11:31:29.000000",
+                      "timezone_type": 3,
+                      "timezone": "America/Denver"
+                    }
+                  }
+                }
+              ]
+            }
 
 # Group Webhook
 
