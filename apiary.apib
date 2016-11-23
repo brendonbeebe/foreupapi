@@ -58,6 +58,50 @@ This endpoint will list all the courses which you have access too.
 
 ## Sales [/courses/{courseId}/sales{?include,startDate,endDate,start,limit}]
 
+### Get One [GET /courses/{courseId}/sales/{saleId}{?include}]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + saleId : 24378234 (string) - A course id that the user has permission to access.
+    + include : items (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `items`
+            + `terminals`
+            + `bookings`
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Sales)
+        
+### List All [GET]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + limit: 10 (integer, optional)- Total results to show (Max: 100).
+    + start: 0 (integer, optional)- Which result to start on.
+    + startDate : `2016-07-06` (date,optional) - Must limit the sales returned to a single date.
+    + endDate : `2016-07-08` (date,optional) - Must limit the sales returned to a single date.
+    + include : items (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `items`
+            + `terminals`
+            + `bookings`
++ Response 200 (application/json)
+
+    + Attributes
+        + data (array[Sales])
+
+      
 ### Create [POST /courses/{courseId}/sales]
 
 You are only able to adjust the unit price and quantity of an item within a sale.  The taxes are generated automatically on the back-end and they default to include the tax in the price.
@@ -123,30 +167,7 @@ You are only able to adjust the unit price and quantity of an item within a sale
 
     + Attributes
         + data (Sales)
-
-### List All [GET]
-+ Request (application/json)
-
-    + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
-+ Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
-    + limit: 10 (integer, optional)- Total results to show (Max: 100).
-    + start: 0 (integer, optional)- Which result to start on.
-    + startDate : `2016-07-06` (date,optional) - Must limit the sales returned to a single date.
-    + endDate : `2016-07-08` (date,optional) - Must limit the sales returned to a single date.
-    + include : items (enum[string],optional) - Which relationships to include in response. 
-        + Members
-            + `items`
-            + `terminals`
-            + `bookings`
-+ Response 200 (application/json)
-
-    + Attributes
-        + data (array[Sales])
-
+      
 ## Tee Sheets [/courses/{courseId}/teesheets]
 
 
@@ -284,7 +305,33 @@ The sales_items object containes an attribute "PriceClass" that designates the g
 + Response 200 (application/json)
 
     + Attributes
-        + data (array[Bookings])
+        + data (array[Bookings]
+        
+### Get One [GET /courses/{courseId}/teesheets/{teesheetId}/bookings/{bookingId}{?include}]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 1530 (string) - A tee sheet id that the user has permission to access.
+    + bookingId : TTID_0929103348mnhfo (string) - A tee sheet id that the user has permission to access.
+    + include : `players`,`sales` (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `players`
+            + `sales`
+            + `sales.items`
+            + `bookedPlayers`
+            + `bookedPlayers.people`
+            + `bookedPlayers.priceClasses`
+            
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Bookings)
 
 ## Stats [/courses/{courseId}/teesheets/{teesheetId}/stats{?date}]
 
