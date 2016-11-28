@@ -816,18 +816,8 @@ We recommend using [Request Bin](https://requestb.in/) to play with the hooks.  
 
 + Response 200 (application/json)
 
-            {
-              "data": [
-                {
-                  "type": "api_hooks",
-                  "id": "3",
-                  "attributes": {
-                    "url": "http://google.com",
-                    "event": "customer.updated"
-                  }
-                }
-              ]
-            }
+    + Attributes
+        + data (array[Webhook])
 
 
 ### Create [POST]
@@ -839,28 +829,13 @@ We recommend using [Request Bin](https://requestb.in/) to play with the hooks.  
     
     + Body
         
-            {  
-              "data":{  
-                "type":"api_hooks",
-                "attributes":{  
-                    "url":"http://google.com",
-                    "event":"customer.updated"
-                }
-              }
-            }
+    + Attributes
+        + data (Webhook)
 
 + Response 200 (application/json)
 
-            {
-              "data": {
-                "type": "api_hooks",
-                "id": "4",
-                "attributes": {
-                  "url": "http://google.com",
-                  "event": "customer.updated"
-                }
-              }
-            }
+    + Attributes
+        + data (Webhook)
             
 ### Delete [DELETE /hooks/{id}]
 + Request (application/json)
@@ -938,7 +913,18 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 ## Headers (object)
 + x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
 
-
+## Webhook (object)
++ type: api_hooks (string,required)
++ id: 1 (string, optional)
++ attributes (object)
+    + url:  https://requestb.in/18unim81 (string,required) - The URL we'll call when the event occurs
+    + event:  customer.created (enum[string],required) - Which event to listen to.
+        + Members
+            + customer.updated
+            + teetime.deleted
+            + teetime.updated
+    + headerKey: x-authorizationkey (string, optional) - For authorization you can set a single key/value pair
+    + headerValue: sometokenorsomething (string, optional) - The value for the key above
 
 ## Sales (object)
 + type: sales (string,required)
