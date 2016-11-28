@@ -918,9 +918,10 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + id: 1 (string, optional)
 + attributes (object)
     + url:  https://requestb.in/18unim81 (string,required) - The URL we'll call when the event occurs
-    + event:  customer.created (enum[string],required) - Which event to listen to.
+    + event:  customer.updated (enum[string],required) - Which event to listen to.
         + Members
             + customer.updated
+            + sale.created
             + teetime.deleted
             + teetime.updated
     + headerKey: x-authorizationkey (string, optional) - For authorization you can set a single key/value pair
