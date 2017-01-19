@@ -337,7 +337,25 @@ To get pricing information from a booking that's already been paid for you must 
 + Response 200 (application/json)
 
     + Attributes
-        + data (Bookings)       
+        + data (Bookings)     
+        
+### Delete One [DELETE /courses/{courseId}/teesheets/{teesheetId}/bookings/{bookingId}]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 1562 (string) - A tee sheet id that the user has permission to access.
+    + bookingId : TTID_01091618193dux6 (string) - A booking id that the user has permission to access.
+            
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Bookings)    
         
 ### Get All [GET]
 
@@ -378,7 +396,7 @@ The sales_items object containes an attribute "PriceClass" that designates the g
         + data (array[Bookings]
         
 
-## Stats [/courses/{courseId}/teesheets/{teesheetId}/stats{?date}]
+## Stats [/courses/{courseId}/teesheets/{teesheetId}/stats{?date,start,end}]
 
 ### Get All [GET]
 + Request (application/json)
@@ -390,7 +408,9 @@ The sales_items object containes an attribute "PriceClass" that designates the g
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
     + teesheetId : 1562 (integer) - A tee sheet id that the user has permission to access.
-    + date : `2016-05-19` (date) - Must limit the stats returned to a single date.
+    + date : `2016-05-19` (date,optional) - Must limit the stats returned to a single date.
+    + start : `2016-05-19T00:00` (date,optional)
+    + end : `2016-05-19T23:00` (date,optional)
             
 + Response 200 (application/json)
 
@@ -1119,6 +1139,15 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + scheduleName: `White Marsh` (required,string)
     + scheduleId: `1562` (required,string)
     + availableSpots: 4 (required,string)
+    + greenFee: 3 (number) The green for for a single person in this slot
+    + cartFee: 1 (number) The cart fee for a single person this slot
+    + rateType: `both`(enum) The type of booking allowed.  The cart fee and green fee will reflect the type of booking.
+        + Members
+            + both - Both walking and riding are allowed
+            + riding - Only riding is allowed
+            + walking - Only walking is allowed
+    + greenFeeTax
+    + cartFeeTax
 
 ## Bookings (object)
 + type: bookings (string,required)
