@@ -399,6 +399,9 @@ The sales_items object containes an attribute "PriceClass" that designates the g
 ## Stats [/courses/{courseId}/teesheets/{teesheetId}/stats{?date,start,end}]
 
 ### Get All [GET]
+
+This endpoint is limited to a maximum of one day.  Occupancy is calculated by the number of slots available to potential slots.  It's possible to have a single booking for 1 person be stretched across multiple slots.
+
 + Request (application/json)
 
     + Headers
@@ -419,11 +422,11 @@ The sales_items object containes an attribute "PriceClass" that designates the g
                 "type": "teesheet_stats",
                 "id": "2016-09-28",
                 "attributes": {
-                  "bookings": "1",
-                  "occupancy": "0%",
-                  "playerNoShows": "1",
+                  "bookings": 1,
+                  "occupancy": .003,
+                  "playerNoShows": 1,
                   "playersCheckedIn": 0,
-                  "revenue": "$486.30"
+                  "revenue": 486.30
                 }
               }
             }
