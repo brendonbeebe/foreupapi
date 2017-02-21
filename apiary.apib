@@ -631,6 +631,28 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
 
 ## Customer Collection [/courses/{courseId}/customers{?limit,start}]
 
+You can search on any number of fields by adding the field name to the query.  
+
+```
+/resource?field_name=op:value
+```
+
+* ```field_name``` - The name of the field.
+
+* ```op``` - (Optional) The comparison operator to use when comparing the specified value to the field. Defaults to eq.
+  * eq (Equal)
+  * gt (Greater Than)
+  * gte (Greater Than or Equal)
+  * lt (Less Than)
+  * lte (Less Than or Equal)
+
+* ```value``` - The value being checked for. 
+
+Examples
+
+```/courses/9039/customers?email=eq:foreup@fake.com ```
+```/courses/9039/customers?birthday=gt:2012-12-08 ```
+
 ### List All [GET]
 
 + Request (application/json)
@@ -680,6 +702,19 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
                 }
               ]
             }
+            
+### Customer Searchable Fields [GET /courses/{courseId}/customers/fields]
+      
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (array[Searchable Fields])
             
 ## Specific Customer [/courses/{courseId}/customers/{customerId}{?include,limit,start}]
 
@@ -1225,3 +1260,17 @@ Sales may or may not have a customer attached.  This event triggers any time a s
             + (Sales Items Request)
         + payments (array)
             + (Payments)
+            
+## Searchable Fields (object)
++ type: field (string,required)
++ attributes (object)
+    + name:  company_name (string,required) - The id of the employee completing the sale
+    + type:  text (enum[string],required) - The id of the employee completing the sale
+        + Members
+            + `dropdown`
+            + `text`
+            + `date`
+            + `bool`
+            + `number`
+    + label:  Company (string,required) - The id of the employee completing the sale
+    + possibleValues:  null (string,optional) - The id of the employee completing the sale
