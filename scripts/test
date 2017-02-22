@@ -1,6 +1,6 @@
   #!/bin/sh
   PID=$!
-  dredd apiary.apib http://mobile.foreupsoftware.com/api_rest/index.php/ --hookfiles=./hooks.js
+  dredd apiary.apib http://mobile.foreupsoftware.com/api_rest/index.php/ --hookfiles=./scripts/hooks.js
   RESULT=$?
   kill -9 $PID
   exit $RESULT
