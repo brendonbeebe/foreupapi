@@ -39,7 +39,7 @@ To authenticate with the api you must first create a JWT using your username/pas
             }
 # Group Courses 
     
-## Courses [/courses]
+## Courses [/courses{?include}]
 
 This endpoint will list all the courses which you have access too.
 
@@ -49,7 +49,12 @@ This endpoint will list all the courses which you have access too.
     + Headers
     
             x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
++ Parameters
+    + include : teesheets (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `teesheets`
+            + `teesheets.holes`
+      
 + Response 200 (application/json)
 
     + Attributes
@@ -168,7 +173,7 @@ You are only able to adjust the unit price and quantity of an item within a sale
     + Attributes
         + data (Sales)
       
-## Tee Sheets [/courses/{courseId}/teesheets]
+## Tee Sheets [/courses/{courseId}/teesheets{?include}]
 
 
 ### Get All [GET]
@@ -180,6 +185,9 @@ You are only able to adjust the unit price and quantity of an item within a sale
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
+    + include : `holes` (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `holes`
 
 + Response 200 (application/json)
 
