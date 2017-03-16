@@ -272,7 +272,7 @@ You are only able to adjust the unit price and quantity of an item within a sale
 
 # Group Tee Sheets
 
-## Tee Time Slots [/courses/{courseId}/teesheets/{teesheetId}/teetimes{?startTime,endTime,date}]
+## Tee Time Slots [/courses/{courseId}/teesheets/{teesheetId}/teetimes{?startTime,endTime,date,customerId}]
 
 Each slot can have multiple bookings totalling up to 4 players.
 
@@ -290,6 +290,7 @@ Each slot can have multiple bookings totalling up to 4 players.
     + startTime : `0800` (string,required) - Find tee times starting with this time.
     + endTime : `1500` (string,required) - Find tee times up to this time.
     + date : `2017-01-18`,`sales` (string,required) - Date of tee time slots
+    + customerId: 9039 (integer) - Show pricing in regards to a customer
             
 + Response 200 (application/json)
 
