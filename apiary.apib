@@ -297,6 +297,7 @@ Each slot can have multiple bookings totalling up to 4 players.
     + Attributes
         + data (array[Tee Time Slot]
 
+
 ## Bookings [/courses/{courseId}/teesheets/{teesheetId}/bookings{?include,startDate,endDate,start,limit}]
 
 Bookings don't contain any pricing information and are purely the bookings on a teesheet.  
@@ -327,6 +328,24 @@ To get pricing information from a booking that's already been paid for you must 
 
     + Attributes
         + data (Bookings)
+
+### Get Pricing [GET /courses/{courseId}/teesheets/{teesheetId}/teetimes/{bookingId}/pricing]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + bookingId : TTID_0929103348mnhfo (string)
+    + teesheetId : 1562 (integer) - A tee sheet id that the user has permission to access.
+            
++ Response 200 (application/json)
+
+    + Attributes
+        + data (array[Booking Pricing]
 
 ### Create One [POST /courses/{courseId}/teesheets/{teesheetId}/bookings]
 
@@ -1281,3 +1300,14 @@ Sales may or may not have a customer attached.  This event triggers any time a s
             + `number`
     + label:  Company (string,required) - The id of the employee completing the sale
     + possibleValues:  null (string,optional) - The id of the employee completing the sale
+    
+## Booking Pricing (object)
++ type: teetimePricing (string,required)
++ attributes (object)
+    + priceClassId:  5478650 (string,required)
+    + name:  Member (string) - Name of the price class
+    + isDefault:  true (boolean) - Number of guests on the sale.  Used in reporting.
+    + 9holePrice:  10 (number)
+    + 9cartPrice:  10 (number)
+    + 18holePrice:  10 (number)
+    + 18cartPrice:  10 (number)
