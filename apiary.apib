@@ -932,7 +932,7 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
 
 # Group Webhook
 
-A webhook allows you to recieve instanst feedback when ever something happens on the foreUp system.  See a list of the available events [below](#reference/webhook-events/delete).
+A webhook allows you to recieve instant feedback when ever something happens on the foreUp system.  See a list of the available events [below](#reference/webhook-events/delete).
 
 We recommend using [Request Bin](https://requestb.in/) to play with the hooks.  It will record all calls from our system to the hook and help you understand how the calls are made.
 
@@ -1247,10 +1247,10 @@ Sales may or may not have a customer attached.  This event triggers any time a s
             + `standby`
             + `api`
             + ``
-    + start (Date Time)
-    + end (Date Time)
-    + lastUpdated  (Date Time)
-    + dateBooked  (Date Time)
+    + start: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
+    + end: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
+    + lastUpdated: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
+    + dateBooked: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
 + relationships (object)
     + players (object)
     + sales (object)
