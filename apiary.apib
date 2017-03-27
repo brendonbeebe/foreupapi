@@ -37,6 +37,27 @@ To authenticate with the api you must first create a JWT using your username/pas
                 "attributes": []
               }
             }
+            
+# Group Single Sign On
+
+## Authentication [/tokens/validate/{token}]
+
+
+### Validate a Recieved Token [GET]
+
+When a course access your app we'll send a JWT across.  This JWT contains the course id, employee id, and employee email.  The audience should be the url  you gave us.  You need to validate the token with us before accepting it as fact. 
+
++ Parameters
+    + token : asdfas.ffd3a.dfasdf (string,required) -
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+              "valid": true 
+            }
+
 # Group Courses 
     
 ## Courses [/courses{?include}]
