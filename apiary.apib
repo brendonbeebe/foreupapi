@@ -295,6 +295,46 @@ You are only able to adjust the unit price and quantity of an item within a sale
 
     [Employees][]
 
+## Carts [/courses/{courseId}/carts/{cartId}]
+
+### Add Payment [POST /courses/{courseId}/carts/{cartId}/payments]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+    
+    + Attributes
+        + data (Cart Payment)
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + cartId : 56 (string)
+            
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Carts) 
+        
+### Complete Cart [PUT]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+    
+    + Attributes
+        + data (Carts Complete)
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + cartId : 56 (string)
+    
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Sales) 
 
 # Group Tee Sheets
 
@@ -411,6 +451,27 @@ To get pricing information from a booking that's already been paid for you must 
     + Attributes
         + data (Bookings)    
         
+### Check In [POST /courses/{courseId}/teesheets/{teesheetId}/bookings/{bookingId}/checkIn]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+    
+    + Attributes
+        + data (Check In)
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + bookingId : TTID_0316164934m871a (string)
+    + teesheetId : 1562 (integer) - A tee sheet id that the user has permission to access.
+            
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Carts)  
+        
 ### Get All [GET]
 
 ###How should I distinguish green fees from other item?
@@ -448,7 +509,7 @@ The sales_items object containes an attribute "PriceClass" that designates the g
 
     + Attributes
         + data (array[Bookings]
-        
+
 
 ## Stats [/courses/{courseId}/teesheets/{teesheetId}/stats{?date,start,end}]
 
@@ -1205,6 +1266,36 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + noShow: false (boolean) - Was this explicetly marked as a no-show
     + priceClassId: 1 (string) - You can also include the "priceClasses" object
     + personId: 30 (string) - You can also include the "people" object
+
+## Check In (object)
++ type: check_ins
++ attributes (object)
+    + position: 1,2,3,4 (required, array) - The positions you'd like to pay for
+
+## Carts
++ type: carts
++ id: 64 (number) - The id to use when accessing the cart
++ attributes (object)
+    + total: 0.22 (required, number) - Total required to close cart, subtotal + tax.
+    + totalDue: 0.22 (required, number) - Total left to be paid
+    + tax: 0.22 (required, number) - Total tax in cart
+    + subTotal: 0.22 (required, number) - Sub total in cart
+  
+## Carts Complete
++ type: carts
++ id: 64 (number) - The id to use when accessing the cart
++ attributes (object)
+    + status: complete (required, string) - Total required to close cart, subtotal + tax.
+    
+## Cart Payment
++ type: payments
++ attributes (object)
+    + type: golfpay (required, enum) - The type of payment recieved
+        + Members
+            + cash
+            + credit_card
+            + Customer Payment Type - If you are a third party recieving money on behalf of the course you'll want to use a custom payment type.
+    + amount: 0.22 (required, number) - The amount recieved.
 
 ## Bookings Creation (object)
 + type: bookings
