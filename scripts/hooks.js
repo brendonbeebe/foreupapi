@@ -6,3 +6,10 @@ before("Tee Sheets > Bookings > Create One", function (transaction) {
 before("Tee Sheets > Bookings > Delete One", function (transaction) {
     transaction.skip = true;
 });
+before("Courses > Carts > Add Payment", function (transaction) {
+    transaction.skip = true;
+});
+
+before("Courses > Carts > Complete", function (transaction) {
+    transaction.skip = true;
+});
