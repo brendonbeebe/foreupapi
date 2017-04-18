@@ -338,7 +338,7 @@ You are only able to adjust the unit price and quantity of an item within a sale
 
 # Group Tee Sheets
 
-## Tee Time Slots [/courses/{courseId}/teesheets/{teesheetId}/teetimes{?startTime,endTime,date,customerId}]
+## Tee Time Slots [/courses/{courseId}/teesheets/{teesheetId}/teetimes{?startTime,endTime,date,customerId,priceClassId}]
 
 Each slot can have multiple bookings totalling up to 4 players.
 
@@ -357,12 +357,45 @@ Each slot can have multiple bookings totalling up to 4 players.
     + endTime : `1500` (string,required) - Find tee times up to this time.
     + date : `2017-01-18`,`sales` (string,required) - Date of tee time slots
     + customerId: 9039 (integer) - Show pricing in regards to a customer
+    + priceClassId: 3 (integer) - Show pricing with the given price class id.
             
 + Response 200 (application/json)
 
     + Attributes
         + data (array[Tee Time Slot]
 
+## Booked Players [/courses/{courseId}/teesheets/{teesheetId}/bookings/{bookingId}/bookedPlayers/{playerId}]
+
+Each booking has 5 available spots.  These spots are "Booked Players".  A booked player can be linked to an actual customer in the crm or given just a title like "Guest."  Each player can be assigned a unique price class.
+
+#### Example
+
+A member books a time for him and two of his buddies.  The system should create one booking, for 3 players.  The first booked player will be linked to his unique customer id and should be assigned the "member" price class.  The other two spots should be labeled as "Guest" and be assigned the "Public" price class.
+
+[![name](http://i.imgur.com/XGhPw6W.png)](http://i.imgur.com/XGhPw6W.png) 
+
+
+### Update [PUT]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+                 
+    + Attributes
+        + data (Booked Player) 
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 1530 (string) - A tee sheet id that the user has permission to access.
+    + bookingId : TTID_0929103348mnhfo (string) - A tee sheet id that the user has permission to access.
+    + playerId : TTID_0929103348mnhfo-1 (string) - Positions unique id
+            
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Booked Player)
 
 ## Bookings [/courses/{courseId}/teesheets/{teesheetId}/bookings{?include,startDate,endDate,start,limit}]
 
@@ -376,7 +409,7 @@ To get pricing information from a booking that's already been paid for you must 
     + Headers
     
             x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
     + teesheetId : 1530 (string) - A tee sheet id that the user has permission to access.
@@ -783,42 +816,9 @@ Examples
     
 + Response 200 (application/json)
 
-            {
-              "data": [
-                {
-                  "type": "customers",
-                  "id": "2073",
-                  "attributes": {
-                    "username": "username",
-                    "account_number": "123ABC",
-                    "company_name": "MyCompany",
-                    "taxable": true,
-                    "discount": 0,
-                    "opt_out_email": false,
-                    "opt_out_text": false,
-                    "date_created": null,
-                    "contact_info": {
-                      "id": 2073,
-                      "first_name": "FirstName",
-                      "last_name": "LastName",
-                      "phone_number": "",
-                      "cell_phone_number": "",
-                      "email": "foreup@fake.com",
-                      "birthday": null,
-                      "address_1": "",
-                      "address_2": "",
-                      "city": "",
-                      "state": "AL",
-                      "zip": "",
-                      "country": "",
-                      "handicap_account_number": "123",
-                      "handicap_score": 12,
-                      "comments": "Best customer ever!!"
-                    }
-                  }
-                }
-              ]
-            }
+
+    + Attributes
+        + data (array[Customer])
             
 ### Customer Searchable Fields [GET /courses/{courseId}/customers/fields]
       
@@ -833,64 +833,55 @@ Examples
     + Attributes
         + data (array[Searchable Fields])
             
-## Specific Customer [/courses/{courseId}/customers/{customerId}{?include,limit,start}]
 
-### Get One [GET]
+### Get One [GET /courses/{courseId}/customers/{customerId}{?include,limit,start}]
 
 + Request (application/json)
 
     + Headers
     
             x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
-+ Parameters
-
-    + courseId : 9039 - A course id that the user has permission to access.
-    + customerId : 3612897 - The customer id.
-    + start : 0 (integer,optional) - Which result to start on.
-    + limit : 10 (integer,optional) - Total results to show.
-    + include : sales (enum[string],optional) - Which relationships to include in response. 
-        + Members
-            + `sales`
-            + `sales.items`
+            
+    + Attributes
+        + data (Customer)
                 
 + Response 200 (application/json)
 
-            {
-              "data": 
-                {
-                  "type": "customers",
-                  "id": "2073",
-                  "attributes": {
-                    "username": "username",
-                    "account_number": "123ABC",
-                    "company_name": "MyCompany",
-                    "taxable": true,
-                    "discount": 0,
-                    "opt_out_email": false,
-                    "opt_out_text": false,
-                    "date_created": null,
-                    "contact_info": {
-                      "id": 2073,
-                      "first_name": "FirstName",
-                      "last_name": "LastName",
-                      "phone_number": "",
-                      "cell_phone_number": "",
-                      "email": "foreup@fake.com",
-                      "birthday": null,
-                      "address_1": "",
-                      "address_2": "",
-                      "city": "",
-                      "state": "AL",
-                      "zip": "",
-                      "country": "",
-                      "comments": "Best customer ever!!"
-                    }
-                  }
-                }
-              
-            }
-            
+    + Attributes
+        + data (array[Customer])
+
+### Update [PUT /courses/{courseId}/customers/{customerId]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+    
+    + Attributes
+        + data (Customer)   
+                
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Customer)
+   
+### Create [POST /courses/{courseId}/customers]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+    
+    + Attributes
+        + data (Customer)    
+                
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Customer)
+         
 ## Customer Sales [/courses/{courseId}/customers/{customerId}/sales{?include,limit,start}]
 
 ### List All [GET]
@@ -1392,6 +1383,35 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + quantity:  1 (number,required) - Total items purchased.
 + unitPrice:  10 (number,required) - Price per individual item sold with tax
 + description:  Cool Item (string,optional) - Optional message to save with the item.
+
+## Customer (object)
++ username: username (string)
++ account_number: 123ABC (string)
++ company_name: MyCompany (string)
++ taxable: true (boolean)
++ discount: 0 (number)
++ opt_out_email: false (boolean)
++ opt_out_text: false (boolean)
++ date_created: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
++ contact_info (Person)
+
+## Person (object)
++ id: 2073,
++ first_name: FirstName (string)
++ last_name: LastName (string)
++ phone_number: 801-376-5991 (string)
++ cell_phone_number: 123 123 123 (string)
++ email: foreup@fake.com (string)
++ birthday: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
++ address_1: test 342 (string)
++ address_2: test 342 (string)
++ city: Lindon (string)
++ state: UT (string)
++ zip: 121234 (string)
++ country: USA (string)
++ handicap_account_number: 123 (string) - Could be the customers GHIN number
++ handicap_score: 12 (string) - The customers handicap
++ comments: Best customer ever!! (string)
 
 ## Sales Request (object)
 + data (object)
