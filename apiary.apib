@@ -876,6 +876,9 @@ Examples
     
     + Attributes
         + data (Customer)    
+
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
                 
 + Response 200 (application/json)
 
@@ -1385,15 +1388,17 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + description:  Cool Item (string,optional) - Optional message to save with the item.
 
 ## Customer (object)
-+ username: username (string)
-+ account_number: 123ABC (string)
-+ company_name: MyCompany (string)
-+ taxable: true (boolean)
-+ discount: 0 (number)
-+ opt_out_email: false (boolean)
-+ opt_out_text: false (boolean)
-+ date_created: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
-+ contact_info (Person)
++ type: sales (string,required)
++ attributes (object)
+    + username: username (string)
+    + account_number: 123ABC (string)
+    + company_name: MyCompany (string)
+    + taxable: true (boolean)
+    + discount: 0 (number)
+    + opt_out_email: false (boolean)
+    + opt_out_text: false (boolean)
+    + date_created: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
+    + contact_info (Person)
 
 ## Person (object)
 + id: 2073,
