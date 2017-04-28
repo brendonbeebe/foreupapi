@@ -356,8 +356,8 @@ Each slot can have multiple bookings totalling up to 4 players.
     + startTime : `0800` (string,required) - Find tee times starting with this time.
     + endTime : `1500` (string,required) - Find tee times up to this time.
     + date : `2017-01-18`,`sales` (string,required) - Date of tee time slots
-    + customerId: 9039 (integer) - Show pricing in regards to a customer
-    + priceClassId: 3 (integer) - Show pricing with the given price class id.
+    + customerId: 9039 (integer,optional) - Show pricing in regards to a customer
+    + priceClassId: 3 (integer,optional) - Show pricing with the given price class id.
             
 + Response 200 (application/json)
 
@@ -1256,12 +1256,12 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + type: bookedPlayer (string,required)
 + id: 1 (string,optional)
 + attributes (object)
-    + name: John Smith (string) - It's possible to put a name on a slot without creating a person object
+    + name: John Smith (string) - It's possible to put a name on a slot without creating a person object.  Include this field only if you don't have a person object for the customer.
     + paid: false (boolean) - Was this paid for through the POS
     + cartPaid: false (boolean) - Were the carts paid for through the POS
     + noShow: false (boolean) - Was this explicetly marked as a no-show
     + priceClassId: 5 (string) - You can also include the "priceClasses" object
-    + personId: 3785526 (string) - You can also include the "people" object
+    + personId: 3785526 (string) - You can also include the "people" object. Exclude the name field above when using this field.
 
 ## Check In (object)
 + type: check_ins
