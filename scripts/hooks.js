@@ -12,3 +12,6 @@ before("Courses > Carts > Add Payment", function (transaction) {
 before("Courses > Carts > Complete Cart", function (transaction) {
     transaction.skip = true;
 });
+before("Courses > Sales > Create", function (transaction) {
+    transaction.skip = true;
+});
