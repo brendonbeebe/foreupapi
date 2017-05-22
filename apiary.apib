@@ -237,6 +237,76 @@ You are only able to adjust the unit price and quantity of an item within a sale
     + Attributes
         + data (array[Terminals])
 
+## Price Classes [/courses/{courseId}/priceClasses]
+
+### Get All [GET]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (array[Price Class])
+
+### Get One [GET /courses/{courseId}/priceClasses/{priceClassId}]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + priceClassId : 11226 - The price class ID
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Price Class)
+        
+### Create [POST]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+         
+    + Attributes
+        + data (Price Class)
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Price Class)
+        
+### Update [PUT /courses/{courseId}/priceClasses/{priceClassId}]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+         
+    + Attributes
+        + data (Price Class)
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + priceClassId : 11226 - The price class ID
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Price Class)
+
 ## Employees [/courses/{courseId}/employees{?include,start,limit}]
 
 + Model
@@ -1464,3 +1534,11 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + 9cartPrice:  10 (number)
     + 18holePrice:  10 (number)
     + 18cartPrice:  10 (number)
+    
+## Price Class (object)
++ type: priceClass (string,required)
++ id:  11226 (string,optional)
++ attributes (object)
+    + name:  Member (string,required)
+    + color:  #6ea4e1 (string,required) - Valid hex color.
+    + dateCreated:  `2014-05-29T18:48:59-0600` (string)
