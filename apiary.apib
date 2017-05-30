@@ -498,6 +498,24 @@ To get pricing information from a booking that's already been paid for you must 
     + Attributes
         + data (Bookings)
 
+### Update [PUT /courses/{courseId}/teesheets/{teesheetId}/bookings/{bookingId}{?include}]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 1530 (string) - A tee sheet id that the user has permission to access.
+    + bookingId : TTID_0929103348mnhfo (string) - A tee sheet id that the user has permission to access.
+            
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Bookings)
+
 ### Get Pricing [GET /courses/{courseId}/teesheets/{teesheetId}/bookings/{bookingId}/pricing]
 
 + Request (application/json)
