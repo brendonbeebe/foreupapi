@@ -15,3 +15,6 @@ before("Courses > Carts > Complete Cart", function (transaction) {
 before("Courses > Sales > Create", function (transaction) {
     transaction.skip = true;
 });
+before("Single Sign On > Authentication > Validate a Recieved Token", function (transaction) {
+    transaction.skip = true;
+});
