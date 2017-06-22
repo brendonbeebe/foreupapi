@@ -53,7 +53,7 @@ When a course access your app we'll send a JWT across.  This JWT contains the co
             x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0OTQwMTU3NjAsImV4cCI6MTQ5NjYwNzc2MCwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjcxNzk5MDUsImFwaVZlcnNpb24iOm51bGwsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ah0lO0-I-Vv2RhTEOJK9lAfURrTd88LqzdvxpkaVxJ_02zH4NOjuLl9F8fYVleU5cY6Mk5n-TgOK4tDwiKJBgg
 
 + Parameters
-    + token : asdfas.ffd3a.dfasdf (string,required) -
+    + token : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag (string,required) -
 
 + Response 200 (application/json)
 
@@ -434,7 +434,7 @@ Each slot can have multiple bookings totalling up to 4 players.
     + Attributes
         + data (array[Tee Time Slot]
 
-## Booked Players [/courses/{courseId}/teesheets/{teesheetId}/bookings/{bookingId}/bookedPlayers/{playerId}]
+## Booked Players [/courses/{courseId}/teesheets/{teesheetId}/bookings/{bookingId}/bookedPlayers/{bookedPlayerId}]
 
 Each booking has 5 available spots.  These spots are "Booked Players".  A booked player can be linked to an actual customer in the crm or given just a title like "Guest."  Each player can be assigned a unique price class.
 
@@ -460,7 +460,7 @@ A member books a time for him and two of his buddies.  The system should create 
     + courseId : 9039 - A course id that the user has permission to access.
     + teesheetId : 1530 (string) - A tee sheet id that the user has permission to access.
     + bookingId : TTID_0929103348mnhfo (string) - A tee sheet id that the user has permission to access.
-    + playerId : `TTID_0929103348mnhfo-1` (string) - Positions unique id
+    + bookedPlayerId : `TTID_0929103348mnhfo-1` (string) - Booking position unique id
             
 + Response 200 (application/json)
 
@@ -740,7 +740,7 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
     + teesheetId : 1562
-    + seasonId : 2635
+    + seasonId : 4204
     + include : classes (enum[string],optional) - Which relationships to include in response. 
         + Members
             + `classes`
@@ -784,7 +784,7 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
     + teesheetId : 1562
-    + seasonId : 2635
+    + seasonId : 4204
     + include : classes (enum[string],optional) - Which relationships to include in response. 
         + Members
             + `classes`
@@ -805,7 +805,7 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
     + teesheetId : 1562
-    + seasonId : 2635
+    + seasonId : 4204
     + timeframeId : 35199
     + include : classes (enum[string],optional) - Which relationships to include in response. 
         + Members
@@ -1353,7 +1353,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 
 ## Booked Player (object)
 + type: bookedPlayer (string,required)
-+ id: 1 (string,optional)
++ id: 1TTID_0929103348mnhfo-1 (string,optional)
 + attributes (object)
     + name: John Smith (string) - It's possible to put a name on a slot without creating a person object.  Include this field only if you don't have a person object for the customer.
     + paid: false (boolean) - Was this paid for through the POS
