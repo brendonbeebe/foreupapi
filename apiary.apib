@@ -466,7 +466,7 @@ You are only able to adjust the unit price and quantity of an item within a sale
     + Attributes
         + data (Cart Items) 
 
-### Add Line Item [POST /courses/{courseId}/carts/{cartId}]
+### Add Line Item [POST /courses/{courseId}/carts/{cartId}/items]
 
 + Request (application/json)
 
@@ -475,11 +475,11 @@ You are only able to adjust the unit price and quantity of an item within a sale
             x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
    
     + Attributes
-        + data (Cart Payment)
+        + data (Cart Items)
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + cartId : 56 (string)
+    + cartId : 30570714 (string)
     
 + Response 200 (application/json)
 
@@ -1108,45 +1108,27 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
     
 + Response 200 (application/json)
 
-            {
-              "data": [
-                {
-                  "type": "items",
-                  "id": "383",
-                  "attributes": {
-                    "maxDiscount": 100,
-                    "addOnPrice": 0,
-                    "costPrice": 0,
-                    "courseId": 6270,
-                    "quantity": 1000,
-                    "numberOfSides": 0,
-                    "unitPrice": 10000000,
-                    "category": "Services",
-                    "itemNumber": null,
-                    "location": "",
-                    "name": "Joel Ragar",
-                    "subcategory": "",
-                    "department": "Food & Beverage",
-                    "description": "",
-                    "glCode": null,
-                    "usInactive": false,
-                    "doNotPrint": false,
-                    "deleted": true,
-                    "isfoodAndBeverage": false,
-                    "isInvisible": false,
-                    "isFree": false,
-                    "isGiftcard": false,
-                    "isPass": false,
-                    "isSide": false,
-                    "isUnlimited": false,
-                    "isSoupOrSalad": true,
-                    "unitPriceIncludesTax": false
-                  }
-                }
-              ]
-            }
+    + Attributes
+        + data (array[Item])
             
+### Create [POST]
++ Request (application/json)
 
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+        
+    + Attributes
+        + data (Item)    
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Item)
+        
 ## Transaction Collection [/courses/{courseId}/inventory{?include,startDate,endDate,limit,start}]
 
     This is a record of each adjustment made to a courses inventory.  A negative number signifies one less item is available while a positive number means an item was added.
@@ -1653,3 +1635,34 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + name:  Member (string,required)
     + color:  #6ea4e1 (string,required) - Valid hex color.
     + dateCreated:  `2014-05-29T18:48:59-0600` (string)
+
+    
+## Item (object)
++ type: items (string,required)
++ id:  11226 (string,optional)
++ attributes (object)
+    + maxDiscount: 100 (number),
+    + addOnPrice: 0 (number),
+    + costPrice: 0 (number),
+    + quantity: 1000 (number),
+    + numberOfSides: 0 (number),
+    + unitPrice: 22.59 (number),
+    + category: Services (string),
+    + itemNumber: 1234 (number),
+    + location: Pro Shop (string),
+    + name: Driver (string),
+    + subcategory: Anything (string),
+    + department: Anything (string),
+    + description: Some descriptiong (string),
+    + glCode: GA23 (string),
+    + isInactive:  false (boolean),
+    + doNotPrint: false (boolean),
+    + isfoodAndBeverage: false(boolean),
+    + isInvisible: false(boolean),
+    + isFee: false(boolean),
+    + isGiftcard: false(boolean),
+    + isPass: false(boolean),
+    + isSide: false(boolean),
+    + isUnlimited: false(boolean),
+    + isSoupOrSalad: false(boolean),
+    + unitPriceIncludesTax: false (boolean)
