@@ -19,14 +19,14 @@ before("Single Sign On > Authentication > Validate a Recieved Token", function (
     transaction.skip = true;
 });
 
-before("Courses > Cart Items > Delete Line Items", function (transaction) {
+before("Courses > Cart Items > Delete Line Item", function (transaction) {
     transaction.skip = true;
 });
 
-before("Courses > Cart Items > Update Line Items", function (transaction) {
+before("Courses > Cart Items > Update Line Item", function (transaction) {
     transaction.skip = true;
 });
 
-before("Courses > Cart Items > Add Line Items", function (transaction) {
+before("Courses > Cart Items > Add Line Item", function (transaction) {
     transaction.skip = true;
 });
