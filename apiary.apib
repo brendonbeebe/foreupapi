@@ -488,7 +488,7 @@ You are only able to adjust the unit price and quantity of an item within a sale
 
 # Group Tee Sheets
 
-## Tee Time Slots [/courses/{courseId}/teesheets/{teesheetId}/teetimes{?startTime,endTime,date,customerId,priceClassId}]
+## Tee Time Slots [/courses/{courseId}/teesheets/{teesheetId}/teetimes{?startTime,endTime,date,customerId,priceClassId,holes}]
 
 Each slot can have multiple bookings totalling up to 4 players.
 
@@ -502,12 +502,13 @@ Each slot can have multiple bookings totalling up to 4 players.
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 1562 (integer) - A tee sheet id that the user has permission to access.
+    + teesheetId : 1927 (integer) - A tee sheet id that the user has permission to access.
     + startTime : `0800` (string,required) - Find tee times starting with this time.
     + endTime : `1500` (string,required) - Find tee times up to this time.
     + date : `2017-01-18`,`sales` (string,required) - Date of tee time slots
     + customerId: 9039 (integer,optional) - Show pricing in regards to a customer
     + priceClassId: 3 (integer,optional) - Show pricing with the given price class id.
+    + holes: 18 (integer,optional) - Show availability for either 9 or 18 holes
             
 + Response 200 (application/json)
 
