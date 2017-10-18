@@ -132,73 +132,7 @@ This endpoint will list all the courses which you have access too.
     + Attributes
         + data (array[Sales])
 
-      
-### Create [POST /courses/{courseId}/sales]
 
-You are only able to adjust the unit price and quantity of an item within a sale.  The taxes are generated automatically on the back-end and they default to include the tax in the price.
-
-+ Request (application/json)
-
-    + Attributes (Sales Request)
-        
-    + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-    
-    + Body
-        
-            {  
-              "data":{  
-                "type":"sales",
-                "attributes":{
-                  "employeeId":5478650,
-                  "guestCount":0,
-                  "number":485,
-                  "terminalId":6,
-                  "items":[  
-                    {  
-                      "type":"sales_items",
-                      "attributes":{  
-                        "itemId":5311,
-                        "quantity":1,
-                        "unitPrice":10,
-                        "description":""
-                      }
-                    },
-                    {  
-                      "type":"sales_items",
-                      "attributes":{  
-                        "itemId":5311,
-                        "quantity":1,
-                        "unitPrice":10,
-                        "description":""
-                      }
-                    }
-                  ],
-                  "payments":[  
-                    {  
-                      "type":"sales_payments",
-                      "attributes":{  
-                        "paymentAmount":20,
-                        "invoiceId":"1",
-                        "type":"credit_card"
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-        
-        
-+ Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
-
-
-+ Response 200 (application/json)
-
-    + Attributes
-        + data (Sales)
-      
 ## Tee Sheets [/courses/{courseId}/teesheets{?include}]
 
 
@@ -352,7 +286,7 @@ Each slot can have multiple bookings totalling up to 4 players.
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 1562 (integer) - A tee sheet id that the user has permission to access.
+    + teesheetId : 2192 (integer) - A tee sheet id that the user has permission to access.
     + startTime : `0800` (string,required) - Find tee times starting with this time.
     + endTime : `1500` (string,required) - Find tee times up to this time.
     + date : `2017-01-18`,`sales` (string,required) - Date of tee time slots
@@ -379,8 +313,8 @@ To get pricing information from a booking that's already been paid for you must 
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 1530 (string) - A tee sheet id that the user has permission to access.
-    + bookingId : TTID_0929103348mnhfo (string) - A tee sheet id that the user has permission to access.
+    + teesheetId : 2192 (string) - A tee sheet id that the user has permission to access.
+    + bookingId : TTID_1018142720xb6jt (string) - A tee sheet id that the user has permission to access.
     + include : `players`,`sales` (enum[string],optional) - Which relationships to include in response. 
         + Members
             + `players`
@@ -405,8 +339,8 @@ To get pricing information from a booking that's already been paid for you must 
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + bookingId : TTID_0316164934m871a (string)
-    + teesheetId : 1562 (integer) - A tee sheet id that the user has permission to access.
+    + bookingId : TTID_1018142720xb6jt (string)
+    + teesheetId : 2192 (integer) - A tee sheet id that the user has permission to access.
             
 + Response 200 (application/json)
 
@@ -426,7 +360,7 @@ To get pricing information from a booking that's already been paid for you must 
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 1562 (string) - A tee sheet id that the user has permission to access.
+    + teesheetId : 2192 (string) - A tee sheet id that the user has permission to access.
             
 + Response 200 (application/json)
 
@@ -443,8 +377,8 @@ To get pricing information from a booking that's already been paid for you must 
 
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 1562 (string) - A tee sheet id that the user has permission to access.
-    + bookingId : TTID_01091618193dux6 (string) - A booking id that the user has permission to access.
+    + teesheetId : 2192 (string) - A tee sheet id that the user has permission to access.
+    + bookingId : TTID_1018142720xb6jt (string) - A booking id that the user has permission to access.
             
 + Response 200 (application/json)
 
@@ -464,8 +398,8 @@ To get pricing information from a booking that's already been paid for you must 
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + bookingId : TTID_0316164934m871a (string)
-    + teesheetId : 1562 (integer) - A tee sheet id that the user has permission to access.
+    + bookingId : TTID_1018142720xb6jt (string)
+    + teesheetId : 2192 (integer) - A tee sheet id that the user has permission to access.
             
 + Response 200 (application/json)
 
@@ -525,7 +459,7 @@ This endpoint is limited to a maximum of one day.  Occupancy is calculated by th
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 1562 (integer) - A tee sheet id that the user has permission to access.
+    + teesheetId : 2192 (integer) - A tee sheet id that the user has permission to access.
     + date : `2016-05-19` (date,optional) - Must limit the stats returned to a single date.
     + start : `2016-05-19T00:00` (date,optional)
     + end : `2016-05-19T23:00` (date,optional)
@@ -573,7 +507,7 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 1526
+    + teesheetId : 2192
     + include : classes (enum[string],optional) - Which relationships to include in response. 
         + Members
             + `classes`
@@ -592,8 +526,8 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 1526
-    + seasonId : 3310
+    + teesheetId : 2192
+    + seasonId : 4810
     + include : classes (enum[string],optional) - Which relationships to include in response. 
         + Members
             + `classes`
@@ -615,8 +549,8 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 1526
-    + seasonId : 3310
+    + teesheetId : 2192
+    + seasonId : 4810
     + include : classes (enum[string],optional) - Which relationships to include in response. 
         + Members
             + `classes`
@@ -638,7 +572,7 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 1526
+    + teesheetId : 2192
     + include : classes (enum[string],optional) - Which relationships to include in response. 
         + Members
             + `classes`
@@ -659,8 +593,8 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 1526
-    + seasonId : 3310
+    + teesheetId : 2192
+    + seasonId : 4810
     + include : classes (enum[string],optional) - Which relationships to include in response. 
         + Members
             + `classes`
@@ -680,9 +614,9 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 1526
-    + seasonId : 3310
-    + timeframeId : 44522
+    + teesheetId : 2192
+    + seasonId : 4810
+    + timeframeId : 64736
     + include : classes (enum[string],optional) - Which relationships to include in response. 
         + Members
             + `classes`
@@ -693,7 +627,7 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
     + Attributes
         + data (Seasonal Timeframes)
         
-### Update [PATCH /courses/{courseId}/teesheets/{teesheetId}/seasons/{seasonId}/timeframes/{timeframeId}{?include}]
+### Update [PUT /courses/{courseId}/teesheets/{teesheetId}/seasons/{seasonId}/timeframes/{timeframeId}{?include}]
 + Request (application/json)
 
     + Headers
@@ -705,9 +639,9 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 1526
-    + seasonId : 3310
-    + timeframeId : 44522
+    + teesheetId : 2192
+    + seasonId : 4810
+    + timeframeId : 64736
     + include : classes (enum[string],optional) - Which relationships to include in response. 
         + Members
             + `classes`
@@ -730,8 +664,8 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + teesheetId : 1526
-    + seasonId : 3310
+    + teesheetId : 2192
+    + seasonId : 4810
     + include : classes (enum[string],optional) - Which relationships to include in response. 
         + Members
             + `classes`
@@ -954,12 +888,11 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
                     "department": "Food & Beverage",
                     "description": "",
                     "glCode": null,
-                    "usInactive": false,
+                    "isInactive": false,
                     "doNotPrint": false,
                     "deleted": true,
                     "isfoodAndBeverage": false,
                     "isInvisible": false,
-                    "isFree": false,
                     "isGiftcard": false,
                     "isPass": false,
                     "isSide": false,
@@ -1318,7 +1251,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + time: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
     + holes: `18` (string)
     + scheduleName: `White Marsh` (required,string)
-    + scheduleId: `1562` (required,string)
+    + scheduleId: `2192` (required,string)
     + availableSpots: 4 (required,string)
     + greenFee: 3 (number) The green for for a single person in this slot
     + cartFee: 1 (number) The cart fee for a single person this slot
@@ -1332,7 +1265,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 
 ## Bookings (object)
 + type: bookings (string,required)
-+ id: TTID_0117154814d25h0 (string,required) - Unique idenetifier for a booking
++ id: TTID_1018142720xb6jt (string,required) - Unique idenetifier for a booking
 + attributes (object)
     + isReround: false (boolean) - A reround is usually tied to the original booking to mark what time they'll start on the back 9 
     + type: teetime (enum[string])
@@ -1343,6 +1276,8 @@ Sales may or may not have a customer attached.  This event triggers any time a s
             + `event`
             + `tournament`
             + `closed`
+            + `deleted`
+            + ``
     + status: checked in (enum[string])
         + Members
             + `checked in`
