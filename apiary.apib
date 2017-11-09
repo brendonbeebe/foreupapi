@@ -671,6 +671,84 @@ The sales_items object containes an attribute "PriceClass" that designates the g
         + data (array[Bookings]
 
 
+## Specials [/courses/{courseId}/teesheets/{teesheetId}/specials]
+
+### Get All [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 2192 (integer) - A tee sheet id that the user has permission to access.
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (array[Special]
+
+### Get One [GET /courses/{courseId}/teesheets/{teesheetId}/specials/{specialId}]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 2192 (integer) - A tee sheet id that the user has permission to access.
+    + specialId: 5134 (integer)
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (array[Special]
+
+### Update [PUT /courses/{courseId}/teesheets/{teesheetId}/specials/{specialId}]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+
+    + Attributes
+        + data (Special)
+
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 2192 (integer) - A tee sheet id that the user has permission to access.
+    + specialId: 5134 (integer)
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (array[Special]
+
+### Create [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+
+    + Attributes
+        + data (Special)
+
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 2192 (integer) - A tee sheet id that the user has permission to access.
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (array[Special]
+
 ## Stats [/courses/{courseId}/teesheets/{teesheetId}/stats{?date,start,end}]
 
 ### Get All [GET]
@@ -1597,7 +1675,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + id:  5 (string,optional)
 + attributes (object)
     + unitPrice: 23.72 (number),
-    
+
 ## Item (object)
 + type: items (string,required)
 + id:  5 (string,optional)
@@ -1627,3 +1705,28 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + isUnlimited: false(boolean),
     + isSoupOrSalad: false(boolean),
     + unitPriceIncludesTax: false (boolean)
+
+## Special (object)
++ type: special (string,required)
++ id:  5 (string,optional)
++ attributes (object)
+    + name: Booking Special (string),
+    + date: `2014-05-29` (string),
+    + holePrice9: 1.00 (number),
+    + cartPrice9: 1.00 (number),
+    + holePrice18: 1.00 (number),
+    + cartPrice18: 1.00 (number),
+    + monday: true (boolean),
+    + tuesday: true (boolean),
+    + wednesday: true (boolean),
+    + thursday: true (boolean),
+    + friday: true (boolean),
+    + saturday: false (boolean),
+    + sunday: false (boolean),
+    + isRecurring: true (boolean),
+    + isAggregate: false (boolean),
+    + active: true (boolean),
+    + bookingClassId: 1 (number,optional)
+    + times (array)
+        + 0930 (string)
+        + 0938 (string)
