@@ -66,3 +66,7 @@ before("Courses > Cart Items > Update Line Item", function (transaction) {
 before("Courses > Cart Items > Add Line Item", function (transaction) {
     transaction.skip = true;
 });
+
+before("Courses > Price Classes > Create", function (transaction) {
+    transaction.skip = true;
+});
