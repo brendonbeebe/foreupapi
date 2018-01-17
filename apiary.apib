@@ -2,8 +2,8 @@ FORMAT: 1A
 HOST: https://mobile.foreupsoftware.com/api_rest/index.php/
 
 # foreUp API
-        
-The foreUp API can be used to access sales data, tee time usage, and other information from courses you have permission to access.  
+
+The foreUp API can be used to access sales data, tee time usage, and other information from courses you have permission to access.
 
 The responses follow the JSONapi spec, read about it here: http://jsonapi.org/.
 
@@ -37,8 +37,8 @@ To authenticate with the api you must first create a JWT using your username/pas
                 "attributes": []
               }
             }
-# Group Courses 
-    
+# Group Courses
+
 ## Courses [/courses]
 
 This endpoint will list all the courses which you have access too.
@@ -47,9 +47,9 @@ This endpoint will list all the courses which you have access too.
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Response 200 (application/json)
 
     + Attributes
@@ -62,13 +62,13 @@ This endpoint will list all the courses which you have access too.
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + saleId : 24378234 (string) - A course id that the user has permission to access.
-    + include : items (enum[string],optional) - Which relationships to include in response. 
+    + include : items (enum[string],optional) - Which relationships to include in response.
         + Members
             + `items`
             + `terminals`
@@ -77,21 +77,21 @@ This endpoint will list all the courses which you have access too.
 
     + Attributes
         + data (Sales)
-        
+
 ### List All [GET]
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + limit: 10 (integer, optional)- Total results to show (Max: 100).
     + start: 0 (integer, optional)- Which result to start on.
     + startDate : `2016-07-06` (date,optional) - Must limit the sales returned to a single date.
     + endDate : `2016-07-08` (date,optional) - Must limit the sales returned to a single date.
-    + include : items (enum[string],optional) - Which relationships to include in response. 
+    + include : items (enum[string],optional) - Which relationships to include in response.
         + Members
             + `items`
             + `terminals`
@@ -101,7 +101,7 @@ This endpoint will list all the courses which you have access too.
     + Attributes
         + data (array[Sales])
 
-      
+
 ### Create [POST /courses/{courseId}/sales]
 
 You are only able to adjust the unit price and quantity of an item within a sale.  The taxes are generated automatically on the back-end and they default to include the tax in the price.
@@ -109,34 +109,34 @@ You are only able to adjust the unit price and quantity of an item within a sale
 + Request (application/json)
 
     + Attributes (Sales Request)
-        
+
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-    
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
     + Body
-        
-            {  
-              "data":{  
+
+            {
+              "data":{
                 "type":"sales",
                 "attributes":{
                   "employeeId":5478650,
                   "guestCount":0,
                   "number":485,
                   "terminalId":6,
-                  "items":[  
-                    {  
+                  "items":[
+                    {
                       "type":"sales_items",
-                      "attributes":{  
+                      "attributes":{
                         "itemId":5311,
                         "quantity":1,
                         "unitPrice":10,
                         "description":""
                       }
                     },
-                    {  
+                    {
                       "type":"sales_items",
-                      "attributes":{  
+                      "attributes":{
                         "itemId":5311,
                         "quantity":1,
                         "unitPrice":10,
@@ -144,10 +144,10 @@ You are only able to adjust the unit price and quantity of an item within a sale
                       }
                     }
                   ],
-                  "payments":[  
-                    {  
+                  "payments":[
+                    {
                       "type":"sales_payments",
-                      "attributes":{  
+                      "attributes":{
                         "paymentAmount":20,
                         "invoiceId":"1",
                         "type":"credit_card"
@@ -157,17 +157,17 @@ You are only able to adjust the unit price and quantity of an item within a sale
                 }
               }
             }
-        
-        
+
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
 
 
 + Response 200 (application/json)
 
     + Attributes
         + data (Sales)
-      
+
 ## Tee Sheets [/courses/{courseId}/teesheets]
 
 
@@ -175,11 +175,11 @@ You are only able to adjust the unit price and quantity of an item within a sale
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
 
 + Response 200 (application/json)
 
@@ -192,11 +192,11 @@ You are only able to adjust the unit price and quantity of an item within a sale
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
 
 + Response 200 (application/json)
 
@@ -206,7 +206,7 @@ You are only able to adjust the unit price and quantity of an item within a sale
 ## Employees [/courses/{courseId}/employees{?include,start,limit}]
 
 + Model
-    
+
     + Body
 
             {
@@ -249,11 +249,11 @@ You are only able to adjust the unit price and quantity of an item within a sale
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + limit: 10 (integer, optional)- Total results to show (Max: 100).
     + start: 0 (integer, optional)- Which result to start on.
 
@@ -266,7 +266,7 @@ You are only able to adjust the unit price and quantity of an item within a sale
 
 ## Bookings [/courses/{courseId}/teesheets/{teesheetId}/bookings{?include,startDate,endDate,start,limit}]
 
-Bookings don't contain any pricing information and are purely the bookings on a teesheet.  
+Bookings don't contain any pricing information and are purely the bookings on a teesheet.
 To get pricing information from a booking that's already been paid for you must include the sales relationship.  The sales object will include the customer information, payment details, and item details.
 
 ### Get All [GET]
@@ -283,17 +283,17 @@ The sales_items object containes an attribute "PriceClass" that designates the g
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + teesheetId : 1530 (integer) - A tee sheet id that the user has permission to access.
     + limit: 10 (integer, optional)- Total results to show (Max: 100).
     + start: 0 (integer, optional)- Which result to start on.
     + startDate : `2016-09-29` (date,optional) - Must limit the sales returned to a single date.
     + endDate : `2016-09-30` (date,optional) - Must limit the sales returned to a single date.
-    + include : `players`,`sales` (enum[string],optional) - Which relationships to include in response. 
+    + include : `players`,`sales` (enum[string],optional) - Which relationships to include in response.
         + Members
             + `players`
             + `sales`
@@ -301,25 +301,25 @@ The sales_items object containes an attribute "PriceClass" that designates the g
             + `bookedPlayers`
             + `bookedPlayers.people`
             + `bookedPlayers.priceClasses`
-            
+
 + Response 200 (application/json)
 
     + Attributes
         + data (array[Bookings]
-        
+
 ### Get One [GET /courses/{courseId}/teesheets/{teesheetId}/bookings/{bookingId}{?include}]
 
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + teesheetId : 1530 (string) - A tee sheet id that the user has permission to access.
     + bookingId : TTID_0929103348mnhfo (string) - A tee sheet id that the user has permission to access.
-    + include : `players`,`sales` (enum[string],optional) - Which relationships to include in response. 
+    + include : `players`,`sales` (enum[string],optional) - Which relationships to include in response.
         + Members
             + `players`
             + `sales`
@@ -327,7 +327,7 @@ The sales_items object containes an attribute "PriceClass" that designates the g
             + `bookedPlayers`
             + `bookedPlayers.people`
             + `bookedPlayers.priceClasses`
-            
+
 + Response 200 (application/json)
 
     + Attributes
@@ -339,14 +339,14 @@ The sales_items object containes an attribute "PriceClass" that designates the g
 + Request (application/json)
 
     + Headers
-    
+
             x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
-        
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + teesheetId : 1562 (integer) - A tee sheet id that the user has permission to access.
     + date : `2016-05-19` (date) - Must limit the stats returned to a single date.
-            
+
 + Response 200 (application/json)
 
             {
@@ -370,14 +370,14 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
 - Price Clases
     * A course can have as many price classes as they want.  These are essentially customer categories such as member, guest, senior, junior, etc
 - Season
-    * This is a date range such as, winter, summer, august, etc. 
+    * This is a date range such as, winter, summer, august, etc.
 - Time Frames
     * Each season can have multiple time frames. Time frames are a time range, examples include twilight, afternoon, evening, etc.
     * Time Frames contain the price, there is a default time frame for each price class / season.
 
 
 
-[![name](https://s3-us-west-2.amazonaws.com/foreup.course.images/Blank+Diagram+-+Page+1.png)](https://s3-us-west-2.amazonaws.com/foreup.course.images/Blank+Diagram+-+Page+1.png) 
+[![name](https://s3-us-west-2.amazonaws.com/foreup.course.images/Blank+Diagram+-+Page+1.png)](https://s3-us-west-2.amazonaws.com/foreup.course.images/Blank+Diagram+-+Page+1.png)
 
 ## Seasons [/courses/{courseId}/teesheets/{teesheetId}/seasons{?include}]
 
@@ -385,16 +385,16 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + teesheetId : 1526
-    + include : classes (enum[string],optional) - Which relationships to include in response. 
+    + include : classes (enum[string],optional) - Which relationships to include in response.
         + Members
             + `classes`
-    
+
 + Response 200 (application/json)
 
     + Attributes
@@ -404,156 +404,156 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + teesheetId : 1526
     + seasonId : 2446
-    + include : classes (enum[string],optional) - Which relationships to include in response. 
+    + include : classes (enum[string],optional) - Which relationships to include in response.
         + Members
             + `classes`
-    
+
 + Response 200 (application/json)
 
     + Attributes
         + data (Seasons)
-        
+
 ### Update [PATCH /courses/{courseId}/teesheets/{teesheetId}/seasons/{seasonId}{?include}]
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-     
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
     + Attributes
         + data (Seasons)
-        
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + teesheetId : 1526
     + seasonId : 2446
-    + include : classes (enum[string],optional) - Which relationships to include in response. 
+    + include : classes (enum[string],optional) - Which relationships to include in response.
         + Members
             + `classes`
-    
+
 + Response 200 (application/json)
 
     + Attributes
         + data (Seasons)
-        
+
 ### Create [POST /courses/{courseId}/teesheets/{teesheetId}/seasons{?include}]
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-     
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
     + Attributes
         + data (Seasons)
-        
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + teesheetId : 1526
-    + include : classes (enum[string],optional) - Which relationships to include in response. 
+    + include : classes (enum[string],optional) - Which relationships to include in response.
         + Members
             + `classes`
-    
+
 + Response 200 (application/json)
 
     + Attributes
         + data (Seasons)
-        
+
 ## Seasonal Timeframes [/courses/{courseId}/teesheets/{teesheetId}/seasons/{seasonId}/timeframes{?include}]
 
 ### Get All [GET]
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + teesheetId : 1526
     + seasonId : 2446
-    + include : classes (enum[string],optional) - Which relationships to include in response. 
+    + include : classes (enum[string],optional) - Which relationships to include in response.
         + Members
             + `classes`
             + `seasons`
-    
+
 + Response 200 (application/json)
 
     + Attributes
         + data (array[Seasonal Timeframes])
-        
+
 ### Get One [GET /courses/{courseId}/teesheets/{teesheetId}/seasons/{seasonId}/timeframes/{timeframeId}{?include}]
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + teesheetId : 1526
     + seasonId : 2446
     + timeframeId : 35645
-    + include : classes (enum[string],optional) - Which relationships to include in response. 
+    + include : classes (enum[string],optional) - Which relationships to include in response.
         + Members
             + `classes`
             + `seasons`
-    
+
 + Response 200 (application/json)
 
     + Attributes
         + data (Seasonal Timeframes)
-        
+
 ### Update [PATCH /courses/{courseId}/teesheets/{teesheetId}/seasons/{seasonId}/timeframes/{timeframeId}{?include}]
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-    
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
     + Attributes
         + data (Seasonal Timeframes)
-        
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + teesheetId : 1526
     + seasonId : 2446
     + timeframeId : 35645
-    + include : classes (enum[string],optional) - Which relationships to include in response. 
+    + include : classes (enum[string],optional) - Which relationships to include in response.
         + Members
             + `classes`
             + `seasons`
-    
+
 + Response 200 (application/json)
 
     + Attributes
         + data (Seasonal Timeframes)
-        
+
 ### Create [POST]
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-    
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
     + Attributes
         + data (Seasonal Timeframes)
-        
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + teesheetId : 1526
     + seasonId : 2446
-    + include : classes (enum[string],optional) - Which relationships to include in response. 
+    + include : classes (enum[string],optional) - Which relationships to include in response.
         + Members
             + `classes`
             + `seasons`
-    
+
 + Response 200 (application/json)
 
     + Attributes
@@ -568,14 +568,14 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + start : 0 (integer,optional) - Which result to start on.
     + limit : 10 (integer,optional) - Total results to show.
-    
+
 + Response 200 (application/json)
 
             {
@@ -612,7 +612,7 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
                 }
               ]
             }
-            
+
 ## Specific Customer [/courses/{courseId}/customers/{customerId}{?include,limit,start}]
 
 ### Get One [GET]
@@ -620,20 +620,20 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Parameters
 
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + customerId : 3612897 - The customer id.
     + start : 0 (integer,optional) - Which result to start on.
     + limit : 10 (integer,optional) - Total results to show.
-    + include : sales (enum[string],optional) - Which relationships to include in response. 
+    + include : sales (enum[string],optional) - Which relationships to include in response.
         + Members
             + `sales`
             + `sales.items`
-                
+
 + Response 200 (application/json)
 
             {
@@ -670,7 +670,7 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
                 }
               ]
             }
-            
+
 ## Customer Sales [/courses/{courseId}/customers/{customerId}/sales{?include,limit,start}]
 
 ### List All [GET]
@@ -678,24 +678,24 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + customerId : 3612897 - The customer id.
     + limit: 10 (integer,optional) - Total results to show (Max: 100).
     + start: 0 (integer,optional) - Which result to start on.
-    + include : items (enum[string],optional) - Which relationships to include in response. 
+    + include : items (enum[string],optional) - Which relationships to include in response.
         + Members
             + `items`
 + Response 200 (application/json)
 
     + Attributes
         + data (array[Sales])
- 
 
-                   
+
+
 # Group Inventory
 ## Item Collection [/courses/{courseId}/items{?limit,start}]
 
@@ -705,14 +705,14 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + limit: 10 (integer,optional) - Total results to show (Max: 100).
     + start: 0 (integer,optional)- Which result to start on.
-    
+
 + Response 200 (application/json)
 
             {
@@ -752,7 +752,7 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
                 }
               ]
             }
-            
+
 
 ## Transaction Collection [/courses/{courseId}/inventory{?include,startDate,endDate,limit,start}]
 
@@ -762,16 +762,16 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-        
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
     + limit: 10 (Integer, optional)- Total results to show (Max: 100).
     + start: 0 (Integer, optional)- Which result to start on.
     + startDate : `2016-05-19` (date,optional) - Must limit the sales returned to a single date.
     + endDate : `2016-05-19` (date,optional) - Must limit the sales returned to a single date.
-    + include : items (enum[string],optional) - Which relationships to include in the response. 
+    + include : items (enum[string],optional) - Which relationships to include in the response.
         + Members
             + `employees`
             + `sales`
@@ -799,6 +799,1373 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
               ]
             }
 
+
+
+# Group Accounts
+
+## Recurring Charges [/courses/{courseId}/accountRecurringCharges{?include,includeDeleted}]
+
+### Get One [GET /courses/{courseId}/accountRecurringCharges/{recurringChargeId}{?include}]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + recurringChargeId : 10 - The id of a recurring charge the user has permission to access.
+    + include : items (enum[string], optional)
+        + Members
+            + `items`
+            + `payment_terms`
+
++ Response 200 (application/json)
+
+            {
+                "data":[
+                {
+                    "type": "accountRecurringCharges",
+                    "id": "10",
+                    "attributes": {
+                        "name": "valid name",
+                        "description": "valid description",
+                        "date_created": "2016-12-12T11:11:11.000000-0700",
+                        "start_date": null,
+                        "end_date": null,
+                        "created_by": 12,
+                        "organization_id": 6270,
+                        "is_active": true,
+                        "date_deleted": null,
+                        "deleted_by": null
+                    },
+                    "relationships": {
+                        "items": {
+                            "data": [
+                            {
+                                "type": "items",
+                                "id": "21"
+                            },
+                            {
+                                "type": "items",
+                                "id": "22"
+                            }
+                            ]
+                        }
+                    }
+                }
+                ],
+                "included": [
+                {
+                  "type": "repeated",
+                  "id": "10",
+                  "attributes": {
+                    "type": "recurring_charge_item",
+                    "resource_id": 21,
+                    "last_ran": null,
+                    "next_occurence": null,
+                    "freq": "MONTHLY",
+                    "dtstart": null,
+                    "until": null,
+                    "interval": null,
+                    "count": null,
+                    "bymonth": null,
+                    "byweekno": null,
+                    "byyearday": null,
+                    "bymonthday": null,
+                    "byday": null,
+                    "wkst": null,
+                    "byhour": null,
+                    "byminute": null,
+                    "bysecond": null,
+                    "bysetpos": null
+                  }
+                },
+                {
+                  "type": "repeated",
+                  "id": "11",
+                  "attributes": {
+                    "type": "recurring_charge_item",
+                    "resource_id": 22,
+                    "last_ran": null,
+                    "next_occurence": null,
+                    "freq": "MONTHLY",
+                    "dtstart": null,
+                    "until": null,
+                    "interval": null,
+                    "count": null,
+                    "bymonth": null,
+                    "byweekno": null,
+                    "byyearday": null,
+                    "bymonthday": null,
+                    "byday": null,
+                    "wkst": null,
+                    "byhour": null,
+                    "byminute": null,
+                    "bysecond": null,
+                    "bysetpos": null
+                  }
+                },
+                {
+                  "type": "items",
+                  "id": "21",
+                  "attributes": {
+                    "item_id": 1,
+                    "item_type": "item",
+                    "line_number": 1,
+                    "unit_price": "19.99",
+                    "discount_percent": "0.00",
+                    "quantity": "500.00",
+                    "recurring_charge_id": 10
+                  },
+                  "relationships": {
+                    "repeated": {
+                      "data": {
+                        "type": "repeated",
+                        "id": "10"
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "items",
+                  "id": "22",
+                  "attributes": {
+                    "item_id": 2,
+                    "item_type": "item",
+                    "line_number": 1,
+                    "unit_price": "18.99",
+                    "discount_percent": "0.00",
+                    "quantity": "200.00",
+                    "recurring_charge_id": 10
+                  },
+                  "relationships": {
+                    "repeated": {
+                      "data": {
+                        "type": "repeated",
+                        "id": "11"
+                      }
+                    }
+                  }
+                }
+                ]
+            }
+
+### List All [GET /courses/{courseId}/accountRecurringCharges{?include,includeDeleted,limit,offset}]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + include : items (enum[string], optional)
+            + Members
+                + `items`
+                + `payment_terms`
+    + includeDeleted (boolean, optional)
+    + limit: 1 (number, optional)
+    + offset: 0 (number, optional)
+
++ Response 200 (application/json)
+
+            {
+                "data":[
+
+                {
+                    "type": "accountRecurringCharges",
+                    "id": "10",
+                    "attributes": {
+                        "name": "valid name",
+                        "description": "valid description",
+                        "date_created": "2016-12-12T11:11:11.000000-0700",
+                        "start_date": null,
+                        "end_date": null,
+                        "created_by": 12,
+                        "organization_id": 6270,
+                        "is_active": true,
+                        "date_deleted": null,
+                        "deleted_by": null
+                    },
+                    "relationships": {
+                        "items": {
+                            "data": [
+                            {
+                                "type": "items",
+                                "id": "21"
+                            },
+                            {
+                                "type": "items",
+                                "id": "22"
+                            }
+                            ]
+                        }
+                    }
+                }
+                ],
+                "included": [
+                {
+                  "type": "repeated",
+                  "id": "10",
+                  "attributes": {
+                    "type": "recurring_charge_item",
+                    "resource_id": 21,
+                    "last_ran": null,
+                    "next_occurence": null,
+                    "freq": "MONTHLY",
+                    "dtstart": null,
+                    "until": null,
+                    "interval": null,
+                    "count": null,
+                    "bymonth": null,
+                    "byweekno": null,
+                    "byyearday": null,
+                    "bymonthday": null,
+                    "byday": null,
+                    "wkst": null,
+                    "byhour": null,
+                    "byminute": null,
+                    "bysecond": null,
+                    "bysetpos": null
+                  }
+                },
+                {
+                  "type": "repeated",
+                  "id": "11",
+                  "attributes": {
+                    "type": "recurring_charge_item",
+                    "resource_id": 22,
+                    "last_ran": null,
+                    "next_occurence": null,
+                    "freq": "MONTHLY",
+                    "dtstart": null,
+                    "until": null,
+                    "interval": null,
+                    "count": null,
+                    "bymonth": null,
+                    "byweekno": null,
+                    "byyearday": null,
+                    "bymonthday": null,
+                    "byday": null,
+                    "wkst": null,
+                    "byhour": null,
+                    "byminute": null,
+                    "bysecond": null,
+                    "bysetpos": null
+                  }
+                },
+                {
+                  "type": "items",
+                  "id": "21",
+                  "attributes": {
+                    "item_id": 1,
+                    "item_type": "item",
+                    "line_number": 1,
+                    "unit_price": "19.99",
+                    "discount_percent": "0.00",
+                    "quantity": "500.00",
+                    "recurring_charge_id": 10
+                  },
+                  "relationships": {
+                    "repeated": {
+                      "data": {
+                        "type": "repeated",
+                        "id": "10"
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "items",
+                  "id": "22",
+                  "attributes": {
+                    "item_id": 2,
+                    "item_type": "item",
+                    "line_number": 1,
+                    "unit_price": "18.99",
+                    "discount_percent": "0.00",
+                    "quantity": "200.00",
+                    "recurring_charge_id": 10
+                  },
+                  "relationships": {
+                    "repeated": {
+                      "data": {
+                        "type": "repeated",
+                        "id": "11"
+                      }
+                    }
+                  }
+                }
+                ]
+            }
+
+### Update [PUT /courses/{courseId}/accountRecurringCharges]
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
+
+    + Attributes
+        + meta (object,optional)
+            + test: true (boolean,optional)
+        + data (Account Recurring Charges)
+
+    + Parameters
+        + courseId: 6270 - Course for which user has permission for
+
++ Response 200 (application/json)
+
+            {
+              "data": {
+                "type": "accountRecurringCharges",
+                "id": "123",
+                "attributes": {
+                  "name": "Annual Membership",
+                  "description": "Pay once, and visit the whole year long!",
+                  "date_created": "2016-12-06T17:09:47-0700",
+                  "start_date": "2016-12-12T11:11:11-0700",
+                  "end_date": "2016-12-12T11:11:11-0700",
+                  "created_by": 12,
+                  "organization_id": 6270,
+                  "is_active": true,
+                  "date_deleted": null,
+                  "deleted_by": null
+                }
+              }
+            }
+
+### Create [POST /courses/{courseId}/accountRecurringCharges]
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
+
+    + Attributes
+        + meta (object,optional)
+            + test: true (boolean,optional)
+        + data (Account Recurring Charges)
+
+    + Parameters
+        + courseId: 6270 - Course for which user has permission for
+
++ Response 200 (application/json)
+
+            {
+              "data": {
+                "type": "accountRecurringCharges",
+                "id": "123",
+                "attributes": {
+                  "name": "Annual Membership",
+                  "description": "Pay once, and visit the whole year long!",
+                  "date_created": "2016-12-06T17:09:47-0700",
+                  "start_date": "2016-12-12T11:11:11-0700",
+                  "end_date": "2016-12-12T11:11:11-0700",
+                  "created_by": 12,
+                  "organization_id": 6270,
+                  "is_active": true,
+                  "date_deleted": null,
+                  "deleted_by": null
+                }
+              }
+            }
+
+### Delete [DELETE /courses/{courseId}/accountRecurringCharges/{recurringChargeId}]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
+    + Attributes
+        + meta (object,optional)
+            + test: true (boolean,optional)
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + recurringChargeId : 10 - The id of a recurring charge the user has permission to access.
+
++ Response 200 (application/json)
+
+            {
+              "data": {
+                "success": true,
+                "content": "recurring_charge deleted"
+              }
+            }
+
+## Recurring Charge Customer [/courses/{courseId}/accountRecurringCharges/{recurringChargeId}/accountRecurringChargeCustomers/{id}{?include}]
+
+### List All [GET /courses/{courseId}/accountRecurringCharges/{recurringChargeId}/accountRecurringChargeCustomers{?include}]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + recurringChargeId: 10
+    + include: `recurring_charge` (enum[string], optional)
+            + Members
+                + `recurring_charge`
+
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "accountRecurringChargeCustomers",
+                  "id": "2",
+                  "attributes": {
+                    "include": true,
+                    "person_id": 3399,
+                    "recurring_charge_id": 10
+                  },
+                  "relationships": {
+                    "recurring_charge": {
+                      "data": {
+                        "type": "recurring_charge",
+                        "id": "10"
+                      }
+                    }
+                  }
+                }
+              ],
+              "included": [
+                {
+                  "type": "recurring_charge",
+                  "id": "10",
+                  "attributes": {
+                    "name": "valid name",
+                    "description": "valid description",
+                    "date_created": "2016-12-12T11:11:11-0700",
+                    "start_date": null,
+                    "end_date": null,
+                    "created_by": 12,
+                    "organization_id": 6270,
+                    "is_active": true,
+                    "date_deleted": null,
+                    "deleted_by": null
+                  }
+                }
+              ]
+            }
+
+### Get One [GET /courses/{courseId}/accountRecurringChargeCustomers/{recurringChargeCustomerId}{?include}]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + recurringChargeCustomerId: 2 - The id of the link from recurring charge to a particular customer
+    + include: `recurring_charge` (enum[string], optional)
+            + Members
+                + `recurring_charge`
+
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "accountRecurringChargeCustomers",
+                  "id": "2",
+                  "attributes": {
+                    "include": true,
+                    "person_id": 3399,
+                    "recurring_charge_id": 10
+                  },
+                  "relationships": {
+                    "recurring_charge": {
+                      "data": {
+                        "type": "recurring_charge",
+                        "id": "10"
+                      }
+                    }
+                  }
+                }
+              ],
+              "included": [
+                {
+                  "type": "recurring_charge",
+                  "id": "10",
+                  "attributes": {
+                    "name": "valid name",
+                    "description": "valid description",
+                    "date_created": "2016-12-12T11:11:11-0700",
+                    "start_date": null,
+                    "end_date": null,
+                    "created_by": 12,
+                    "organization_id": 6270,
+                    "is_active": true,
+                    "date_deleted": null,
+                    "deleted_by": null
+                  }
+                }
+              ]
+            }
+
+### Create [POST /courses/{courseId}/accountRecurringCharges/{recurringChargeId}/accountRecurringChargeCustomers]
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
+
+    + Attributes
+        + meta (object,optional)
+            + test: true (boolean,optional)
+        + data (Account Recurring Charge Customers)
+
+    + Parameters
+        + courseId: 6270 - Course for which user has permission for
+
++ Response 200 (application/json)
+
+            {
+              "data": {
+                "type": "accountRecurringChargeCustomers",
+                "id": "4",
+                "attributes": {
+                  "include": 1,
+                  "person_id": 3398,
+                  "recurring_charge_id": 10
+                }
+              }
+            }
+
+### Delete [DELETE /courses/{courseId}/accountRecurringChargeCustomers/{id}]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
+
+    + Attributes
+        + meta (object,optional)
+            + test: true (boolean,optional)
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + id: 2 - The id of the link from recurring charge to a particular customer
+
++ Response 200 (application/json)
+
+            {
+              "data": {
+                "success": true,
+                "content": "accountRecurringChargeCustomers instance deleted"
+              }
+            }
+
+## Recurring Charge Group [/courses/{courseId}/accountRecurringCharges/{recurringChargeId}/accountRecurringChargeGroups/{recurringChargeGroupId}{?include}]
+
+### List All [GET /courses/{courseId}/accountRecurringCharges/{recurringChargeId}/accountRecurringChargeGroups{?include}]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + recurringChargeId: 10
+    + include: `recurring_charge` (enum[string], optional)
+            + Members
+                + `recurring_charge`
+
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "accountRecurringChargeGroups",
+                  "id": "2",
+                  "attributes": {
+                    "include": true,
+                    "group_id": 3399,
+                    "recurring_charge_id": 10
+                  },
+                  "relationships": {
+                    "recurring_charge": {
+                      "data": {
+                        "type": "recurring_charge",
+                        "id": "10"
+                      }
+                    }
+                  }
+                }
+              ],
+              "included": [
+                {
+                  "type": "recurring_charge",
+                  "id": "10",
+                  "attributes": {
+                    "name": "valid name",
+                    "description": "valid description",
+                    "date_created": "2016-12-12T11:11:11-0700",
+                    "start_date": null,
+                    "end_date": null,
+                    "created_by": 12,
+                    "organization_id": 6270,
+                    "is_active": true,
+                    "date_deleted": null,
+                    "deleted_by": null
+                  }
+                }
+              ]
+            }
+
+### Get One [GET /courses/{courseId}/accountRecurringChargeGroups/{recurringChargeGroupId}{?include}]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + recurringChargeGroupId: 1 - The id of the link from recurring charge to a particular group
+    + include: `recurring_charge` (enum[string], optional)
+            + Members
+                + `recurring_charge`
+
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "accountRecurringChargeGroups",
+                  "id": "2",
+                  "attributes": {
+                    "include": true,
+                    "group_id": 1,
+                    "recurring_charge_id": 10
+                  },
+                  "relationships": {
+                    "recurring_charge": {
+                      "data": {
+                        "type": "recurring_charge",
+                        "id": "10"
+                      }
+                    }
+                  }
+                }
+              ],
+              "included": [
+                {
+                  "type": "recurring_charge",
+                  "id": "10",
+                  "attributes": {
+                    "name": "valid name",
+                    "description": "valid description",
+                    "date_created": "2016-12-12T11:11:11-0700",
+                    "start_date": null,
+                    "end_date": null,
+                    "created_by": 12,
+                    "organization_id": 6270,
+                    "is_active": true,
+                    "date_deleted": null,
+                    "deleted_by": null
+                  }
+                }
+              ]
+            }
+
+### Create [POST /courses/{courseId}/accountRecurringCharges/{recurringChargeId}/accountRecurringChargeGroups]
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
+
+    + Attributes
+        + meta (object,optional)
+            + test: true (boolean,optional)
+        + data (Account Recurring Charge Customers)
+
+    + Parameters
+        + courseId: 6270 - Course for which user has permission for
+
++ Response 200 (application/json)
+
+            {
+              "data": {
+                "type": "accountRecurringChargeGroups",
+                "id": "4",
+                "attributes": {
+                  "include": 1,
+                  "group_id": 1,
+                  "recurring_charge_id": 10
+                }
+              }
+            }
+
+### Delete [DELETE /courses/{courseId}/accountRecurringChargeGroups/{id}]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
+
+    + Attributes
+        + meta (object,optional)
+            + test: true (boolean,optional)
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + id: 1 - The id of the link from recurring charge to a particular group
+
++ Response 200 (application/json)
+
+            {
+              "data": {
+                "success": true,
+                "content": "accountRecurringChargeCustomers instance deleted"
+              }
+            }
+
+## Recurring ChargeItems [/courses/{courseId}/accountRecurringChargeItems{?include,includeDeleted,endDate,startDate,offset,limit}]
+
+### List All [GET /courses/{courseId}/accountRecurringChargeItems{?include,includeDeleted,endDate,startDate,offset,limit}]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + include: `recurring_charge` (enum[string], optional)
+            + Members
+                + `recurring_charge`
+    + includeDeleted: `true` (boolean,optional)
+    + offset: 1 (number,optional)
+    + limit: 1 (number,optional)
+    + startDate: `2016-10-04T16:17:39-0700` (string,optional)
+    + endDate: `2016-12-24T16:17:39-0700` (string,optional)
+
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "accountRecurringChargeItems",
+                  "id": "2",
+                  "attributes": {
+                    "item_id": 5035,
+                    "item_type": "item",
+                    "line_number": 1,
+                    "override_price": null,
+                    "discount_percent": "0.00",
+                    "quantity": "1.00",
+                    "recurring_charge_id": 1
+                  },
+                  "relationships": {
+                    "repeated": {
+                      "data": {
+                        "type": "repeated",
+                        "id": "3"
+                      }
+                    },
+                    "item": {
+                      "data": {
+                        "type": "item",
+                        "id": "5035"
+                      }
+                    },
+                    "recurring_charge": {
+                      "data": {
+                        "type": "accountRecurringCharges",
+                        "id": "1"
+                      }
+                    }
+                  }
+                }
+              ],
+              "included": [
+                {
+                  "type": "itemTax",
+                  "id": "0_5035_Tax 1_7.000",
+                  "attributes": {
+                    "courseId": 0,
+                    "cid": 0,
+                    "itemId": 5035,
+                    "name": "Tax 1",
+                    "percent": "7.000",
+                    "cumulative": 0
+                  }
+                },
+                {
+                  "type": "repeated",
+                  "id": "3",
+                  "attributes": {
+                    "type": "recurring_charge_item",
+                    "resource_id": 2,
+                    "last_ran": {
+                      "date": "2030-03-05 00:00:00.000000",
+                      "timezone_type": 3,
+                      "timezone": "America/Denver"
+                    },
+                    "next_occurence": "2030-04-05T00:00:00-0600",
+                    "freq": "MONTHLY",
+                    "dtstart": null,
+                    "until": null,
+                    "interval": 1,
+                    "count": null,
+                    "bymonth": [],
+                    "byweekno": [],
+                    "byyearday": [],
+                    "bymonthday": [
+                      "5"
+                    ],
+                    "byday": [],
+                    "wkst": null,
+                    "byhour": [
+                      "0"
+                    ],
+                    "byminute": [
+                      "0"
+                    ],
+                    "bysecond": [
+                      "0"
+                    ],
+                    "bysetpos": [
+                      "1"
+                    ]
+                  }
+                },
+                {
+                  "type": "item",
+                  "id": "5035",
+                  "attributes": {
+                    "maxDiscount": 0,
+                    "addOnPrice": 0,
+                    "costPrice": 0,
+                    "courseId": 6270,
+                    "quantity": 989,
+                    "numberOfSides": 0,
+                    "unitPrice": 7.48,
+                    "basePrice": 7.48,
+                    "category": "Service",
+                    "itemNumber": "3001",
+                    "location": "",
+                    "name": "Large Range Bucket",
+                    "subcategory": "Range Balls",
+                    "department": "Pro Shop",
+                    "description": "",
+                    "glCode": null,
+                    "isInactive": false,
+                    "doNotPrint": false,
+                    "deleted": false,
+                    "isfoodAndBeverage": false,
+                    "isFoodAndBeverage": false,
+                    "isInvisible": false,
+                    "isFee": false,
+                    "isServiceFee": false,
+                    "isGiftcard": false,
+                    "isPass": false,
+                    "isSide": false,
+                    "isUnlimited": true,
+                    "isSoupOrSalad": true,
+                    "unitPriceIncludesTax": false,
+                    "itemType": "item",
+                    "serviceFeeId": null
+                  },
+                  "relationships": {
+                    "taxes": {
+                      "data": [
+                        {
+                          "type": "itemTax",
+                          "id": "0_5035_Tax 1_7.000"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "accountRecurringCharges",
+                  "id": "1",
+                  "attributes": {
+                    "name": "Testing monthly membership",
+                    "description": "",
+                    "date_created": "2017-03-20T16:39:07-0600",
+                    "created_by": 12,
+                    "organization_id": 6270,
+                    "is_active": true,
+                    "date_deleted": null,
+                    "deleted_by": null,
+                    "prorate_charges": true
+                  }
+                }
+              ],
+              "meta": {
+                "warnings": []
+              }
+            }
+
+
+## Recurring Statements [/courses/{courseId}/accountRecurringStatements{?include,includeDeleted,offset,limit}]
+
+### List All [GET /courses/{courseId}/accountRecurringStatements{?include,includeDeleted,offset,limit}]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + include: `recurring_charge` (enum[string], optional)
+            + Members
+                + `recurring_charge`
+    + includeDeleted: `true` (boolean,optional)
+    + offset: 1 (number,optional)
+    + limit: 1 (number,optional)
+
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "accountRecurringStatements",
+                  "id": "2",
+                  "attributes": {
+                    "name": null,
+                    "customerMessage": "",
+                    "dateCreated": "2017-05-10T15:28:48-0600",
+                    "createdBy": 12,
+                    "organizationId": 6270,
+                    "isActive": true,
+                    "dateDeleted": "2018-01-16T14:52:00-0700",
+                    "deletedBy": 12,
+                    "sendEmptyStatements": true,
+                    "includeMemberTransactions": true,
+                    "includeCustomerTransactions": true,
+                    "sendEmail": true,
+                    "sendMail": false,
+                    "includePastDue": true,
+                    "dueAfterDays": 14,
+                    "autopayEnabled": true,
+                    "autopayAfterDays": 0,
+                    "autopayAttempts": 3,
+                    "autopayOverdueBalance": true,
+                    "payMemberBalance": true,
+                    "payCustomerBalance": true,
+                    "sendZeroChargeStatement": false,
+                    "footerText": "Footer here",
+                    "messageText": "Thank you for your business!",
+                    "termsAndConditionsText": "Terms and conditions here",
+                    "isDefault": false,
+                    "financeChargeEnabled": false,
+                    "financeChargeAmount": "0.00",
+                    "financeChargeType": "percent",
+                    "financeChargeAfterDays": 0,
+                    "generateDaysInAdvance": 0
+                  },
+                  "relationships": {
+                    "repeated": {
+                      "data": {
+                        "type": "repeated",
+                        "id": "4"
+                      }
+                    }
+                  }
+                }
+              ],
+              "included": [
+                {
+                  "type": "repeated",
+                  "id": "4",
+                  "attributes": {
+                    "type": "recurring_statement",
+                    "resource_id": 2,
+                    "last_ran": null,
+                    "next_occurence": "2030-01-01T00:00:00-0700",
+                    "freq": "MONTHLY",
+                    "dtstart": null,
+                    "until": null,
+                    "interval": null,
+                    "count": null,
+                    "bymonth": [
+                      "1",
+                      "4",
+                      "7",
+                      "10"
+                    ],
+                    "byweekno": [],
+                    "byyearday": [],
+                    "bymonthday": [
+                      "1"
+                    ],
+                    "byday": [],
+                    "wkst": null,
+                    "byhour": [
+                      "0"
+                    ],
+                    "byminute": [
+                      "0"
+                    ],
+                    "bysecond": [
+                      "0"
+                    ],
+                    "bysetpos": []
+                  }
+                }
+              ],
+              "meta": {
+                "warnings": []
+              }
+            }
+
+### Get One [GET /courses/{courseId}/accountRecurringStatements/{statementId}]
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + statementId : 2
+
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "type": "accountRecurringStatements",
+                  "id": "2",
+                  "attributes": {
+                    "name": "valid name 2",
+                    "dateCreated": "2016-12-15T13:00:40-0700",
+                    "createdBy": {},
+                    "organizationId": 6270,
+                    "isActive": true,
+                    "dateDeleted": "2016-12-15T13:16:59-0700",
+                    "deletedBy": 12,
+                    "startDate": null,
+                    "endDate": null,
+                    "itemizeSales": true,
+                    "itemizeInvoices": false,
+                    "itemizeCharges": true,
+                    "includeBalanceForward": true,
+                    "includeSales": true,
+                    "includeInvoices": false,
+                    "includeCharges": true,
+                    "sendEmptyStatements": true
+                  }
+                }
+              ]
+            }
+
+### Create [POST /courses/{courseId}/accountRecurringStatements]
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
+
+    + Attributes
+        + meta (object,optional)
+            + test: true (boolean,optional)
+        + data (Account Recurring Statement)
+
+    + Parameters
+        + courseId: 6270 - Course for which user has permission for
+
++ Response 200 (application/json)
+
+            {
+              "data": {
+                "type": "accountRecurringStatements",
+                "id": "47",
+                "attributes": {
+                  "name": "Annual Membership",
+                  "customerMessage": "",
+                  "dateCreated": "2018-01-16T14:49:04-0700",
+                  "createdBy": 12,
+                  "organizationId": 6270,
+                  "isActive": true,
+                  "dateDeleted": null,
+                  "deletedBy": null,
+                  "sendEmptyStatements": true,
+                  "includeMemberTransactions": 0,
+                  "includeCustomerTransactions": 0,
+                  "sendEmail": 0,
+                  "sendMail": 0,
+                  "includePastDue": 0,
+                  "dueAfterDays": 0,
+                  "autopayEnabled": 0,
+                  "autopayAfterDays": 0,
+                  "autopayAttempts": 0,
+                  "autopayOverdueBalance": 0,
+                  "payMemberBalance": 0,
+                  "payCustomerBalance": 0,
+                  "sendZeroChargeStatement": 0,
+                  "footerText": null,
+                  "messageText": null,
+                  "termsAndConditionsText": null,
+                  "isDefault": 0,
+                  "financeChargeEnabled": 0,
+                  "financeChargeAmount": 0,
+                  "financeChargeType": "percent",
+                  "financeChargeAfterDays": 0,
+                  "generateDaysInAdvance": 0
+                },
+                "relationships": {
+                  "repeated": {
+                    "data": {
+                      "type": "repeated",
+                      "id": "40"
+                    }
+                  }
+                }
+              },
+              "included": [
+                {
+                  "type": "repeated",
+                  "id": "40",
+                  "attributes": {
+                    "type": "recurring_statement",
+                    "resource_id": 47,
+                    "last_ran": null,
+                    "next_occurence": null,
+                    "freq": "DAILY",
+                    "dtstart": "2016-12-12T11:11:11-0700",
+                    "until": "2016-12-12T11:11:11-0700",
+                    "interval": 2,
+                    "count": null,
+                    "bymonth": [
+                      "3",
+                      "6",
+                      "12"
+                    ],
+                    "byweekno": [
+                      "1",
+                      "25",
+                      "52"
+                    ],
+                    "byyearday": [
+                      "1",
+                      "365"
+                    ],
+                    "bymonthday": [
+                      "1",
+                      "15",
+                      "30"
+                    ],
+                    "byday": [
+                      "MO",
+                      "2",
+                      "FR"
+                    ],
+                    "wkst": "MO",
+                    "byhour": [
+                      "1",
+                      "12",
+                      "23"
+                    ],
+                    "byminute": [
+                      "1",
+                      "30",
+                      "60"
+                    ],
+                    "bysecond": [
+                      "1",
+                      "30",
+                      "60"
+                    ],
+                    "bysetpos": [
+                      "1",
+                      "5",
+                      "11"
+                    ]
+                  }
+                }
+              ],
+              "meta": {
+                "warnings": []
+              }
+            }
+
+
+### Update [PUT /courses/{courseId}/accountRecurringStatements]
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
+
+   + Attributes
+       + meta (object,optional)
+           + test: true (boolean,optional)
+       + data (Account Recurring Statement)
+
+   + Parameters
+       + courseId: 6270 - Course for which user has permission for
+
++ Response 200 (application/json)
+
+           {
+             "data": {
+               "type": "accountRecurringStatements",
+               "id": "46",
+               "attributes": {
+                 "name": "Annual Membership",
+                 "customerMessage": "",
+                 "dateCreated": "2018-01-16T14:44:23-0700",
+                 "createdBy": 12,
+                 "organizationId": 6270,
+                 "isActive": true,
+                 "dateDeleted": null,
+                 "deletedBy": null,
+                 "sendEmptyStatements": true,
+                 "includeMemberTransactions": 0,
+                 "includeCustomerTransactions": 0,
+                 "sendEmail": 0,
+                 "sendMail": 0,
+                 "includePastDue": 0,
+                 "dueAfterDays": 0,
+                 "autopayEnabled": 0,
+                 "autopayAfterDays": 0,
+                 "autopayAttempts": 0,
+                 "autopayOverdueBalance": 0,
+                 "payMemberBalance": 0,
+                 "payCustomerBalance": 0,
+                 "sendZeroChargeStatement": 0,
+                 "footerText": null,
+                 "messageText": null,
+                 "termsAndConditionsText": null,
+                 "isDefault": 0,
+                 "financeChargeEnabled": 0,
+                 "financeChargeAmount": 0,
+                 "financeChargeType": "percent",
+                 "financeChargeAfterDays": 0,
+                 "generateDaysInAdvance": 0
+               },
+               "relationships": {
+                 "repeated": {
+                   "data": {
+                     "type": "repeated",
+                     "id": "39"
+                   }
+                 }
+               }
+             },
+             "included": [
+               {
+                 "type": "repeated",
+                 "id": "39",
+                 "attributes": {
+                   "type": "recurring_statement",
+                   "resource_id": 46,
+                   "last_ran": null,
+                   "next_occurence": null,
+                   "freq": "DAILY",
+                   "dtstart": "2016-12-12T11:11:11-0700",
+                   "until": "2016-12-12T11:11:11-0700",
+                   "interval": 2,
+                   "count": null,
+                   "bymonth": [
+                     "3",
+                     "6",
+                     "12"
+                   ],
+                   "byweekno": [
+                     "1",
+                     "25",
+                     "52"
+                   ],
+                   "byyearday": [
+                     "1",
+                     "365"
+                   ],
+                   "bymonthday": [
+                     "1",
+                     "15",
+                     "30"
+                   ],
+                   "byday": [
+                     "MO",
+                     "2",
+                     "FR"
+                   ],
+                   "wkst": "MO",
+                   "byhour": [
+                     "1",
+                     "12",
+                     "23"
+                   ],
+                   "byminute": [
+                     "1",
+                     "30",
+                     "60"
+                   ],
+                   "bysecond": [
+                     "1",
+                     "30",
+                     "60"
+                   ],
+                   "bysetpos": [
+                     "1",
+                     "5",
+                     "11"
+                   ]
+                 }
+               }
+             ],
+             "meta": {
+               "warnings": []
+             }
+           }
+
+
+### Delete [DELETE /courses/{courseId}/accountRecurringStatements/{statementId}]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
++ Parameters
+  + courseId : 6270 - A course id that the user has permission to access.
+  + statementId : 2
+
++ Response 200 (application/json)
+
+            {
+              "data": {
+                "success": true,
+                "content": "accountRecurringStatements instance deleted"
+              }
+            }
+
 # Group Webhook
 
 A webhook allows you to recieve instanst feedback when ever something happens on the foreUp system.  See a list of the available events [below](#reference/webhook-events/delete).
@@ -811,8 +2178,8 @@ We recommend using [Request Bin](https://requestb.in/) to play with the hooks.  
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
 
 + Response 200 (application/json)
 
@@ -824,11 +2191,11 @@ We recommend using [Request Bin](https://requestb.in/) to play with the hooks.  
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
-    
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
     + Body
-        
+
     + Attributes
         + data (Webhook)
 
@@ -836,13 +2203,13 @@ We recommend using [Request Bin](https://requestb.in/) to play with the hooks.  
 
     + Attributes
         + data (Webhook)
-            
+
 ### Delete [DELETE /hooks/{id}]
 + Request (application/json)
 
     + Headers
-    
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
 
 + Response 200 (application/json)
 
@@ -851,11 +2218,11 @@ We recommend using [Request Bin](https://requestb.in/) to play with the hooks.  
             }
 
 
-# Group Webhook Events 
+# Group Webhook Events
 
     foreUp’s Event Webhook will notify a URL of your choice via HTTP POST with information about events that occur in a course.
         These events include:
-    
+
 ## Customer Updated (Event key: customer.updated)
 
 This event triggers when a customer is edited
@@ -882,10 +2249,9 @@ This event triggers when:
         {
             "event":"teetime.updated",
             "course_id":"6270",
-            "teesheet_id":12,
             "id":"342234432"
         }
-        
+
 ## Tee Time Deleted (Event key: teetime.deleted)
 
 This triggers when:
@@ -896,10 +2262,9 @@ This triggers when:
         {
             "event":"teetime.deleted",
             "course_id":"6270",
-            "teesheet_id":12,
             "id":"342234432"
         }
-        
+
 ## Sale Created (Event key: sale.created)
 
 Sales may or may not have a customer attached.  This event triggers any time a sale is complete through the POS.
@@ -909,11 +2274,11 @@ Sales may or may not have a customer attached.  This event triggers any time a s
             "course_id":"6270",
             "id":"342234432"
         }
-        
+
 # Data Structures
 
 ## Headers (object)
-+ x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzc1OTUzOTYsImV4cCI6MTUwODY5OTM5NiwibGV2ZWwiOjEsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6NTQ3ODY1MCwiZW1wSWQiOjU0Nzg2NTAsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.lHiBf6aoIEbhDTBATMUrnO7oJIqsIm13Zl7zyIQoYKxeF0WBbL0oxk2AWxSy13hOQJVjI4pOMgT0p5u1majTag
++ x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
 
 ## Webhook (object)
 + type: api_hooks (string,required)
@@ -936,7 +2301,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + employeeId:  5478650 (number,required) - The id of the employee completing the sale
     + guestCount:  3 (number,optional) - Number of guests on the sale.  Used in reporting.
     + number:  485 (number,required) - The customer facing sale number. Used on reciepts
-    + paymentType: `Credit Card: $21.00` (string) 
+    + paymentType: `Credit Card: $21.00` (string)
     + refundComment: `` (string)
     + refundReason: `` (string)
     + total: 21 (number)
@@ -966,7 +2331,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + category: `Green Fees` (string),
     + subcategory: `` (string),
     + glCode: `` (string),
-    + itemNumber: `9039_seasonal_1` (string),
+    + itemNumber: `6270_seasonal_1` (string),
     + itemId: 122925 (number),
     + name: `18 Holes` (string)
     + description: `` (string)
@@ -1055,7 +2420,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + type: bookings (string,required)
 + id: TTID_0117154814d25h0 (string,required) - Unique idenetifier for a booking
 + attributes (object)
-    + isReround: false (boolean) - A reround is usually tied to the original booking to mark what time they'll start on the back 9 
+    + isReround: false (boolean) - A reround is usually tied to the original booking to mark what time they'll start on the back 9
     + type: teetime (enum[string])
         + Members
             + `teetime`
@@ -1104,7 +2469,6 @@ Sales may or may not have a customer attached.  This event triggers any time a s
         + `gift_card`
         + `punch_card`
 
-
 ## Sales Items Request
 + itemId:  5311 (number,required) - A valid item id currently found in the courses inventory.
 + quantity:  1 (number,required) - Total items purchased.
@@ -1112,14 +2476,200 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + description:  Cool Item (string,optional) - Optional message to save with the item.
 
 ## Sales Request (object)
-+ data (object)
-    + type: sales (string,required)
-    + attributes (object)
-        + employeeId:  "5478650" (string,required) - The id of the employee completing the sale
-        + guestCount:  3 (number,optional) - Number of guests on the sale.  Used in reporting.
-        + number:  485 (number,required) - The customer facing sale number. Used on reciepts
-        + terminalid: 6 (number,required) - The id of the terminal this sale will be recorded under.
-        + items (array)
-            + (Sales Items Request)
-        + payments (array)
-            + (Payments)
++ type: sales (string,required)
++ attributes (object)
+    + employeeId:  `5478650` (string,required) - The id of the employee completing the sale
+    + guestCount:  3 (number,optional) - Number of guests on the sale.  Used in reporting.
+    + number:  485 (number,required) - The customer facing sale number. Used on reciepts
+    + terminalid: 6 (number,required) - The id of the terminal this sale will be recorded under.
+    + items (array)
+        + (Sales Items Request)
+    + payments (array)
+        + (Payments)
+
+## Account Recurring Charges (object)
++ type: `accountRecurringCharges`
++ attributes (object)
+    + name: `Annual Membership` (string,optional)
+    + description: `Pay once, and visit the whole year long!` (string,optional)
+    + date_created: `2016-12-12T11:11:11-0700` (string,optional) - Defaults to the current time
+    + start_date: `2016-12-12T11:11:11-0700` (string,optional) - Beginning date that the charge is valid for
+    + end_date: `2016-12-12T11:11:11-0700` (string,optional) - End date, after which the charge is no longer valid
+    + created_by: `5478650` (number,required) - The id of the employee who created the charge
+    + organization_id: 6270 (number)
+    + is_active: true (boolean,required)
+    + date_deleted: `2016-12-12T11:11:11-0700` (string,optional)
+    + deleted_by: 5478650 (number,optional) - The id of the employee who deleted the charge
+    + payment_terms: 1 (number,optional)
+    + items (array,optional)
+        + (Account Recurring Charge Items)
+
+## Account Recurring Charge Items (object)
++ type: `items`
++ attributes (object)
+    + line_number: 2 (number,required) - Position the item appears on an invoice
+    + item_id: 5296 (number,required) - Reference to the item
+    + item_type: `item` (enum[string],required) - Defaults to "item"
+        + Members
+            + `item`
+    + unit_price: 19.99 (number,optional) - Leave null to use item default price
+    + discount_percent: 15.00 (number,optional) - Numbers from 100 - 0 corresponding to %
+    + quantity: 1.00 (number,required) - Quantity of the item to be charged. Defaults to 1
+    + recurring_charge (required,Account Recurring Charges)
+    + repeated (optional,Repeatable Account Recurring Charge Items)
+
+## Account Recurring Charge Customers (object)
++ type: `accountRecurringChargeCustomers`
++ attributes (object)
+    + include: true (boolean,optional)
+    + person_id: 12345 (number,required)
+    + recurring_charge_id: 10 (number,required)
+
+## Account Recurring Charge Groups (object)
++ type: `accountRecurringChargeGroups`
++ attributes (object)
+    + include: true (boolean,optional)
+    + group_id: 12345 (number,required)
+    + recurring_charge_id: 10 (number,required)
+
+## Account Recurring Statement(object)
++ type: 'accountRecurringStatements'
++ attributes (object)
+    + name: `Annual Membership` (string,optional)
+    + description: `Pay once, and visit the whole year long!` (string,optional)
+    + date_created: `2016-12-12T11:11:11-0700` (string,optional) - Defaults to the current time
+    + start_date: `2016-12-12T11:11:11-0700` (string,optional) - Beginning date that the charge is valid for
+    + end_date: `2016-12-12T11:11:11-0700` (string,optional) - End date, after which the charge is no longer valid
+    + created_by: `5478650` (number,required) - The id of the employee who created the charge
+    + organization_id: 6270 (number)
+    + is_active: true (boolean,required)
+    + date_deleted: `2016-12-12T11:11:11-0700` (string,optional)
+    + deleted_by: 5478650 (number,optional) - The id of the employee who deleted the charge
+    + payment_terms: 1 (number,optional)
+    + repeated (optional,Repeatable Account Recurring Statements)
+    + includeBalanceForward: true (boolean,optional)
+    + sendEmptyStatements: true (boolean,optional)
+    + itemizeSales: true (boolean,optional)
+    + itemizeInvoices: true (boolean,optional)
+    + itemizeCharges: true (boolean,optional)
+    + includeSales: true (boolean,optional)
+    + includeInvoices: false (boolean,optional)
+    + includeCharges: true (boolean,optional)
+
+## Active Account Recurring Statement(object)
++ type: 'accountRecurringStatements'
++ attributes (object)
+    + id: 2 (number,required)
+    + name: `Annual Membership` (string,optional)
+    + description: `Pay once, and visit the whole year long!` (string,optional)
+    + date_created: `2016-12-12T11:11:11-0700` (string,optional) - Defaults to the current time
+    + start_date: `2016-12-12T11:11:11-0700` (string,optional) - Beginning date that the charge is valid for
+    + end_date: `2016-12-12T11:11:11-0700` (string,optional) - End date, after which the charge is no longer valid
+    + created_by: `5478650` (number,required) - The id of the employee who created the charge
+    + organization_id: 6270 (number)
+    + is_active: true (boolean,required)
+    + date_deleted: `2016-12-12T11:11:11-0700` (string,optional)
+    + deleted_by: 5478650 (number,optional) - The id of the employee who deleted the charge
+    + payment_terms: 1 (number,optional)
+    + repeated (optional,Repeatable Account Recurring Statements)
+    + includeBalanceForward: true (boolean,optional)
+    + sendEmptyStatements: true (boolean,optional)
+    + itemizeSales: true (boolean,optional)
+    + itemizeInvoices: true (boolean,optional)
+    + itemizeCharges: true (boolean,optional)
+    + includeSales: true (boolean,optional)
+    + includeInvoices: false (boolean,optional)
+    + includeCharges: true (boolean,optional)
+
+
+## Account Payment Terms (object)
++ type: `paymentTerms`
++ attributes (object)
+    + name (string,optional)
+    + past_due_days (number,optional)
+    + past_due_fee_percentage (number,optional)
+    + organization_id (number,required)
+    + date_created: `2016-12-12T11:11:11-0700` (string, optional) - Defaults to current timestamp
+    + memo (string, optional)
+
+## Repeatable Account Recurring Charge Items
++ type: `recurringChargeItems`
++ attributes (object)
+    + item (Account Recurring Charge Items)
+    + last_ran: `2016-12-12T11:11:11-0700` (string,optional)
+    + next_occurence:`2016-12-12T11:11:11-0700` (string, optional)
+    + freq (enum[string],optional)
+        + Members
+            + `DAILY`
+            + `WEEKLY`
+            + `MONTHLY`
+            + `YEARLY`
+    + dtstart: `2016-12-12T11:11:11-0700` (string,optional) - The recurrence start. Defaults to current timestamp
+    + until: `2016-12-12T11:11:11-0700` (string,optional) - If given, specifies the limit of the recurrence
+    + count (number,optional) - How many occurrences will be generated
+    + interval: 2 (number,optional) - The interval between each freq iteration. 2 would be every other freq
+    + wkst: `MO` (enum[string],optional) - The week start day. Default is "MO"
+        + Members
+            + `MO`
+            + `TU`
+            + `WE`
+            + `TH`
+            + `FR`
+            + `SA`
+            + `SU`
+            + `0`
+            + `1`
+            + `2`
+            + `3`
+            + `4`
+            + `5`
+            + `6`
+    + byday: MO,2,FR (array,optional) - The days of the week on which to iterate. Array of the enumerated valuess, or integers with 0=`MO`
+    + bymonth: 3,6,12 (array,optional) - The months on which to iterate. Array of integer month values 1-12
+    + bysetpos: 1,5,11 (array,optional) - Array of integers, each specifying an occurrence number of the rule inside the frequency period.
+    + bymonthday: 1,15,30 (array,optional) - Array of integers, meaning the month days to apply the recurrence to
+    + byyearday: 1,365 (array,optional) - Array of integers, meaning the days of the year to apply the recurrence to
+    + byweekno: 1,25,52 (array,optional) - Array of integers, meaning the weeks of the year to apply the recurrence to
+    + byhour: 1,12,23 (array,optional) - Array of integers, meaning the hour of the day to apply the recurrence to
+    + byminute: 1,30,60 (array,optional) - Are you a lawyer? Same idea as above
+    + bysecond: 1,30,60 (array,optional) - Are you renting out processing time on a quantum computer? Same idea as above
+
+
+## Repeatable Account Recurring Statements
++ last_ran: `2016-12-12T11:11:11-0700` (string,optional)
++ next_occurence:`2016-12-12T11:11:11-0700` (string, optional)
++ freq (enum[string],optional)
+    + Members
+        + `DAILY`
+        + `WEEKLY`
+        + `MONTHLY`
+        + `YEARLY`
++ dtstart: `2016-12-12T11:11:11-0700` (string,optional) - The recurrence start. Defaults to current timestamp
++ until: `2016-12-12T11:11:11-0700` (string,optional) - If given, specifies the limit of the recurrence
++ count (number,optional) - How many occurrences will be generated
++ interval: 2 (number,optional) - The interval between each freq iteration. 2 would be every other freq
++ wkst: `MO` (enum[string],optional) - The week start day. Default is "MO"
+    + Members
+        + `MO`
+        + `TU`
+        + `WE`
+        + `TH`
+        + `FR`
+        + `SA`
+        + `SU`
+        + `0`
+        + `1`
+        + `2`
+        + `3`
+        + `4`
+        + `5`
+        + `6`
++ byday: MO,2,FR (array,optional) - The days of the week on which to iterate. Array of the enumerated valuess, or integers with 0=`MO`
++ bymonth: 3,6,12 (array,optional) - The months on which to iterate. Array of integer month values 1-12
++ bysetpos: 1,5,11 (array,optional) - Array of integers, each specifying an occurrence number of the rule inside the frequency period.
++ bymonthday: 1,15,30 (array,optional) - Array of integers, meaning the month days to apply the recurrence to
++ byyearday: 1,365 (array,optional) - Array of integers, meaning the days of the year to apply the recurrence to
++ byweekno: 1,25,52 (array,optional) - Array of integers, meaning the weeks of the year to apply the recurrence to
++ byhour: 1,12,23 (array,optional) - Array of integers, meaning the hour of the day to apply the recurrence to
++ byminute: 1,30,60 (array,optional) - Are you a lawyer? Same idea as above
++ bysecond: 1,30,60 (array,optional) - Are you renting out processing time on a quantum computer? Same idea as above
