@@ -301,6 +301,23 @@ This endpoint will list all the courses which you have access too.
 
 ## Carts [/courses/{courseId}/carts/{cartId}]
 
+### Create Cart [POST /courses/{courseId}/carts]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Carts) 
+
 ### Get Cart [GET /courses/{courseId}/carts/{cartId}{?include}]
 
 + Request (application/json)
@@ -1124,7 +1141,7 @@ Examples
 
 
 # Group Inventory
-## Item Collection [/courses/{courseId}/items{?limit,start}]
+## Item Collection [/courses/{courseId}/items{?limit,start,filter,q,include}]
 
 Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Cards.  This does not include tee times which are handled separately.
 
@@ -1133,30 +1150,182 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
 
     + Headers
 
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
 
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
-    + limit: 10 (integer,optional) - Total results to show (Max: 100).
-    + start: 0 (integer,optional)- Which result to start on.
+    + courseId : 6270 - A course id that the user has permission to access.
+    + limit: 1 (integer,optional) - Total results to show (Max: 100).
+    + start: 0 (integer,optional) - Which result to start on.
+    + format:  (enum[string], optional) - Alternate formats: Comma seperated value, and simple array of itemIds
+        + Members
+            + `csv`
+            + `simple`
+    + filter: retail (enum[string], optional) - What item type to limit results to
+        + Members
+            + `retail`
+            + `fb`
+            + `side`
+    + q: (string,optional) - Searches by name, itemNumber, department, category, subcategory, and glCode
+    + include : itemModifiers (enum[string],optional) - Which relationships to include in the response.
+        + Members
+            + `upcs`
+            + `itemModifiers`
+            + `itemSides`
 
 + Response 200 (application/json)
 
+            {
+              "data": [
+                {
+                  "type": "items",
+                  "id": "6418",
+                  "attributes": {
+                    "maxDiscount": 100,
+                    "addOnPrice": 0,
+                    "costPrice": 0,
+                    "courseId": 6270,
+                    "quantity": 0,
+                    "numberOfSides": 0,
+                    "unitPrice": 0,
+                    "basePrice": 0,
+                    "category": "",
+                    "itemNumber": null,
+                    "location": "",
+                    "name": "",
+                    "subcategory": "",
+                    "department": "",
+                    "description": "",
+                    "glCode": null,
+                    "isInactive": true,
+                    "doNotPrint": false,
+                    "deleted": false,
+                    "isfoodAndBeverage": false,
+                    "isFoodAndBeverage": false,
+                    "isInvisible": false,
+                    "isFee": false,
+                    "isServiceFee": false,
+                    "isGiftcard": false,
+                    "isPass": false,
+                    "isSide": false,
+                    "isUnlimited": false,
+                    "isSoupOrSalad": true,
+                    "unitPriceIncludesTax": false,
+                    "itemType": "item",
+                    "serviceFeeId": null
+                  },
+                  "relationships": {
+                    "taxes": {
+                      "data": [
+                        {
+                          "type": "itemTax",
+                          "id": "6270_6418_Sales Tax_6.750"
+                        },
+                        {
+                          "type": "itemTax",
+                          "id": "6270_6418_Sales Tax 2_1.050"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "included": [
+                {
+                  "type": "itemTax",
+                  "id": "6270_6418_Sales Tax_6.750",
+                  "attributes": {
+                    "courseId": 6270,
+                    "cid": 0,
+                    "itemId": 6418,
+                    "name": "Sales Tax",
+                    "percent": "6.750",
+                    "cumulative": 0
+                  }
+                },
+                {
+                  "type": "itemTax",
+                  "id": "6270_6418_Sales Tax 2_1.050",
+                  "attributes": {
+                    "courseId": 6270,
+                    "cid": 0,
+                    "itemId": 6418,
+                    "name": "Sales Tax 2",
+                    "percent": "1.050",
+                    "cumulative": 0
+                  }
+                }
+              ],
+              "meta": {
+                "total": 478
+              }
+            }
+        
+### Get One [GET /courses/{courseId}/items/{itemId}]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + itemId : 38133556 (string)
+    
++ Response 200 (application/json)
+
     + Attributes
-        + data (array[Item])
+        + data (Item)
+        
+### Delete [DELETE /courses/{courseId}/items/{itemId}]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + itemId : 38133556 (string)
+    
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Item)
 
 ### Create [POST]
 + Request (application/json)
 
     + Headers
 
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
 
     + Attributes
         + data (Item)
 
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
+    + courseId : 6270 - A course id that the user has permission to access.
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Item)
+
+### PUT [PUT /courses/{courseId}/items/{itemId}]
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+
+    + Attributes
+        + data (Item)
+        + meta (TestingMeta, optional)
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + itemId: `` (string, optional)
 
 + Response 200 (application/json)
 
@@ -1705,6 +1874,16 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + isUnlimited: false(boolean),
     + isSoupOrSalad: false(boolean),
     + unitPriceIncludesTax: false (boolean)
+    + reorderLevel: 0 (number)
+    + serviceFeeId: null (number, optional)
+    + numberOfSides: null (number, optional)
+    + itemType: item (enum[string])
+        + Members
+            + `item`
+            + `food and beverage`
+            + `side`
++ meta (object,optional)
+    + warnings (array, optional)
 
 ## Special (object)
 + type: special (string,required)
@@ -1730,3 +1909,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + times (array)
         + 0930 (string)
         + 0938 (string)
+        
+## TestingMeta (object)
++ testing: true (boolean, optional)
++ validateOnly: true (boolean,optional)
