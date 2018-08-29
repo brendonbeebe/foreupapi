@@ -104,6 +104,7 @@ This endpoint will list all the courses which you have access too.
             + `items`
             + `terminals`
             + `bookings`
+            + `customer`
 + Response 200 (application/json)
 
     + Attributes
@@ -1023,6 +1024,8 @@ Examples
 ```/courses/9039/customers?email=eq:foreup@fake.com ```
 ```/courses/9039/customers?birthday=gt:2012-12-08 ```
 
+See https://github.com/AmeriCommerce/rest-api/blob/master/query_syntax.md for more examples
+
 ### List All [GET]
 
 + Request (application/json)
@@ -1150,7 +1153,7 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
 
     + Headers
 
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
 
 + Parameters
     + courseId : 6270 - A course id that the user has permission to access.
@@ -1266,7 +1269,7 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
 
     + Headers
 
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
 
 + Parameters
     + courseId : 6270 - A course id that the user has permission to access.
@@ -1283,7 +1286,7 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
 
     + Headers
 
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
 
 + Parameters
     + courseId : 6270 - A course id that the user has permission to access.
@@ -1299,7 +1302,7 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
 
     + Headers
 
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
 
     + Attributes
         + data (Item)
@@ -1317,7 +1320,7 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
 
     + Headers
 
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJkZXZlbG9wbWVudC5mb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE1MTYwNTY0NDYsImV4cCI6MTUxODY0ODQ0NiwibGV2ZWwiOjMsImNpZCI6NjI3MCwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTJ9.jbRcT7nRaofG3VnryYne7jKiaBOAAAZTdvPV4TiUOLHy41sQDgSis1yY3p_qK4ahAha6Z2_o2CHWYIaZwQgeLg
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
 
     + Attributes
         + data (Item)
@@ -1585,6 +1588,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + name: Default Season (string)
     + startDate: `0000-01-01` (string)
     + endDate: `0000-12-31` (string)
+    + isManaged: true (boolean)
 
 ## Seasonal Timeframes
 + type: timeframes (string,required)
@@ -1838,6 +1842,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + name:  Member (string,required)
     + color:  #6ea4e1 (string,required) - Valid hex color.
     + dateCreated:  `2014-05-29T18:48:59-0600` (string)
+    + isDynamic: false (boolean)
 
 ## Price Override (object)
 + type: priceOverride (string,required)
