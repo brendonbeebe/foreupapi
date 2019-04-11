@@ -334,6 +334,7 @@ This endpoint will list all the courses which you have access too.
         + Members
             + `cartItems`
             + `cartItems.items`
+            + `customers`
 + Response 200 (application/json)
 
     + Attributes
@@ -349,6 +350,27 @@ This endpoint will list all the courses which you have access too.
     
     + Attributes
         + data (Cart Payment)
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + cartId : 56 (string)
+            
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Carts) 
+       
+        
+### Add Customer [POST /courses/{courseId}/carts/{cartId}/customers]
+
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+    
+    + Attributes
+        + data (Cart Customer)
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
@@ -1660,6 +1682,10 @@ Sales may or may not have a customer attached.  This event triggers any time a s
             + credit_card
             + Customer Payment Type - If you are a third party recieving money on behalf of the course you'll want to use a custom payment type.
     + amount: 0.22 (required, number) - The amount recieved.
+
+## Cart Customer
++ type: customer
++ customerId: 101 (required, number) - ID of the customer to add to the cart
 
 ## Bookings Creation (object)
 + type: bookings
