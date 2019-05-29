@@ -823,7 +823,57 @@ This endpoint is limited to a maximum of one day.  Occupancy is calculated by th
                 }
               }
             }
+            
+## Trades [/courses/{courseId}/teesheets/{teesheetId}/tradesAvailable/{date}]
 
+### Get [GET]
+
+This endpoint is limited to a single date. You must first be authorized to participate in selling trades in order to successfully get trade information. The response (for an authorized user) shows how many trades are available for sale for a specific teesheet on a given day.  
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 2192 (integer) - A tee sheet id that the user has permission to access.
+    + date : `2016-05-19` (date) - Must limit the trades returned to a single date.
+
++ Response 200 (application/json)
+
+            {
+              "data": {
+                "type": "trade",
+                "id": "1",
+                "attributes": {
+                  "tradesAvailable": 0
+                }
+              }
+            }
+
+### Create [POST /courses/{courseId}/teesheets/{teesheetId}/bookings]
+This endpoint is nearly identical to creating a booking as laid out in the documentation above. In order to properly create a trade, your user must be authorized. Otherwise, the trade will not be created and the booking WILL BE CREATED like normal. You will not be credited for the trade unless your user is authorized to participate in trades.
+Please note the additional 3 key/value pairs required to successfully book a trade (`isTrade`, `amountCharged`, & `tax`). If any of those three argumentsare missing, a regular booking will occur.
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+    
+    + Attributes
+        + data (Trade Creation)
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 2192 (string) - A tee sheet id that the user has permission to access.
+            
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Trades)     
+        
 # Group Tee Time Pricing
 
 Tee time pricing is extremely flexible. There are three important parts to tee time pricing.
@@ -1702,6 +1752,24 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + carts: 1 (optional,number) - How many players will use carts
     + title: `John Snow` (required,string) - The title of the booking
 
+## Trade Creation (object)
++ type: bookings
++ attributes (object)
+    + start: `2017-05-05T12:30:00` (required, string) - The date/time (ISO8601 format)
+    + side: `front` (required,string)
+    + event_type: `teetime` (optional,string)
+    + details: `This is part of a trade` (optional,string) - Notes you'd like to save with the tee time
+    + holes: 18 (optional, enum)
+        + Members
+            + 18
+            + 9
+    + players: 1 (optional,number) - How many players 1-4
+    + carts: 1 (optional,number) - How many players will use carts
+    + title: `John Snow` (required,string) - The title of the booking
+    + isTrade: true (required,boolean) - Determines that the booking is a trade
+    + amountCharged: 21.01 (required,number) - Amount the booking user was charged
+    + tax: 0.11 (required,number) - Tax that the booking user was charged
+
 ## Tee Time Slot (object)
 + type: `tee_time_slot`
 + attributes (object)
@@ -1719,6 +1787,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
             + walking - Only walking is allowed
     + greenFeeTax
     + cartFeeTax
+    + tradeDiscountAvailable: 0 (number) - If you have trade access, a number greater than `0` indicates a percentage discount available to sell the tee time (`25` = `25% off`)
 
 ## Bookings (object)
 + type: bookings (string,required)
@@ -1756,6 +1825,50 @@ Sales may or may not have a customer attached.  This event triggers any time a s
             + `standby`
             + `api`
             + ``
+    + start: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
+    + end: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
+    + lastUpdated: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
+    + dateBooked: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
++ relationships (object)
+    + players (object)
+    + sales (object)
+
+## Trades (object)
++ type: bookings (string,required)
++ id: TTID_1018142720xb6jt (string,required) - Unique identifier for a booking
++ attributes (object)
+    + isReround: false (boolean) - A reround is usually tied to the original booking to mark what time they'll start on the back 9
+    + type: teetime (enum[string])
+        + Members
+            + `teetime`
+            + `league`
+            + `shotgun`
+            + `event`
+            + `tournament`
+            + `closed`
+            + `deleted`
+    + status: checked in (enum[string])
+        + Members
+            + `checked in`
+            + ``
+            + `teed off`
+            + `deleted`
+    + duration: 1 (number) - The number of increments the booking takes up
+    + playerCount: 2 (number)
+    + holes: 18 (number)
+    + carts: 4 (number)
+    + paidPlayerCount: 2 (number)
+    + noShowCount: 2 (number)
+    + title: Hopkins (string)
+    + details: `PAID ONLINE` (string)
+    + side: front (string)
+    + bookingSource: online (enum[string])
+        + Members
+            + `online`
+            + `POS`
+            + `standby`
+            + `api`
+            + `apiv2`
     + start: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
     + end: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
     + lastUpdated: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
