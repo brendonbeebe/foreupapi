@@ -462,7 +462,7 @@ This endpoint will list all the courses which you have access too.
 
 # Group Tee Sheets
 
-## Tee Time Slots [/courses/{courseId}/teesheets/{teesheetId}/teetimes{?startTime,endTime,date,customerId,priceClassId,holes}]
+## Tee Time Slots [/courses/{courseId}/teesheets/{teesheetId}/teetimes{?startTime,endTime,date,customerId,priceClassId,holes,bookingClassId}]
 
 Each slot can have multiple bookings totalling up to 4 players.
 
@@ -480,6 +480,7 @@ Each slot can have multiple bookings totalling up to 4 players.
     + startTime : `0800` (string,required) - Find tee times starting with this time.
     + endTime : `1500` (string,required) - Find tee times up to this time.
     + date : `2017-01-18`,`sales` (string,required) - Date of tee time slots
+    + bookingClassId : 1 (integer,optional) - View tee times using a booking class id
     + customerId: 9039 (integer,optional) - Show pricing in regards to a customer
     + priceClassId: 3 (integer,optional) - Show pricing with the given price class id.
     + holes: 18 (integer,optional) - Show availability for either 9 or 18 holes
@@ -1216,7 +1217,7 @@ See https://github.com/AmeriCommerce/rest-api/blob/master/query_syntax.md for mo
 
 
 # Group Inventory
-## Item Collection [/courses/{courseId}/items{?limit,start,filter,q,include}]
+## Item Collection [/courses/{courseId}/items{?limit,start,filter,q,include,format}]
 
 Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Cards.  This does not include tee times which are handled separately.
 
@@ -1231,7 +1232,7 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
     + courseId : 6270 - A course id that the user has permission to access.
     + limit: 1 (integer,optional) - Total results to show (Max: 100).
     + start: 0 (integer,optional) - Which result to start on.
-    + format:  (enum[string], optional) - Alternate formats: Comma seperated value, and simple array of itemIds
+    + format:  `csv` (enum[string], optional) - Alternate formats: Comma seperated value, and simple array of itemIds
         + Members
             + `csv`
             + `simple`
@@ -1240,7 +1241,7 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
             + `retail`
             + `fb`
             + `side`
-    + q: (string,optional) - Searches by name, itemNumber, department, category, subcategory, and glCode
+    + q: anything(string,optional) - Searches by name, itemNumber, department, category, subcategory, and glCode
     + include : itemModifiers (enum[string],optional) - Which relationships to include in the response.
         + Members
             + `upcs`
@@ -1575,7 +1576,6 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + url:  https://requestb.in/18unim81 (string,required) - The URL we'll call when the event occurs
     + event:  customer.updated (enum[string],required) - Which event to listen to.
         + Members
-            + customer.updated
             + sale.created
             + teetime.deleted
             + teetime.updated
@@ -1746,7 +1746,6 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + details: `This was already paid for` (optional,string) - Notes you'd like to save with the tee time
     + holes: 18 (optional, enum)
         + Members
-            + 18
             + 9
     + players: 1 (optional,number) - How many players 1-4
     + carts: 1 (optional,number) - How many players will use carts
@@ -1761,7 +1760,6 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + details: `This is part of a trade` (optional,string) - Notes you'd like to save with the tee time
     + holes: 18 (optional, enum)
         + Members
-            + 18
             + 9
     + players: 1 (optional,number) - How many players 1-4
     + carts: 1 (optional,number) - How many players will use carts
@@ -1787,6 +1785,8 @@ Sales may or may not have a customer attached.  This event triggers any time a s
             + walking - Only walking is allowed
     + greenFeeTax
     + cartFeeTax
+    + hasSpecial: true (boolean) - Is the price a special
+    + specialDiscountPercentage: 50 (number) - The discount percentage provided via the special
     + tradeDiscountAvailable: 0 (number) - If you have trade access, a number greater than `0` indicates a percentage discount available to sell the tee time (`25` = `25% off`)
 
 ## Bookings (object)
@@ -1796,7 +1796,6 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + isReround: false (boolean) - A reround is usually tied to the original booking to mark what time they'll start on the back 9
     + type: teetime (enum[string])
         + Members
-            + `teetime`
             + `league`
             + `shotgun`
             + `event`
@@ -1805,7 +1804,6 @@ Sales may or may not have a customer attached.  This event triggers any time a s
             + `deleted`
     + status: checked in (enum[string])
         + Members
-            + `checked in`
             + ``
             + `teed off`
             + `deleted`
@@ -1820,7 +1818,6 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + side: front (string)
     + bookingSource: online (enum[string])
         + Members
-            + `online`
             + `POS`
             + `standby`
             + `api`
@@ -1840,7 +1837,6 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + isReround: false (boolean) - A reround is usually tied to the original booking to mark what time they'll start on the back 9
     + type: teetime (enum[string])
         + Members
-            + `teetime`
             + `league`
             + `shotgun`
             + `event`
@@ -1849,7 +1845,6 @@ Sales may or may not have a customer attached.  This event triggers any time a s
             + `deleted`
     + status: checked in (enum[string])
         + Members
-            + `checked in`
             + ``
             + `teed off`
             + `deleted`
@@ -1864,7 +1859,6 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + side: front (string)
     + bookingSource: online (enum[string])
         + Members
-            + `online`
             + `POS`
             + `standby`
             + `api`
@@ -1882,7 +1876,6 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + invoiceId:  1 (number,required) - A unique identifier the course can link back to their payment processor.
 + type : credit_card (enum[string],required) - Identifier showing how the payment was processed
     + Members
-        + `credit_card`
         + `cash`
         + `change`
         + `member_account`
@@ -1946,7 +1939,6 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + type:  text (enum[string],required) - The id of the employee completing the sale
         + Members
             + `dropdown`
-            + `text`
             + `date`
             + `bool`
             + `number`
@@ -2019,11 +2011,10 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + isSoupOrSalad: false(boolean),
     + unitPriceIncludesTax: false (boolean)
     + reorderLevel: 0 (number)
-    + serviceFeeId: null (number, optional)
-    + numberOfSides: null (number, optional)
+    + serviceFeeId: 0 (number, optional)
+    + numberOfSides: 0 (number, optional)
     + itemType: item (enum[string])
         + Members
-            + `item`
             + `food and beverage`
             + `side`
 + meta (object,optional)
