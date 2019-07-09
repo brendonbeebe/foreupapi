@@ -1219,7 +1219,11 @@ See https://github.com/AmeriCommerce/rest-api/blob/master/query_syntax.md for mo
 # Group Inventory
 ## Item Collection [/courses/{courseId}/items{?limit,start,filter,q,include,format}]
 
-Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Cards.  This does not include tee times which are handled separately.
+Inventory Items consist of Item Kits, Items, Service Fees, Passes, Food and Beverage items, and Punch Cards.  This does not include tee times which are handled separately.
+
+Creating an item requires certain fields to be set. To avoid errors, be aware of the required fields prior to sending your data. We encourage you to fill out as many fields as you can to ensure that the items show up as intended.
+
+The following API calls demonstrate how to manipulate a simple item.
 
 ### List All [GET]
 + Request (application/json)
@@ -1377,7 +1381,7 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
             x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
 
     + Attributes
-        + data (Item)
+        + data (CreateItem)
 
 + Parameters
     + courseId : 6270 - A course id that the user has permission to access.
@@ -1388,6 +1392,7 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
         + data (Item)
 
 ### PUT [PUT /courses/{courseId}/items/{itemId}]
+Updating an item through the API comes with the restriction of only updating simple attributes. See the available attributes in the `PUT` example. These attributes are the only acceptable attributes for this endpoint.
 + Request (application/json)
 
     + Headers
@@ -1395,17 +1400,59 @@ Inventory Items consist of Item Kits, Items, Service Fees, Passes, and Punch Car
             x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
 
     + Attributes
-        + data (Item)
+        + data (UpdateItem)
         + meta (TestingMeta, optional)
 
 + Parameters
     + courseId : 6270 - A course id that the user has permission to access.
-    + itemId: `` (string, optional)
+    + itemId: `` (string, required)
 
 + Response 200 (application/json)
 
     + Attributes
         + data (Item)
+    
+### Create [POST]
+Here is an example of `CREATE` and `PUT` for a Food and Beverage type object.
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+
+    + Attributes
+        + data (CreateFBItem)
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (CreatedFBItem)
+        
+### PUT [PUT /courses/{courseId}/items/{itemId}]
+Updating a food and beverage item through the API comes with the restriction of only updating simple attributes. See the available attributes in the example. These attributes are the only acceptable attributes for this endpoint.
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+
+    + Attributes
+        + data (UpdateFoodItem)
+        + meta (TestingMeta, optional)
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + itemId: `` (string, required)
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (CreatedFBItem)
+        
+        
 
 ## Transaction Collection [/courses/{courseId}/inventory{?include,startDate,endDate,limit,start}]
 
@@ -1981,42 +2028,216 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + attributes (object)
     + unitPrice: 23.72 (number),
 
+## CreateItem (object)
++ type: items (string,required)
++ attributes (object)
+    + name: Driver (string, required),
+    + category: Services (string, required),
+    + itemType: item (enum[string], required)
+        + Members
+            + `food and beverage`
+            + `side`
+    + description: Some description (string, required),
+    + location: Pro Shop (string, required),
+    + department: Anything (string, required),
+    + costPrice: 20.05 (number, required),
+    + isUnlimited: false(boolean, required),
+    + maxDiscount: 100 (number, optional),
+    + addOnPrice: 0 (number, optional),
+    + quantity: 1000 (number, optional),
+    + unitPrice: 22.59 (number, required),
+    + itemNumber: 1234 (string, optional),
+    + subcategory: Anything (string, optional),
+    + glCode: GA23 (string, optional),
+    + isInactive:  false (boolean, optional),
+    + doNotPrint: false (boolean, optional),
+    + isFoodAndBeverage: false(boolean, optional),
+    + isInvisible: false(boolean, optional),
+    + isFee: false(boolean, optional),
+    + isGiftcard: false(boolean, optional),
+    + isPass: false(boolean, optional),
+    + isSide: false(boolean, optional)
+    + isSoupOrSalad: none (enum[string], optional)
+        + Members
+            + `either`
+            + `both`
+            + `salad`
+            + `soup`,
+    + unitPriceIncludesTax: false (boolean, optional)
+    + reorderLevel: 0 (number, optional)
+    + numberOfSides: 0 (number, optional)
+
++ meta (object,optional)
+    + warnings (array, optional)
+    
+## CreateFBItem (object)
++ type: items (string,required)
++ attributes (object)
+    + name: Grilled Salmon (string, required),
+    + category: Food (string, required),
+    + itemType: food and beverage (enum[string], required)
+        + Members
+            + `side`
+    + description: Some description (string, required),
+    + location: Grill (string, required),
+    + department: Anything (string, required),
+    + costPrice: 10.05 (number, required),
+    + isUnlimited: false(boolean, required),
+    + maxDiscount: 100 (number, optional),
+    + addOnPrice: 0 (number, optional),
+    + quantity: 1000 (number, optional),
+    + unitPrice: 22.59 (number, required),
+    + itemNumber: 1234 (string, optional),
+    + subcategory: Anything (string, optional),
+    + glCode: GA230 (string, optional),
+    + isInactive:  false (boolean, optional),
+    + doNotPrint: false (boolean, optional),
+    + isFoodAndBeverage: true(boolean, optional),
+    + isInvisible: false(boolean, optional),
+    + isFee: false(boolean, optional),
+    + isGiftcard: false(boolean, optional),
+    + isPass: false(boolean, optional),
+    + isSide: false(boolean, optional)
+    + isSoupOrSalad: none (enum[string], optional)
+        + Members
+            + `either`
+            + `both`
+            + `salad`
+            + `soup`,
+    + unitPriceIncludesTax: false (boolean, optional)
+    + reorderLevel: 0 (number, optional)
+    + numberOfSides: 0 (number, optional)
+
++ meta (object,optional)
+    + warnings (array, optional)
+    
+## CreatedFBItem (object)
++ type: items (string,required)
++ id:  5 (string,optional)
++ attributes (object)
+    + name: Grilled Salmon (string, required),
+    + category: Food (string, required),
+    + itemType: food and beverage (enum[string], required)
+        + Members
+            + `side`
+    + description: Some description (string, required),
+    + location: Grill (string, required),
+    + department: Anything (string, required),
+    + costPrice: 10.05 (number, required),
+    + isUnlimited: false(boolean, required),
+    + maxDiscount: 100 (number, optional),
+    + addOnPrice: 0 (number, optional),
+    + quantity: 1000 (number, optional),
+    + unitPrice: 22.59 (number, required),
+    + itemNumber: 1234 (string, optional),
+    + subcategory: Anything (string, optional),
+    + glCode: GA230 (string, optional),
+    + isInactive:  false (boolean, optional),
+    + doNotPrint: false (boolean, optional),
+    + isFoodAndBeverage: true(boolean, optional),
+    + isInvisible: false(boolean, optional),
+    + isFee: false(boolean, optional),
+    + isGiftcard: false(boolean, optional),
+    + isPass: false(boolean, optional),
+    + isSide: false(boolean, optional)
+    + isSoupOrSalad: none (enum[string], optional)
+        + Members
+            + `either`
+            + `both`
+            + `salad`
+            + `soup`,
+    + unitPriceIncludesTax: false (boolean, optional)
+    + reorderLevel: 0 (number, optional)
+    + numberOfSides: 0 (number, optional)
+
++ meta (object,optional)
+    + warnings (array, optional)
+
+## UpdateFoodItem (object)
++ type: items (string,required)
++ attributes (object)
+    + name: Grilled Salmon (string),
+    + category: Food (string),
+    + description: Some description (string, required),
+    + location: Grill (string, required),
+    + department: Anything (string, required),
+    + costPrice: 10.05 (number, required),
+    + isUnlimited: false(boolean, required),
+    + maxDiscount: 100 (number, optional),
+    + addOnPrice: 0 (number, optional),
+    + quantity: 1000 (number, optional),
+    + unitPrice: 22.59 (number, required),
+    + subcategory: Anything (string, optional),
+    + isInvisible: false(boolean, optional),
+    + unitPriceIncludesTax: false (boolean, optional)
+    + reorderLevel: 0 (number, optional)
+
++ meta (object,optional)
+    + warnings (array, optional)
+    
+
 ## Item (object)
 + type: items (string,required)
 + id:  5 (string,optional)
 + attributes (object)
-    + maxDiscount: 100 (number),
-    + addOnPrice: 0 (number),
-    + costPrice: 0 (number),
-    + quantity: 1000 (number),
-    + numberOfSides: 0 (number),
-    + unitPrice: 22.59 (number),
-    + category: Services (string),
-    + itemNumber: 1234 (number),
-    + location: Pro Shop (string),
-    + name: Driver (string),
-    + subcategory: Anything (string),
-    + department: Anything (string),
-    + description: Some descriptiong (string),
-    + glCode: GA23 (string),
-    + isInactive:  false (boolean),
-    + doNotPrint: false (boolean),
-    + isfoodAndBeverage: false(boolean),
-    + isInvisible: false(boolean),
-    + isFee: false(boolean),
-    + isGiftcard: false(boolean),
-    + isPass: false(boolean),
-    + isSide: false(boolean),
-    + isUnlimited: false(boolean),
-    + isSoupOrSalad: false(boolean),
-    + unitPriceIncludesTax: false (boolean)
-    + reorderLevel: 0 (number)
-    + serviceFeeId: 0 (number, optional)
-    + numberOfSides: 0 (number, optional)
-    + itemType: item (enum[string])
+    + name: Driver (string, required),
+    + category: Services (string, required),
+    + itemType: item (enum[string], required)
         + Members
             + `food and beverage`
             + `side`
+    + description: Some description (string, required),
+    + location: Pro Shop (string, required),
+    + department: Anything (string, required),
+    + costPrice: 20.05 (number, required),
+    + isUnlimited: false(boolean, required),
+    + maxDiscount: 100 (number, optional),
+    + addOnPrice: 0 (number, optional),
+    + quantity: 1000 (number, optional),
+    + unitPrice: 22.59 (number, required),
+    + itemNumber: 1234 (string, optional),
+    + subcategory: Anything (string, optional),
+    + glCode: GA23 (string, optional),
+    + isInactive:  false (boolean, optional),
+    + doNotPrint: false (boolean, optional),
+    + isFoodAndBeverage: false(boolean, optional),
+    + isInvisible: false(boolean, optional),
+    + isFee: false(boolean, optional),
+    + isGiftcard: false(boolean, optional),
+    + isPass: false(boolean, optional),
+    + isSide: false(boolean, optional)
+    + isSoupOrSalad: none (enum[string], optional)
+        + Members
+            + `either`
+            + `both`
+            + `salad`
+            + `soup`,
+    + unitPriceIncludesTax: false (boolean, optional)
+    + reorderLevel: 0 (number, optional)
+    + numberOfSides: 0 (number, optional)
+
++ meta (object,optional)
+    + warnings (array, optional)
+
+## UpdateItem (object)
++ type: items (string,required)
++ attributes (object)
+    + name: Putter (string),
+    + category: Services (string),
+    + description: Some description (string, required),
+    + location: Pro Shop (string, required),
+    + department: Anything (string, required),
+    + costPrice: 20.05 (number, required),
+    + isUnlimited: false(boolean, required),
+    + maxDiscount: 100 (number, optional),
+    + addOnPrice: 0 (number, optional),
+    + quantity: 1000 (number, optional),
+    + unitPrice: 22.59 (number, required),
+    + subcategory: Anything (string, optional),
+    + isInvisible: false(boolean, optional),
+    + unitPriceIncludesTax: false (boolean, optional)
+    + reorderLevel: 0 (number, optional)
+
 + meta (object,optional)
     + warnings (array, optional)
 
