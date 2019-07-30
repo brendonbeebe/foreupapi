@@ -2066,6 +2066,12 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + unitPriceIncludesTax: false (boolean, optional)
     + reorderLevel: 0 (number, optional)
     + numberOfSides: 0 (number, optional)
+    + taxes: (array, object)
+        + (Item Tax Request)
+    + upcs: (array)
+        + 5000 (string)
+        + 5000A (string)
+        + 5000B (string)
 
 + meta (object,optional)
     + warnings (array, optional)
@@ -2235,8 +2241,15 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + unitPrice: 22.59 (number, required),
     + subcategory: Anything (string, optional),
     + isInvisible: false(boolean, optional),
-    + unitPriceIncludesTax: false (boolean, optional)
-    + reorderLevel: 0 (number, optional)
+    + isInactive: false (boolean, optional),
+    + unitPriceIncludesTax: false (boolean, optional),
+    + reorderLevel: 0 (number, optional),
+    + taxes: (array, object)
+        + (Item Tax Request)
+    + upcs: (array)
+        + 5000 (string)
+        + 5000A (string)
+        + 5000B (string)
 
 + meta (object,optional)
     + warnings (array, optional)
@@ -2269,3 +2282,8 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 ## TestingMeta (object)
 + testing: true (boolean, optional)
 + validateOnly: true (boolean,optional)
+
+## Item Tax Request
++ name: Sales Tax (string,required) - The name of the tax to be used
++ percent: 8.25 (number,required) - The percentage used to tax
++ cumulative: false (boolean)
