@@ -1834,6 +1834,8 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + hasSpecial: true (boolean) - Is the price a special
     + specialDiscountPercentage: 50 (number) - The discount percentage provided via the special
     + tradeDiscountAvailable: 0 (number) - If you have trade access, a number greater than `0` indicates a percentage discount available to sell the tee time (`25` = `25% off`)
+    + tradeMinPlayersRequired: 0 (number) - Minimum number of players required to offer a trade opportunity to.
+    + tradeAvailablePlayers: 0 (number) - The maximum number of trade slots available for purchase for this tee time slot.
 
 ## Bookings (object)
 + type: bookings (string,required)
@@ -1872,6 +1874,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + end: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
     + lastUpdated: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
     + dateBooked: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
+    + isTrade: `false` (boolean) - Indicates if this booking was part of a trade or not
 + relationships (object)
     + players (object)
     + sales (object)
