@@ -2370,6 +2370,9 @@ In the event a `roomName` is not returned, the `roomNumber` will be displayed to
 Adds a charge to a room. The charge includes details such as the items of the transaction, etc. foreUP calls this endpoint when a customer selects a room
 from the POS interface and attempts to run the "Charge Room" payment option. The PMS will need to consume the data correctly in order to ensure the charge
 details are recorded correctly in the PMS.
+
+Note: Voiding a charge sent to a room is not currently supported.
+
 ### Charge Room [POST]
 
 + Request (application/json)
