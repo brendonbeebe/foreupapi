@@ -2282,3 +2282,208 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + name: Sales Tax (string,required) - The name of the tax to be used
 + percent: 8.25 (number,required) - The percentage used to tax
 + cumulative: false (boolean)
+
+## Room Object
++ roomNumber: 100 (string)
++ guestName: John Smith (string)
++ roomName: Penthouse Suite (string) - This is an optional field to include in the PMS response
+
+
+# Group Property Management Systems
+Property Management Systems (PMS) integrated with foreUP use these API endpoints, as outlined in this specification. 
+In order to properly integrate with us, PMS partners will need to ensure their server-side API handles the transactions described below.
+Please note that these endpoints are descriptions of our API requests to the PMS's own API.
+
+
+Our API is capable of searching our PMS partners' rooms by guest name and room number. The API is also capable of posting charges to selected rooms based on the response of the PMS partner.
+## Setup
+In order to utilize these endpoints, you will need to be set up manually first. If you're interested in becoming a partner, please contact us.
+
+We will need to store a `base url` that points to your root API endpoint. This is the `base url` we will call in our requests to your servers. 
+
+<strong>In the following examples, replace the request URL (`mobile.foreupsoftware.com/api_rest/index.php`) with your own `base_url`.</strong>
+
+Example: If my PMS server's API is located at `https://mycompany.com`, requests will be made to `https://mycompany.com/token` for the below example.
+## Authentication [/token]
+
+
+We call this endpoint with a username and password, which is provided within our software by the PMS partner and foreUP's mutual customer. These are the credentials the customer uses to access the PMS.
+
+This token is stored so that subsequent API calls made to the PMS software are properly authenticated.
+### Create a New Token [POST]
+Given the `POST` request data from the foreUP software, the response from the PMS server should match the response in the example here for a valid token. Invalid responses should be a `404` error.
+
+
++ Request (application/json)
+
+            {
+            "username": "testaccount@test.com",
+            "password": "password"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+              "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0NzQ5MjI5MzgsImV4cCI6MTQ3NzUxNDkzOCwibGV2ZWwiOjAsImNpZCI6MCwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjY0ODI3Mjh9.go-Bf_6X8qByMu9JblewsmQt1dsqOu_70z6IlYYaZgGbsvjf9uQI0-RFSEivALntv0HF6-6WN9T5FxLpGyxcNA"
+            }
+            
+## Rooms [/room?search={{URL_Encoded_String}}]
+
+
+We call this endpoint in order to search occupied rooms in the PMS. It is expected that the PMS returns a list of occupied rooms that match the search query.
+It's possible that multiple rooms could be returned, in which case our interface allows the customer to select the intended room. Customers may search by room number, or guest name.
+
+### Search [GET]
+In the event a `roomName` is not returned, the `roomNumber` will be displayed to the customer in the user interface.
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+
++ Parameters
+    + URL_ENCODED_STRING : "100" or "Smith" - A string representing a room number or customer name
+    
++ Response 200 (application/json)
+    
+        [
+            {
+                "roomNumber": "200",
+                "guestName": "Smith",
+            },
+            {
+                "roomNumber": "100",
+                "guestName": "Johnson",
+            },
+            {
+                "roomNumber": "1000",
+                "guestName": "Doe",
+                "roomName": "Penthouse Suite"
+            },
+        ]
+    
+
+## Post Charges to Room [/room/{roomNumber}/charge]
+Adds a charge to a room. The charge includes details such as the items of the transaction, etc. foreUP calls this endpoint when a customer selects a room
+from the POS interface and attempts to run the "Charge Room" payment option. The PMS will need to consume the data correctly in order to ensure the charge
+details are recorded correctly in the PMS.
+### Charge Room [POST]
+
++ Request (application/json)
+
+    {
+        "id": "11251",
+        "date": "2015-01-01T12:00:00.000Z",
+        "waiterName": "John Doe",
+          "guestName":"Guest 1",
+          "amount": 79.0000,
+          "receiptId": "11251",
+          "details": [
+                {
+                  "productId": 10,
+                  "name": "Ball Bucket",
+                  "productGroupName": "Pro Shop",
+                  "amount": 1,
+                  "price": 9.0000
+                },
+                {
+                  "productId": 22,
+                  "name": "Burgers",
+                  "productGroupName": "Food & Bev",
+                  "amount": 1,
+                  "price": 70.0000
+                }
+            ],
+          "vatDetails":[
+             {
+                "name":"21.0%",
+                "vatPercentage":21.0,
+                "priceWithVat":79.0000,
+                "priceWithoutVat":62.4100,
+                "vat":16.59,
+                "taxClass":false
+             }
+          ],
+          "paymentDetails":[
+             {
+                "amount":79.0000,
+                "tips":0.0000,
+                "type":"put on room",
+                "paymentTypeTypeId":9
+             }
+          ]
+    }   
+
++ Response 200 (application/json)
+
+    + Body
+
+        {
+          "roomNumber": "2100",
+          "guestName": "John Doe",
+          "canCharge": true,
+          "chargeLimit": 300.0
+        }  
+
+### Charge Room - Error Response [POST]
+This shows what the PMS server response should be if the Room rejects the charge, or the charge amount exceeds charge limit.
+Error codes are 
+
+`1000: Room does not allow charge`
+`1001: Charge amount exceeds charge limit`
++ Request (application/json)
+
+    {
+        "id": "11251",
+        "date": "2015-01-01T12:00:00.000Z",
+        "waiterName": "John Doe",
+          "guestName":"Guest 1",
+          "amount": 79.0000,
+          "receiptId": "11251",
+          "details": [
+                {
+                  "productId": 10,
+                  "name": "Ball Bucket",
+                  "productGroupName": "Pro Shop",
+                  "amount": 1,
+                  "price": 9.0000
+                },
+                {
+                  "productId": 22,
+                  "name": "Burgers",
+                  "productGroupName": "Food & Bev",
+                  "amount": 1,
+                  "price": 70.0000
+                }
+            ],
+          "vatDetails":[
+             {
+                "name":"21.0%",
+                "vatPercentage":21.0,
+                "priceWithVat":79.0000,
+                "priceWithoutVat":62.4100,
+                "vat":16.59,
+                "taxClass":false
+             }
+          ],
+          "paymentDetails":[
+             {
+                "amount":79.0000,
+                "tips":0.0000,
+                "type":"put on room",
+                "paymentTypeTypeId":9
+             }
+          ]
+    }   
+
++ Response 200 (application/json)
+
+    + Body
+
+        {
+            "errorCode": "1000",
+            "errorDescription": "Room does not allow charge"
+        }
