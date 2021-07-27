@@ -74,9 +74,9 @@ This endpoint will list all the courses which you have access too.
 
     + Headers
     
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE2MjczOTg3OTYsImV4cCI6MTYyOTk5MDc5NiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjcxNzk5MDUsImFwaVZlcnNpb24iOm51bGwsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.CufuQeilJIi2w428jScRfNelkx1h_rb-UBz1rg63pE6BKZfA2LWvf4v35xU_41m2aRuZCyUgwot70C-3k5IFTw
 + Parameters
-    + include : teesheets (enum[string],optional) - Which relationships to include in response. 
+    + include : teesheets (enum[string],optional) - Which relationships to include in the response.  The hours a tee sheet can be booked, and the sides that belong to the tee sheet are automatically included when include=teesheets is added.
         + Members
             + `teesheets`
             + `teesheets.holes`
@@ -143,7 +143,7 @@ This endpoint will list all the courses which you have access too.
 
     + Headers
     
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE2MjczMjkzOTQsImV4cCI6MTYyOTkyMTM5NCwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjcxNzk5MDUsImFwaVZlcnNpb24iOm51bGwsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.sj-lqjPhj4XINThrcisUiqnutt7AbNgH81YeTmgvoEFyBQPEa5H0--9m9FgLPcXcvJml66xyEmgGsCE44On0mQ
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
@@ -473,7 +473,7 @@ Each slot can have multiple bookings totalling up to 4 players.
 
     + Headers
     
-            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE2MjczMjkzOTQsImV4cCI6MTYyOTkyMTM5NCwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOmZhbHNlLCJ1aWQiOjcxNzk5MDUsImFwaVZlcnNpb24iOm51bGwsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.sj-lqjPhj4XINThrcisUiqnutt7AbNgH81YeTmgvoEFyBQPEa5H0--9m9FgLPcXcvJml66xyEmgGsCE44On0mQ
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
@@ -485,6 +485,7 @@ Each slot can have multiple bookings totalling up to 4 players.
     + customerId: 9039 (integer,optional) - Show pricing in regards to a customer
     + priceClassId: 3 (integer,optional) - Show pricing with the given price class id.
     + holes: 18 (integer,optional) - Show availability for either 9 or 18 holes
+    + scheduleSideId: 1 "all" (integer | string,optional) - This parameter will do nothing if the course is not using our revamped tee sheet. Filters slots by a specific side.  If no side id is specified the endpoint will return time slots for ONLY the first side of the tee sheet.  If you would like to get ALL slots at once pass the option "all" instead of a side id.
             
 + Response 200 (application/json)
 
@@ -1685,15 +1686,17 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + state: UT (string) - State of the course
     + zip: 84097 (string) - Zip of the course
     + phone: 1231231234 (string)
-    + course_summary: ``(string) - Brief summary of the course
-    + base_color: ``(string) - Color used in mobile app
+    + course_summary: `` (string) - Brief summary of the course
+    + base_color: `` (string) - Color used in mobile app
+    + uses_tee_sheet_sides: false (boolean) - Whether the course is using our revamped tee sheet with the new tee sheet sides architecture.
 
 ## Tee Sheets (object)
 + type: terminals (string,required)
 + id: 6 (string,required)
 + attributes (object)
-    + title: Exec 9 holes (string)
-    + course_id: 6279 (string)
+    + title: Exec 9 holes (string) - Name of the tee sheet
+    + courseId: 6279 (number) - Course the tee sheet belongs to
+    + holes: 18 (number) - Number of holes on the tee sheet.  Currently the value will be between 9 - 54
 
 ## Terminals (object)
 + type: terminals (string,required)
@@ -1792,6 +1795,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + side: `front` (required,string)
     + event_type: `teetime` (optional,string)
     + details: `This was already paid for` (optional,string) - Notes you'd like to save with the tee time
+    + scheduleSideId: 'The side id you wish to book on.' (optional,number)
     + holes: 18 (optional, enum)
         + Members
             + 9
@@ -1819,12 +1823,14 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 
 ## Tee Time Slot (object)
 + type: `tee_time_slot`
++ id: `456846` (string)
 + attributes (object)
     + time: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
-    + holes: `18` (string)
-    + scheduleName: `White Marsh` (required,string)
-    + scheduleId: `2192` (required,string)
-    + availableSpots: 4 (required,string)
+    + holes: 18 (number)
+    + scheduleName: `White Marsh` (required,string) - This is the same as the tee sheet title
+    + scheduleId: `2192` (required,string) - This is the same as the tee sheet id
+    + bookingClassId: 23 (number)
+    + availableSpots: 4 (required,number) - The number of spots available to book
     + greenFee: 3 (number) The green for for a single person in this slot
     + cartFee: 1 (number) The cart fee for a single person this slot
     + rateType: `both`(enum) The type of booking allowed.  The cart fee and green fee will reflect the type of booking.
@@ -1832,13 +1838,23 @@ Sales may or may not have a customer attached.  This event triggers any time a s
             + both - Both walking and riding are allowed
             + riding - Only riding is allowed
             + walking - Only walking is allowed
-    + greenFeeTax
-    + cartFeeTax
+    + greeFeeTax: 0 (number)
+    + cartFeeTax: 0 (number)
     + hasSpecial: true (boolean) - Is the price a special
     + specialDiscountPercentage: 50 (number) - The discount percentage provided via the special
     + tradeDiscountAvailable: 0 (number) - If you have trade access, a number greater than `0` indicates a percentage discount available to sell the tee time (`25` = `25% off`)
     + tradeMinPlayersRequired: 0 (number) - Minimum number of players required to offer a trade opportunity to.
     + tradeAvailablePlayers: 0 (number) - The maximum number of trade slots available for purchase for this tee time slot.
+    + scheduleSideId: 1234 (optional,number) - The tee sheet side id this time slot belongs to.  This field will only be included in the response if the course is using our revamped tee sheet.
+    + scheduleSideName: `Front` (optional, string) - The name of the tee sheet side that can be displayed to a courses customers. This field will only be included in the response if the course is using our revamped tee sheet.
+    + reroundScheduleSideId: 1235 (optional, number) - The tee sheet side id that this time slot will reround to. This field will only be included in the response if the course is using our revamped tee sheet.
+    + reroundScheduleSideName: `Back` (optional, string) - The name of the tee sheet side that this time slot will reround to and can be displayed to a courses customers. This field will only be included in the response if the course is using our revamped tee sheet.
+    + allowedGroupSizes: (optional, array) - An array of required group sizes. Our revamped tee sheet allows the course operator to specify how many spots a customer must book in order to make a reservation.  Unlike the old tee sheet which only allowed the course operator to specify a range, the revamped tee sheet allows a course operator to say they only want to allow groups of size 2 or 4. This field will only be included in the response if the course is using our revamped tee sheet.
+        + 1 (number)
+        + 2 (number)
+        + 3 (number)
+        + 4 (number)
+        + 5 (number)
 
 ## Bookings (object)
 + type: bookings (string,required)
