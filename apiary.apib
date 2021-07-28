@@ -465,17 +465,29 @@ Foreup is currently in the process of a major architectural overhaul of our tee 
 users to create tee sheets with two sides which only supported up to an 18 hole setup. Our revamped tee sheet theoretically supports 
 any number of sides/holes, but is currently artificially capped at 6 sides or 54 holes.  
 
-The majority of courses, once they are switched over to our revamped tee sheet, will require no changes from any integration to 
-maintain existing functionality. However facilities that are considered 27+ hole course will be changing drastically.  In the old 
-tee sheet these courses had to be setup with multiple tee sheets as a work around for having more than 18 holes. A side effect of this 
-is that these courses could have integrations book times on almost all sides even though our api currently only allowed booking on 
-the front side. When these courses are moved over to our revamped tee sheet their setup is changed so they only have a single 
-tee sheet. In order to keep equivalent functionality in the API we have built out support to book tee times on any side if the 
-course is using our revamped tee sheet.  This applies to any size tee sheet so although for 18 hole courses your integration 
-doesn't have to change if you want to take advantage of back 9 booking you'll want to update your integration.
+There are several changes to the API when a facility is switched to our revamped tee sheet. Facilities that are considered 27+ hole 
+course will be changing drastically.  In the old tee sheet these facilities had to be setup with multiple tee sheets as a work around 
+for having more than 18 holes. A side effect of this is that these facilities could have integrations book times on almost all sides 
+even though our api at the time only allowed booking on the front side. When these facilities are moved over to our revamped tee sheet
+their setup is changed so they only have a single tee sheet. In order to keep equivalent functionality in the API we have built out
+support to book tee times on any side if the facility is using our revamped tee sheet.  This applies to any size tee sheet so although
+for 18 hole courses your integration doesn't need to change much if you want to take advantage of back 9 booking you'll want to update
+your integration.
 
-We've added an attribute to the courses endpoint called 'uses_tee_sheet_sides' that allows you to determine what courses have been
-switched to the new tee sheet.
+All endpoints that pertain to tee times and available tee time slots will now return a new attribute called teeSheetSideId or 
+scheduleSideId.  These two fields represent the same thing.  All tee sheets now have a collection of sides with information 
+like side name, order(order side is displayed in), and id.  When you use the tee sheet endpoint to pull all of a facilities tee sheets
+this info is automatically included if the facility is using our revamped tee sheet.
+
+The final change on our revamped tee sheet has to do with allowed group sizes.  On the old tee sheet you could only set a minimum 
+and maximum group size and any value in between was allowed. So if the min was 2 and the max was 5 a golfer could book if their group had
+2, 3, 4, or 5 players in it.  The revamped tee sheet changes this to allow more granular restrictions.  You can now specifically specify 
+any group size you want to allow.  For example it is now possible to say you only want to all groups of 2 or 4.  In this scenario groups 
+of 1, 3, and 5 would not be allowed.
+
+To help in identifying what facilities are using our revamped tee sheet we've added an attribute to the courses endpoint called 
+'uses_tee_sheet_sides'. If the value is set to true then they are on our revamped tee sheet and will require passing a 
+teeSheetSideId to many endpoints to take advantage of any new functionality introduced by the revamped tee sheet.
 
 ## Tee Time Slots [/courses/{courseId}/teesheets/{teesheetId}/teetimes{?startTime,endTime,date,customerId,priceClassId,holes,bookingClassId,scheduleSideId}]
 
