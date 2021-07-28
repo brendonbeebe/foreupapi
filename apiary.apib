@@ -137,7 +137,6 @@ This endpoint will list all the courses which you have access too.
 
 ## Tee Sheets [/courses/{courseId}/teesheets{?include}]
 
-
 ### Get All [GET]
 + Request (application/json)
 
@@ -462,6 +461,21 @@ This endpoint will list all the courses which you have access too.
         + data (Cart Items) 
 
 # Group Tee Sheets
+Foreup is currently in the process of a major architectural overhaul of our tee sheet functionality. Our old tee sheet only allowed 
+users to create tee sheets with two sides which only supported up to an 18 hole setup. Our revamped tee sheet theoretically supports 
+any number of sides/holes, but is currently artificially capped at 6 sides or 54 holes.  
+
+The majority of courses, once they are switched over to our revamped tee sheet, will require no changes from any integration to 
+maintain existing functionality. However facilities that are considered 27+ hole course will be changing drastically.  In the old 
+tee sheet these courses had to be setup with multiple tee sheets as a work around for having more than 18 holes. A side effect of this 
+is that these courses could have integrations book times on almost all sides even though our api currently only allowed booking on 
+the front side. When these courses are moved over to our revamped tee sheet their setup is changed so they only have a single 
+tee sheet. In order to keep equivalent functionality in the API we have built out support to book tee times on any side if the 
+course is using our revamped tee sheet.  This applies to any size tee sheet so although for 18 hole courses your integration 
+doesn't have to change if you want to take advantage of back 9 booking you'll want to update your integration.
+
+We've added an attribute to the courses endpoint called 'uses_tee_sheet_sides' that allows you to determine what courses have been
+switched to the new tee sheet.
 
 ## Tee Time Slots [/courses/{courseId}/teesheets/{teesheetId}/teetimes{?startTime,endTime,date,customerId,priceClassId,holes,bookingClassId,scheduleSideId}]
 
@@ -1792,10 +1806,10 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + type: bookings
 + attributes (object)
     + start: `2017-05-05T12:30:00` (required, string) - The date/time (ISO8601 format)
-    + side: `front` (required,string) - This attribute is used for courses on the old tee sheet and is required when booking a time.  This value is ignored on our revamped tee sheet.
+    + side: front (required, string) - The side you wish to book on. This attribute is required to book a reservation on our old tee sheet, but is ignored if the course is on our revamped tee sheet. Use 'scheduleSideId' instead if using the revamped tee sheet.
     + event_type: `teetime` (optional,string)
     + details: `This was already paid for` (optional,string) - Notes you'd like to save with the tee time
-    + scheduleSideId: 2405 (required, number) - The side id you wish to book on.  This attribute is required to book a reservation on our revamped tee sheet, but is ignored if the course is still using our old tee sheet.
+    + scheduleSideId: 2405 (required, number) - The side id you wish to book on.  This attribute is required to book a reservation on our revamped tee sheet, but is ignored if the course is still using our old tee sheet. Use 'side' instead if using the old tee sheet.
     + holes: 18 (optional, enum)
         + Members
             + 9
@@ -1808,7 +1822,8 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + type: bookings
 + attributes (object)
     + start: `2017-05-05T12:30:00` (required, string) - The date/time (ISO8601 format)
-    + side: `front` (required,string)
+    + side: `front` (required, string) - The side you wish to book on. This attribute is required to book a reservation on our old tee sheet, but is ignored if the course is on our revamped tee sheet. Use 'scheduleSideId' instead if using the revamped tee sheet.
+    + scheduleSideId: 2405 (number) - The side id you wish to book on.  This attribute is required to book a reservation on our revamped tee sheet, but is ignored if the course is still using our old tee sheet. Use 'side' instead if using the old tee sheet.
     + event_type: `teetime` (optional,string)
     + details: `This is part of a trade` (optional,string) - Notes you'd like to save with the tee time
     + holes: 18 (optional, enum)
@@ -1924,7 +1939,8 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + noShowCount: 2 (number)
     + title: Hopkins (string)
     + details: `PAID ONLINE` (string)
-    + side: front (string)
+    + side: front (required, string) - This attribute is used by our old tee sheet.
+    + scheduleSideId: 2405 (number) - This attribute is used by our revamped tee sheet and will only be returned if the course is on the revamped tee sheet.
     + bookingSource: online (enum[string])
         + Members
             + `POS`
