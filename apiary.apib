@@ -147,7 +147,7 @@ This endpoint will list all the courses which you have access too.
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
-    + include : `holes` (enum[string],optional) - Which relationships to include in response. 
+    + include : `holes` (enum[string],optional) - Which relationships to include in response. Tee sheet sides will automatically be included in the response. 
         + Members
             + `holes`
 
@@ -463,7 +463,7 @@ This endpoint will list all the courses which you have access too.
 
 # Group Tee Sheets
 
-## Tee Time Slots [/courses/{courseId}/teesheets/{teesheetId}/teetimes{?startTime,endTime,date,customerId,priceClassId,holes,bookingClassId}]
+## Tee Time Slots [/courses/{courseId}/teesheets/{teesheetId}/teetimes{?startTime,endTime,date,customerId,priceClassId,holes,bookingClassId,scheduleSideId}]
 
 Each slot can have multiple bookings totalling up to 4 players.
 
@@ -1792,10 +1792,10 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + type: bookings
 + attributes (object)
     + start: `2017-05-05T12:30:00` (required, string) - The date/time (ISO8601 format)
-    + side: `front` (required,string)
+    + side: `front` (required,string) - This attribute is used for courses on the old tee sheet and is required when booking a time.  On our revamped tee sheet this value is ignored.
     + event_type: `teetime` (optional,string)
     + details: `This was already paid for` (optional,string) - Notes you'd like to save with the tee time
-    + scheduleSideId: 'The side id you wish to book on.' (optional,number)
+    + scheduleSideId: 2405 (required, number) - The side id you wish to book on.  This attribute is required to book a reservation on our revamped tee sheet, but is ignored if the course is still using our old tee sheet.
     + holes: 18 (optional, enum)
         + Members
             + 9
@@ -1849,7 +1849,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + scheduleSideName: `Front` (optional, string) - The name of the tee sheet side that can be displayed to a courses customers. This field will only be included in the response if the course is using our revamped tee sheet.
     + reroundScheduleSideId: 1235 (optional, number) - The tee sheet side id that this time slot will reround to. This field will only be included in the response if the course is using our revamped tee sheet.
     + reroundScheduleSideName: `Back` (optional, string) - The name of the tee sheet side that this time slot will reround to and can be displayed to a courses customers. This field will only be included in the response if the course is using our revamped tee sheet.
-    + allowedGroupSizes: (optional, array) - An array of required group sizes. Our revamped tee sheet allows the course operator to specify how many spots a customer must book in order to make a reservation.  Unlike the old tee sheet which only allowed the course operator to specify a range, the revamped tee sheet allows a course operator to say they only want to allow groups of size 2 or 4. This field will only be included in the response if the course is using our revamped tee sheet.
+    + allowedGroupSizes: [2,4] (optional, array) - An array of required group sizes. Our revamped tee sheet allows the course operator to specify how many spots a customer must book in order to make a reservation.  Unlike the old tee sheet which only allowed the course operator to specify a range, the revamped tee sheet allows a course operator to say they only want to allow groups of size 2 or 4. This field will only be included in the response if the course is using our revamped tee sheet.
         + 1 (number)
         + 2 (number)
         + 3 (number)
@@ -2071,12 +2071,12 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + glCode: GA23 (string, optional),
     + isInactive:  false (boolean, optional),
     + doNotPrint: false (boolean, optional),
-    + isFoodAndBeverage: false(boolean, optional),
-    + isInvisible: false(boolean, optional),
-    + isFee: false(boolean, optional),
-    + isGiftcard: false(boolean, optional),
-    + isPass: false(boolean, optional),
-    + isSide: false(boolean, optional)
+    + isFoodAndBeverage: false (boolean, optional),
+    + isInvisible: false (boolean, optional),
+    + isFee: false (boolean, optional),
+    + isGiftcard: false (boolean, optional),
+    + isPass: false (boolean, optional),
+    + isSide: false (boolean, optional)
     + isSoupOrSalad: none (enum[string], optional)
         + Members
             + `either`
@@ -2086,16 +2086,16 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + unitPriceIncludesTax: false (boolean, optional)
     + reorderLevel: 0 (number, optional)
     + numberOfSides: 0 (number, optional)
-    + taxes: (array, object)
+    + taxes: [{"name": "Sales Tax","percent": 8.25,"cumulative": false}] (array[object])
         + (Item Tax Request)
-    + upcs: (array)
+    + upcs: ["5000","5000A","5000B"] (array)
         + 5000 (string)
         + 5000A (string)
         + 5000B (string)
 
 + meta (object,optional)
     + warnings (array, optional)
-    
+
 ## CreateFBItem (object)
 + type: items (string,required)
 + attributes (object)
@@ -2107,7 +2107,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + description: Some description (string, required),
     + department: Anything (string, required),
     + costPrice: 10.05 (number, required),
-    + isUnlimited: false(boolean, required),
+    + isUnlimited: false (boolean, required),
     + maxDiscount: 100 (number, optional),
     + addOnPrice: 0 (number, optional),
     + quantity: 1000 (number, optional),
@@ -2117,12 +2117,12 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + glCode: GA230 (string, optional),
     + isInactive:  false (boolean, optional),
     + doNotPrint: false (boolean, optional),
-    + isFoodAndBeverage: true(boolean, optional),
-    + isInvisible: false(boolean, optional),
-    + isFee: false(boolean, optional),
-    + isGiftcard: false(boolean, optional),
-    + isPass: false(boolean, optional),
-    + isSide: false(boolean, optional)
+    + isFoodAndBeverage: true (boolean, optional),
+    + isInvisible: false (boolean, optional),
+    + isFee: false (boolean, optional),
+    + isGiftcard: false (boolean, optional),
+    + isPass: false (boolean, optional),
+    + isSide: false (boolean, optional)
     + isSoupOrSalad: none (enum[string], optional)
         + Members
             + `either`
@@ -2135,7 +2135,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 
 + meta (object,optional)
     + warnings (array, optional)
-    
+
 ## CreatedFBItem (object)
 + type: items (string,required)
 + id:  5 (string,optional)
@@ -2148,7 +2148,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + description: Some description (string, required),
     + department: Anything (string, required),
     + costPrice: 10.05 (number, required),
-    + isUnlimited: false(boolean, required),
+    + isUnlimited: false (boolean, required),
     + maxDiscount: 100 (number, optional),
     + addOnPrice: 0 (number, optional),
     + quantity: 1000 (number, optional),
@@ -2158,12 +2158,12 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + glCode: GA230 (string, optional),
     + isInactive:  false (boolean, optional),
     + doNotPrint: false (boolean, optional),
-    + isFoodAndBeverage: true(boolean, optional),
-    + isInvisible: false(boolean, optional),
-    + isFee: false(boolean, optional),
-    + isGiftcard: false(boolean, optional),
-    + isPass: false(boolean, optional),
-    + isSide: false(boolean, optional)
+    + isFoodAndBeverage: true (boolean, optional),
+    + isInvisible: false (boolean, optional),
+    + isFee: false (boolean, optional),
+    + isGiftcard: false (boolean, optional),
+    + isPass: false (boolean, optional),
+    + isSide: false (boolean, optional)
     + isSoupOrSalad: none (enum[string], optional)
         + Members
             + `either`
@@ -2212,7 +2212,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + description: Some description (string, required),
     + department: Anything (string, required),
     + costPrice: 20.05 (number, required),
-    + isUnlimited: false(boolean, required),
+    + isUnlimited: false (boolean, required),
     + maxDiscount: 100 (number, optional),
     + addOnPrice: 0 (number, optional),
     + quantity: 1000 (number, optional),
@@ -2222,12 +2222,12 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + glCode: GA23 (string, optional),
     + isInactive:  false (boolean, optional),
     + doNotPrint: false (boolean, optional),
-    + isFoodAndBeverage: false(boolean, optional),
-    + isInvisible: false(boolean, optional),
-    + isFee: false(boolean, optional),
-    + isGiftcard: false(boolean, optional),
-    + isPass: false(boolean, optional),
-    + isSide: false(boolean, optional)
+    + isFoodAndBeverage: false (boolean, optional),
+    + isInvisible: false (boolean, optional),
+    + isFee: false (boolean, optional),
+    + isGiftcard: false (boolean, optional),
+    + isPass: false (boolean, optional),
+    + isSide: false (boolean, optional)
     + isSoupOrSalad: none (enum[string], optional)
         + Members
             + `either`
@@ -2249,7 +2249,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + description: Some description (string, required),
     + department: Anything (string, required),
     + costPrice: 20.05 (number, required),
-    + isUnlimited: false(boolean, required),
+    + isUnlimited: false (boolean, required),
     + maxDiscount: 100 (number, optional),
     + addOnPrice: 0 (number, optional),
     + quantity: 1000 (number, optional),
@@ -2258,9 +2258,9 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + isInactive: false (boolean, optional),
     + unitPriceIncludesTax: false (boolean, optional),
     + reorderLevel: 0 (number, optional),
-    + taxes: (array, object)
+    + taxes: [{"name": "Sales Tax","percent": 8.25,"cumulative": false}] (array[object])
         + (Item Tax Request)
-    + upcs: (array)
+    + upcs: ["5000","5000A","5000B"] (array)
         + 5000 (string)
         + 5000A (string)
         + 5000B (string)
@@ -2288,7 +2288,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + isRecurring: true (boolean),
     + isAggregate: false (boolean),
     + active: true (boolean),
-    + bookingClassId: 1 (number,optional)
+    + bookingClassId: 1 (number,optional),
     + times (array)
         + 0930 (string)
         + 0938 (string)
@@ -2400,43 +2400,43 @@ Note: Voiding a charge sent to a room is not currently supported.
         "id": "11251",
         "date": "2015-01-01T12:00:00.000Z",
         "waiterName": "John Doe",
-          "guestName":"Guest 1",
-          "amount": 79.0000,
-          "receiptId": "11251",
-          "details": [
-                {
-                  "productId": 10,
-                  "name": "Ball Bucket",
-                  "productGroupName": "Pro Shop",
-                  "amount": 1,
-                  "price": 9.0000
-                },
-                {
-                  "productId": 22,
-                  "name": "Burgers",
-                  "productGroupName": "Food & Bev",
-                  "amount": 1,
-                  "price": 70.0000
-                }
-            ],
-          "vatDetails":[
-             {
+        "guestName":"Guest 1",
+        "amount": 79.0000,
+        "receiptId": "11251",
+        "details": [
+            {
+                "productId": 10,
+                "name": "Ball Bucket",
+                "productGroupName": "Pro Shop",
+                "amount": 1,
+                "price": 9.0000
+            },
+            {
+                "productId": 22,
+                "name": "Burgers",
+                "productGroupName": "Food & Bev",
+                "amount": 1,
+                "price": 70.0000
+            }
+        ],
+        "vatDetails":[
+            {
                 "name":"21.0%",
                 "vatPercentage":21.0,
                 "priceWithVat":79.0000,
                 "priceWithoutVat":62.4100,
                 "vat":16.59,
                 "taxClass":false
-             }
-          ],
-          "paymentDetails":[
-             {
+            }
+        ],
+        "paymentDetails":[
+            {
                 "amount":79.0000,
                 "tips":0.0000,
                 "type":"put on room",
                 "paymentTypeTypeId":9
-             }
-          ]
+            }
+         ]
     }   
 
 + Response 200 (application/json)
@@ -2444,10 +2444,10 @@ Note: Voiding a charge sent to a room is not currently supported.
     + Body
 
         {
-          "roomNumber": "2100",
-          "guestName": "John Doe",
-          "canCharge": true,
-          "chargeLimit": 300.0
+            "roomNumber": "2100",
+            "guestName": "John Doe",
+            "canCharge": true,
+            "chargeLimit": 300.0
         }  
 
 ### Charge Room - Error Response [POST]
