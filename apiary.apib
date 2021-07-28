@@ -1792,7 +1792,7 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + type: bookings
 + attributes (object)
     + start: `2017-05-05T12:30:00` (required, string) - The date/time (ISO8601 format)
-    + side: `front` (required,string) - This attribute is used for courses on the old tee sheet and is required when booking a time.  On our revamped tee sheet this value is ignored.
+    + side: `front` (required,string) - This attribute is used for courses on the old tee sheet and is required when booking a time.  This value is ignored on our revamped tee sheet.
     + event_type: `teetime` (optional,string)
     + details: `This was already paid for` (optional,string) - Notes you'd like to save with the tee time
     + scheduleSideId: 2405 (required, number) - The side id you wish to book on.  This attribute is required to book a reservation on our revamped tee sheet, but is ignored if the course is still using our old tee sheet.
