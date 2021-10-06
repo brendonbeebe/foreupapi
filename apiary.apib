@@ -1177,6 +1177,9 @@ See https://github.com/AmeriCommerce/rest-api/blob/master/query_syntax.md for mo
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
     + customerId : 6647556
+    + include : creditCards (enum[string],optional) - Which relationships to include in response.
+        + Members
+            + `creditCards`
 
 + Response 200 (application/json)
 
@@ -1245,7 +1248,544 @@ See https://github.com/AmeriCommerce/rest-api/blob/master/query_syntax.md for mo
     + Attributes
         + data (array[Sales])
 
+# Group Invoices
+## Invoices [/courses/{courseId}/accountInvoices]
 
+### Get All [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    
++ Response 200 (application/json)
+    {
+    "data": [
+        {
+            "type": "accountInvoices",
+            "id": "1",
+            "attributes": {
+                "dateCreated": "2021-10-05T00:00:00-0600",
+                "dueDate": "2021-10-05T23:59:59-0600",
+                "createdBy": 12,
+                "organizationId": 6270,
+                "personId": 2475,
+                "startDate": "2021-10-05T00:00:00-0600",
+                "endDate": "2021-10-05T00:00:00-0600",
+                "total": 439.82,
+                "totalPaid": 0,
+                "totalOpen": 0,
+                "memo": null,
+                "number": 12,
+                "deletedBy": null,
+                "dateDeleted": null,
+                "datePaid": null,
+                "includeMemberTransactions": false,
+                "includeCustomerTransactions": false,
+                "dateAutopayQueued": null,
+                "autopayEnabled": false,
+                "autopayDelayDays": 0,
+                "autopayAttempts": true,
+                "sendEmail": false,
+                "sendMail": false,
+                "dateEmailSent": null,
+                "dateMailSent": null,
+                "payMemberBalance": false,
+                "payCustomerBalance": false,
+                "sendZeroChargeStatement": false,
+                "footerText": "",
+                "messageText": "",
+                "termsAndConditionsText": "",
+                "previousOpenBalance": 0,
+                "totalFinanceCharges": 0,
+                "financeChargeEnabled": false,
+                "financeChargeAmount": 0,
+                "financeChargeType": "percent",
+                "financeChargeAfterDays": 0,
+                "memberBalanceForward": 0,
+                "customerBalanceForward": 0
+            }
+        }
+    ],
+    "meta": {
+        "total": 1
+    }
+}
+
+### Get One [GET /courses/{courseId}/accountInvoices/invoiceId]
++ Request (application/json)
+
+    + Headers
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+
++ Parameters
+    + courseId : 6270 - A course id that the user has permission to access.
+    + invoiceId : 1
+    
++ Response 200 (application/json)
+{
+    "data": {
+        "type": "accountInvoices",
+        "id": "1",
+        "attributes": {
+            "dateCreated": "2021-10-05T00:00:00-0600",
+            "dueDate": "2021-10-05T23:59:59-0600",
+            "createdBy": 12,
+            "organizationId": 6270,
+            "personId": 2475,
+            "startDate": "2021-10-05T00:00:00-0600",
+            "endDate": "2021-10-05T00:00:00-0600",
+            "total": 439.82,
+            "totalPaid": 0,
+            "totalOpen": 0,
+            "memo": null,
+            "number": 12,
+            "deletedBy": null,
+            "dateDeleted": null,
+            "datePaid": null,
+            "includeMemberTransactions": false,
+            "includeCustomerTransactions": false,
+            "dateAutopayQueued": null,
+            "autopayEnabled": false,
+            "autopayDelayDays": 0,
+            "autopayAttempts": true,
+            "sendEmail": false,
+            "sendMail": false,
+            "dateEmailSent": null,
+            "dateMailSent": null,
+            "payMemberBalance": false,
+            "payCustomerBalance": false,
+            "sendZeroChargeStatement": false,
+            "footerText": "",
+            "messageText": "",
+            "termsAndConditionsText": "",
+            "previousOpenBalance": 0,
+            "totalFinanceCharges": 0,
+            "financeChargeEnabled": false,
+            "financeChargeAmount": 0,
+            "financeChargeType": "percent",
+            "financeChargeAfterDays": 0,
+            "memberBalanceForward": 0,
+            "customerBalanceForward": 0
+        }
+    },
+    "meta": {
+        "warnings": []
+    }
+}
+
+### Create [PUT /courses/{courseId}/accountInvoices]
++ Request (application/json)
+    + Headers
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+    
+    + Parameters
+        + courseId : 6270 - A course id that the user has permission to access
+        
+    + Body 
+    {
+        "data": {
+        "attributes": {
+          "person_id": "2073",
+          "course_id": "6270",
+          "dueDate": "09/14/2021",
+          "dateCreated": "09/14/2021",
+          "customer": {
+            "attributes": {
+              "person_id": 2073,
+              "course_id": 6270
+            }
+          },
+          "charges": [
+            {
+              "attributes": {
+                "name": "breakfast bagel",
+                "line": 1,
+                "unitPrice": 625.45,
+                "subtotal": 625.45,
+                "tax": 45.35,
+                "qty": 1,
+                "total": 670.80,
+                "taxPercentage": 0.0,
+                "itemId": 5221
+              }
+            }
+          ],
+          "termsAndConditionsText": "",
+          "footerText": "",
+          "messageText": "",
+          "sendEmail": false
+        }
+      }
+    }
+    
+
++ Response 200 (application/json)
+    {
+        "data": {
+            "type": "accountInvoices",
+            "id": "4",
+            "attributes": {
+                "dateCreated": "2021-09-14T00:00:00-0600",
+                "dueDate": "2021-09-14T23:59:59-0600",
+                "createdBy": 12,
+                "organizationId": 6270,
+                "personId": 2073,
+                "startDate": "2021-09-14T00:00:00-0600",
+                "endDate": "2021-09-14T00:00:00-0600",
+                "total": 625.45,
+                "totalPaid": 0,
+                "totalOpen": 625.45,
+                "memo": null,
+                "number": 15,
+                "deletedBy": null,
+                "dateDeleted": null,
+                "datePaid": null,
+                "includeMemberTransactions": false,
+                "includeCustomerTransactions": false,
+                "dateAutopayQueued": null,
+                "autopayEnabled": false,
+                "autopayDelayDays": 0,
+                "autopayAttempts": false,
+                "sendEmail": false,
+                "sendMail": false,
+                "dateEmailSent": null,
+                "dateMailSent": null,
+                "payMemberBalance": false,
+                "payCustomerBalance": false,
+                "sendZeroChargeStatement": false,
+                "footerText": "",
+                "messageText": "",
+                "termsAndConditionsText": "",
+                "previousOpenBalance": 0,
+                "totalFinanceCharges": 0,
+                "financeChargeEnabled": false,
+                "financeChargeAmount": 0,
+                "financeChargeType": "percent",
+                "financeChargeAfterDays": 0,
+                "memberBalanceForward": 0,
+                "customerBalanceForward": 0
+            },
+            "relationships": {
+                "customerTransactions": {
+                    "data": []
+                },
+                "memberTransactions": {
+                    "data": []
+                },
+                "customer": {
+                    "data": {
+                        "type": "customers",
+                        "id": "2073"
+                    }
+                },
+                "charges": {
+                    "data": [
+                        {
+                            "type": "accountInvoiceCharges",
+                            "id": "3"
+                        }
+                    ]
+                },
+                "payments": {
+                    "data": []
+                }
+            }
+        },
+        "included": [
+            {
+                "type": "credit_cards",
+                "id": "124",
+                "attributes": {
+                    "recurring": false,
+                    "courseId": 6270,
+                    "teeTimeId": "",
+                    "cardType": "M/C",
+                    "cardholdersName": "",
+                    "expiration": "0000-00-00",
+                    "maskedAccount": "xxxxxxxxxxxx6781",
+                    "description": "M/C 6781",
+                    "deleted": false,
+                    "successfulCharges": 0,
+                    "failedCharges": 0,
+                    "status": "",
+                    "isVerified": false,
+                    "isDwolla": false
+                }
+            },
+            {
+                "type": "credit_cards",
+                "id": "125",
+                "attributes": {
+                    "recurring": false,
+                    "courseId": 6270,
+                    "teeTimeId": "",
+                    "cardType": "M/C",
+                    "cardholdersName": "",
+                    "expiration": "0000-00-00",
+                    "maskedAccount": "xxxxxxxxxxxx6781",
+                    "description": "M/C 6781",
+                    "deleted": false,
+                    "successfulCharges": 0,
+                    "failedCharges": 0,
+                    "status": "",
+                    "isVerified": false,
+                    "isDwolla": false
+                }
+            },
+            {
+                "type": "credit_cards",
+                "id": "139",
+                "attributes": {
+                    "recurring": false,
+                    "courseId": 6270,
+                    "teeTimeId": "",
+                    "cardType": "M/C",
+                    "cardholdersName": "/",
+                    "expiration": "0000-00-00",
+                    "maskedAccount": "9796",
+                    "description": "M/C 9796",
+                    "deleted": false,
+                    "successfulCharges": 0,
+                    "failedCharges": 0,
+                    "status": "",
+                    "isVerified": false,
+                    "isDwolla": false
+                }
+            },
+            {
+                "type": "credit_cards",
+                "id": "140",
+                "attributes": {
+                    "recurring": false,
+                    "courseId": 6270,
+                    "teeTimeId": "",
+                    "cardType": "M/C",
+                    "cardholdersName": "/",
+                    "expiration": "0000-00-00",
+                    "maskedAccount": "9796",
+                    "description": "M/C 9796",
+                    "deleted": false,
+                    "successfulCharges": 0,
+                    "failedCharges": 0,
+                    "status": "",
+                    "isVerified": false,
+                    "isDwolla": false
+                }
+            },
+            {
+                "type": "credit_cards",
+                "id": "141",
+                "attributes": {
+                    "recurring": false,
+                    "courseId": 6270,
+                    "teeTimeId": "",
+                    "cardType": "M/C",
+                    "cardholdersName": "/",
+                    "expiration": "0000-00-00",
+                    "maskedAccount": "9796",
+                    "description": "M/C 9796",
+                    "deleted": false,
+                    "successfulCharges": 0,
+                    "failedCharges": 0,
+                    "status": "",
+                    "isVerified": false,
+                    "isDwolla": false
+                }
+            },
+            {
+                "type": "item",
+                "id": "5221",
+                "attributes": {
+                    "maxDiscount": 100,
+                    "addOnPrice": 0,
+                    "costPrice": 1,
+                    "courseId": 6270,
+                    "quantity": 980,
+                    "numberOfSides": 0,
+                    "unitPrice": 3,
+                    "basePrice": 3,
+                    "category": "Entrees",
+                    "itemNumber": null,
+                    "name": "Breakfast Bagel",
+                    "subcategory": "Sandwiches",
+                    "department": "Food & Beverage",
+                    "description": "Eggs & Sausage on a Bagel",
+                    "glCode": null,
+                    "isInactive": false,
+                    "doNotPrint": false,
+                    "deleted": false,
+                    "isfoodAndBeverage": true,
+                    "isFoodAndBeverage": true,
+                    "isInvisible": false,
+                    "isFee": false,
+                    "isServiceFee": false,
+                    "isGiftcard": false,
+                    "isPass": false,
+                    "isSide": false,
+                    "isUnlimited": false,
+                    "isSoupOrSalad": true,
+                    "unitPriceIncludesTax": false,
+                    "itemType": "food and beverage",
+                    "serviceFeeId": null,
+                    "residentRequirement": false,
+                    "onlinePurchasing": false,
+                    "onlineTerms": null,
+                    "reorderLevel": 0,
+                    "supplier": "",
+                    "menuCategory": "Entrees",
+                    "menuSubcategory": ""
+                },
+                "relationships": {
+                    "taxes": {
+                        "data": []
+                    },
+                    "passGroups": {
+                        "data": null
+                    },
+                    "passRecurringCharges": {
+                        "data": null
+                    },
+                    "serviceFees": {
+                        "data": []
+                    }
+                }
+            },
+            {
+                "type": "customers",
+                "id": "2073",
+                "attributes": {
+                    "username": "",
+                    "account_number": "AAAA",
+                    "company_name": null,
+                    "taxable": true,
+                    "discount": 0,
+                    "opt_out_email": false,
+                    "opt_out_email_marketing": false,
+                    "opt_out_email_teetimes": false,
+                    "opt_out_text": false,
+                    "date_created": null,
+                    "account_balance": "-1032.10",
+                    "invoice_balance": "-5331.30",
+                    "photo": "https://www.gravatar.com/avatar/f307078decdb779a1a508b3885f194c2?r=pg&d=https%3A%2F%2Fui-avatars.com%2Fapi%2FA%2BA%2F64%2Faee9e3%2Fffffff%2F2%2F0.5%2Ffalse%2Ftrue%2Ftrue",
+                    "deleted": 0,
+                    "member_account_balance": "-250.00",
+                    "email_subscribed": true,
+                    "online_booking_disabled": false,
+                    "course": "Cascade Golf Course",
+                    "course_id": 6270,
+                    "groups": [],
+                    "not_duplicate": false,
+                    "contact_info": {
+                        "id": "2073",
+                        "first_name": "AAAA",
+                        "last_name": "AAAA",
+                        "phone_number": "",
+                        "cell_phone_number": "",
+                        "email": "brendon.beebe@gmail.com",
+                        "birthday": null,
+                        "address_1": "",
+                        "address_2": "",
+                        "city": "",
+                        "state": "AL",
+                        "zip": "",
+                        "country": "",
+                        "handicap_account_number": "",
+                        "handicap_score": 0,
+                        "comments": "Best customer ever!!",
+                        "gender": null
+                    },
+                    "comments": "Best customer ever!!",
+                    "is_resident": null,
+                    "use_loyalty": true,
+                    "loyalty_points": 7531,
+                    "send_statements_to_invoice_email": true,
+                    "send_statements_to_primary_email": true,
+                    "invoice_email": "",
+                    "member": true,
+                    "extra": [],
+                    "price_class": "1"
+                },
+                "relationships": {
+                    "credit_cards": {
+                        "data": [
+                            {
+                                "type": "credit_cards",
+                                "id": "124"
+                            },
+                            {
+                                "type": "credit_cards",
+                                "id": "125"
+                            },
+                            {
+                                "type": "credit_cards",
+                                "id": "139"
+                            },
+                            {
+                                "type": "credit_cards",
+                                "id": "140"
+                            },
+                            {
+                                "type": "credit_cards",
+                                "id": "141"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "type": "accountInvoiceCharges",
+                "id": "3",
+                "attributes": {
+                    "line": 1,
+                    "name": "Breakfast Bagel",
+                    "itemId": 5221,
+                    "total": 625.45,
+                    "subtotal": 625.45,
+                    "tax": 0,
+                    "taxPercentage": 0,
+                    "unitPrice": 625.45,
+                    "qty": 1,
+                    "dateCharged": "2021-09-14T00:00:00-0600",
+                    "saleId": 4112
+                },
+                "relationships": {
+                    "item": {
+                        "data": {
+                            "type": "item",
+                            "id": "5221"
+                        }
+                    }
+                }
+            }
+        ],
+        "meta": {
+            "warnings": []
+        }
+    }
+
+### Pay [PUT /courses/{courseId}/accountInvoices/{invoiceId}/pay]
+
+Invoices can be paid via the api to the customer's member_account, customer_account, or credit card on file if the id is known.
++ Request (application/json)
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+    + Parameters
+        + courseId : 6270 - A course id that the user has permission to access.
+        + invoiceId : 4
+    + Body
+        {
+            "data": {
+                "method": "member_account" 
+                <!--can be "member_account", "customer_account", or "credit_card"-->
+                "credit_card_id": null 
+                <!--must be a valid credit card id on the customer if "credit_card"-->
+            }
+        }
 
 # Group Inventory
 ## Item Collection [/courses/{courseId}/items{?limit,start,filter,q,include,format}]
