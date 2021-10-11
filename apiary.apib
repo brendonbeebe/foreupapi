@@ -1785,6 +1785,8 @@ Invoices can be paid via the api to the customer's member_account, customer_acco
                 <!--can be "member_account", "customer_account", or "credit_card"-->
                 "credit_card_id": null 
                 <!--must be a valid credit card id on the customer if "credit_card"-->
+                "amount": 600
+                <!--amount is optional, if not set it will charge the total due or up to the account limit-->
             }
         }
     
@@ -1792,7 +1794,8 @@ Invoices can be paid via the api to the customer's member_account, customer_acco
     
     {
         "success": true,
-        "amount_paid": "600.00"
+        "amount_paid": "600.00",
+        "message": "600 paid of 600.00. $0 remains."
     }
 
 # Group Inventory
