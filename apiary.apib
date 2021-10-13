@@ -1769,7 +1769,7 @@ See https://github.com/AmeriCommerce/rest-api/blob/master/query_syntax.md for mo
 
 ### Pay [PUT /courses/{courseId}/accountInvoices/{invoiceId}/pay]
 
-Invoices can be paid via the api to the customer's member_account, customer_account, or credit card on file if the id is known.
+Invoices can be paid via the api to the customer's member_account, or customer_account.
 + Request (application/json)
     + Headers
 
@@ -1777,26 +1777,32 @@ Invoices can be paid via the api to the customer's member_account, customer_acco
     + Parameters
         + courseId : 6270 - A course id that the user has permission to access.
         + invoiceId : 4
+        
+    + Attributes
+        + data
+            + method: "credit_card" - the payment method to use
+            + amount: 600 - amount to pay (default is the total due on invoice)
+            + merchant_data - required for paying with card on file
+                + "credit_card_id": 1234 - required for credit_card on file
     
     + Body
         {
             "data": {
                 "method": "member_account" 
-                <!--can be "member_account", "customer_account", or "credit_card"-->
-                "credit_card_id": null 
-                <!--must be a valid credit card id on the customer if "credit_card"-->
                 "amount": 600
-                <!--amount is optional, if not set it will charge the total due or up to the account limit-->
             }
         }
     
 + Response 200 (application/json)
     
-    {
-        "success": true,
-        "amount_paid": "600.00",
-        "message": "600 paid of 600.00. $0 remains."
-    }
+  {
+    "success": true,
+    "payment": "InvoiceBalanceAR: -$12.00|Member Balance - Belcher, Bob: $12.00|",
+    "sale_number": "POS 682",
+    "sale_id": 4167,
+    "total_paid": "600.00",
+    "remaining_due": "7360.00"
+}
 
 # Group Inventory
 ## Item Collection [/courses/{courseId}/items{?limit,start,filter,q,include,format}]
