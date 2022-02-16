@@ -45,7 +45,10 @@ To authenticate with the api you must first create a JWT using your username/pas
 
 ### Validate a Recieved Token [GET]
 
+**NOTE: You do not need to validate a token you've received from us via the "Create a New Token" endpoint since we are providing you the token directly.**
+
 When a course access your app we'll send a JWT across.  This JWT contains the course id, employee id, and employee email.  The audience should be the url  you gave us.  You need to validate the token with us before accepting it as fact. 
+
 + Request (application/json)
 
     + Headers
