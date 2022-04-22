@@ -392,6 +392,7 @@ This endpoint will list all the courses which you have access too.
             x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
     
     + Attributes
+        + data (Carts Suspend)
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
@@ -2375,6 +2376,18 @@ Sales may or may not have a customer attached.  This event triggers any time a s
     + totalDue: 0.22 (required, number) - Total left to be paid
     + tax: 0.22 (required, number) - Total tax in cart
     + subTotal: 0.22 (required, number) - Sub total in cart
+    + status: `active` (optional, enum[string]) - The carts current status.
+        + Members
+            + `active`
+            + `incomplete`
+            + `suspended`
+            + `complete`
+    
+## Carts Suspend
++ type: carts
++ id: 64 (string) - The id to use when accessing the cart
++ attributes (object)
+    + suspendedName: `Frank M.` (required, string) - Give the cart an identifiable name. This value will be shown to the user in the foreUP POS.
 
 ## Carts Complete
 + type: carts
