@@ -762,6 +762,24 @@ The sales_items object containes an attribute "PriceClass" that designates the g
     + Attributes
         + data (array[Bookings]
 
+## Booking Classes / Reservation Groups [/courses/{courseId}/teesheets/{teesheetId}/reservationGroups]
+
+### Get All [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 2192 (integer) - A tee sheet id that the user has permission to access.
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (array[BookingClass]
 
 ## Specials [/courses/{courseId}/teesheets/{teesheetId}/specials]
 
@@ -2886,6 +2904,13 @@ Sales may or may not have a customer attached.  This event triggers any time a s
 + meta (object,optional)
     + warnings (array, optional)
 
+## BookingClass (object)
++ type: bookingClass (string,required)
++ id:  5 (string,optional)
++ attributes (object)
+    + active: false (boolean)
+    + name: Public (string)
+        
 ## Special (object)
 + type: special (string,required)
 + id:  5 (string,optional)
