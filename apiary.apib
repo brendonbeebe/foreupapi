@@ -2232,11 +2232,17 @@ This triggers when:
 
 ## Sale Created (Event key: sale.created)
 
-Sales may or may not have a customer attached.  This event triggers any time a sale is complete through the POS.
+Sales may or may not have a customer attached.  
+
+This event triggers when:
+
+* Sale is complete through the POS.
+
 
         {
             "event":"sale.created",
             "course_id":"9039",
+            "cart_id": "12344",
             "id":"342234432"
         }
 
