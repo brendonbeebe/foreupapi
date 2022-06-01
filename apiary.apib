@@ -137,6 +137,36 @@ This endpoint will list all the courses which you have access too.
     + Attributes
         + data (array[Sales])
 
+### Add Comment [PUT /courses/{courseId}/sales/{saleId}{?include}]
++ Request (application/json)
+
+    + Headers
+    
+            x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+    
+    + Body 
+    {
+        "data": {
+            "attributes": {
+                "comment": "Some comment to give context to the sale."
+            }
+        }
+    }
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + saleId : 24378234 (string) - A course id that the user has permission to access.
+    + include : items (enum[string],optional) - Which relationships to include in response. 
+        + Members
+            + `items`
+            + `terminals`
+            + `bookings`
+            + `customer`
++ Response 200 (application/json)
+
+    + Attributes
+        + data (Sales)
+
 
 ## Tee Sheets [/courses/{courseId}/teesheets{?include}]
 
