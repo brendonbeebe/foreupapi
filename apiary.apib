@@ -1200,7 +1200,52 @@ Examples
 
 See https://github.com/AmeriCommerce/rest-api/blob/master/query_syntax.md for more examples
 
-Courses have the ability to choose which fields are required. The API respects the settings of the course. Wadde are adding an endpoint to get the required fields so minimal guess work is necessary.
+Courses have the ability to choose which fields are required. The API respects the settings of the course. We will soon require API requests to conform to these course level settings.
+
+### Get Course Customer Required Fields [GET /courses/{courseId}/settings/customerFieldSettings]
++ Request (application/json)
+    + Headers
+        x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+
++ Response 200 (application/json)
+    {
+    "first_name": {
+        "required": 1
+    },
+    "last_name": {
+        "required": 1
+    },
+    "email": {
+        "required": false
+    },
+    "cell_phone_number": {
+        "required": false
+    },
+    "phone_number": {
+        "required": true
+    },
+    "birthday": {
+        "required": true
+    },
+    "address_1": {
+        "required": true
+    },
+    "city": {
+        "required": true
+    },
+    "state": {
+        "required": true
+    },
+    "zip": {
+        "required": true
+    },
+    "country": {
+        "required": 0
+    },
+    "account_number": {
+        "required": true
+    }
+}
 
 ### List All [GET]
 
