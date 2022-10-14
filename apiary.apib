@@ -1303,7 +1303,10 @@ Courses have the ability to choose which fields are required. The API respects t
 + Response 200 (application/json)
 
     + Attributes
-        + data (array[Customer])
+        + data (object)
+            + type: customer (string)
+            + id: 134132 (number)
+            + attributes (Customer)
 
 ### Update [PUT /courses/{courseId}/customers/{customerId}]
 
@@ -2522,9 +2525,13 @@ This event triggers when:
         + Members
             + 9
     + players: 1 (optional,number) - How many players 1-4
+    + bookedPlayers (array[Booking Creation Booked Player])
     + carts: 1 (optional,number) - How many players will use carts
     + title: `John Snow` (required,string) - The title of the booking
     + booking_class_id: 2918 (optional, number) - This is only required if you'd want to tee time to look as if it were booked as a specific booking class.
+
+## Booking Creation Booked Player (object)
++ accountNumber: 23123 (number) - The customers account number.  Can be found here https://foreup.docs.apiary.io/#reference/customers/customer-collection/get-one
 
 ## Trade Creation (object)
 + type: bookings
@@ -2679,6 +2686,8 @@ This event triggers when:
 ## Customer (object)
 + type: customer (string,required)
 + attributes (object)
+    + id: 23123 (number) - Customer Id.
+    + account_number: 32123 (number)
     + username: username (string)
     + company_name: MyCompany (string)
     + taxable: true (boolean)
@@ -2686,10 +2695,13 @@ This event triggers when:
     + opt_out_email: false (boolean)
     + opt_out_text: false (boolean)
     + date_created: `2017-01-09T06:07:00-0700` (string) - The date/time (ISO8601 format)
+    + email_subscribed: true (boolean)
+    + online_booking_disabled: false (boolean)
+    + price_class: "213" (string) - price class id
     + contact_info (Person)
 
 ## Person (object)
-+ id: 2073,
++ id: 2073 (number) - Person Id
 + first_name: FirstName (string)
 + last_name: LastName (string)
 + phone_number: 801-376-5991 (string)
