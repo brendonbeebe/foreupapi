@@ -1292,8 +1292,8 @@ Courses have the ability to choose which fields are required. The API respects t
         + data (Customer)
 
 + Parameters
-    + courseId : 9039 - A course id that the user has permission to access.
-    + customerId : 6647556
+    + courseId : 9039 - The course id the customer belongs to.
+    + customerId : 6647556 (number) - alias for person id.
     + include : creditCards (enum[string],optional) - Which relationships to include in response.
         + Members
             + `creditCards`
@@ -2686,7 +2686,7 @@ This event triggers when:
 ## Customer (object)
 + type: customer (string,required)
 + attributes (object)
-    + id: 23123 (number) - Customer Id.
+    + id: 2073 (number) - Person Id.
     + account_number: 32123 (number)
     + username: username (string)
     + company_name: MyCompany (string)
