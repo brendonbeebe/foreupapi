@@ -992,6 +992,91 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
 
 [![name](https://s3-us-west-2.amazonaws.com/foreup.course.images/Blank+Diagram+-+Page+1.png)](https://s3-us-west-2.amazonaws.com/foreup.course.images/Blank+Diagram+-+Page+1.png)
 
+# Coming Soon
+
+We are excited to announce upcoming changes to our tee time pricing endpoints to allow for bulk creation and updating. These changes should significantly reduce the load on our servers and make managing your pricing more efficient. 
+
+## Rate Limits
+
+With the introduction of these bulk endpoints we will also be implementing rate limiting on Seasons and Seasonal Timeframe endpoints. Please consider using the new bulk creation and updating endpoints to stay within the new rate limits.
+The rate limits will be per route and user.
+
+```
+    Rate Limit: 50 Requests per 10 seconds.
+```
+
+Please note these bulk creation and updating endpoints can only take 50 objects per request.
+
+
+### Seasons Bulk Create [POST /courses/{courseId}/teesheets/{teesheetId}/seasons/bulk{?include}]
+
++ Request (application/json)
+
+    + Headers
+        x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+    + Attributes
+        + data (array[Bulk Seasons])
+
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 2192
+    + include : classes (enum[string],optional) - Which relationships to include in response.
+        + Members
+            + `classes`
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (array[Bulk Seasonal Timeframes])
+
+## Seasonal Timeframes Bulk [/courses/{courseId}/teesheets/{teesheetId}/seasons/{seasonId}/timeframes/bulk{?include}]
+
+### Create [POST]
+
++ Request (application/json)
+
+    + Headers 
+        x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+    + Attributes
+        + data (array[Bulk Seasonal Timeframes])
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 2192
+    + seasonId: 123
+    + include : classes (enum[string],optional) - Which relationships to include in response.
+        + Members
+            + `classes`
+        
++ Response 200 (application/json)
+
+    + Attributes
+    
+        + data (array[Bulk Seasonal Timeframes])
+        
+### Update [PUT]
+
++ Request (application/json)
+
+    + Headers 
+        x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
+    + Attributes
+        + data (array[Bulk Seasonal Timeframes])
+        
++ Parameters
+    + courseId : 9039 - A course id that the user has permission to access.
+    + teesheetId : 2192
+    + seasonId: 123
+    + include : classes (enum[string],optional) - Which relationships to include in response.
+        + Members
+            + `classes`
+        
++ Response 200 (application/json)
+
+    + Attributes
+    
+        + data (array[Bulk Seasonal Timeframes])
+
 ## Seasons [/courses/{courseId}/teesheets/{teesheetId}/seasons{?include}]
 
 ### Get All [GET]
@@ -1171,6 +1256,7 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
 
     + Attributes
         + data (Seasonal Timeframes)
+        
 
 # Group Customers
 
@@ -2425,6 +2511,57 @@ This event triggers when:
     + startDate: `0000-01-01` (string)
     + endDate: `0000-12-31` (string)
     + isManaged: true (boolean)
+
+## Bulk Seasonal Timeframes
++ type: seasons (string,required)
++ id: 2 (string,optional)
++ timeframes (array)
+    + attributes (object)
+        + name: Default (string)
+        + monday: false (boolean)
+        + tuesday: false (boolean)
+        + wednesday: false (boolean)
+        + thursday: false (boolean)
+        + friday: false (boolean)
+        + saturday: false (boolean)
+        + sunday: false (boolean)
+        + 9holePrice: 10 (number)
+        + 9cartPrice: 15 (number)
+        + 18holePrice: 25 (number)
+        + 18cartPrice: 30 (number)
+        + startTime: 0 (number)
+        + endTime: 2400 (number)
+        + `default`: false (boolean)
+
+## Bulk Seasons
++ type: seasons (string,required)
++ id: 2 (string,optional)
++ seasons (array)
+    + attributes (object)
+        + name: Default Season (string)
+        + startDate: `0000-01-01` (string)
+        + endDate: `0000-12-31` (string)
+        + isManaged: true (boolean)
+        + timeframes (array)
+            + type: seasons (string,required)
+            + id: 8 (string,optional)
+            + attributes (object)
+                + name: Default (string)
+                + monday: false (boolean)
+                + tuesday: false (boolean)
+                + wednesday: false (boolean)
+                + thursday: false (boolean)
+                + friday: false (boolean)
+                + saturday: false (boolean)
+                + sunday: false (boolean)
+                + 9holePrice: 10 (number)
+                + 9cartPrice: 15 (number)
+                + 18holePrice: 25 (number)
+                + 18cartPrice: 30 (number)
+                + startTime: 0 (number)
+                + endTime: 2400 (number)
+                + `default`: false (boolean)
+            
 
 ## Seasonal Timeframes
 + type: timeframes (string,required)
