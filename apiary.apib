@@ -1015,7 +1015,7 @@ Please note these bulk creation and updating endpoints can only take 50 objects 
     + Headers
         x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
     + Attributes
-        + data (array[Bulk Seasons])
+        + data (Bulk Seasons)
 
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
@@ -1027,7 +1027,7 @@ Please note these bulk creation and updating endpoints can only take 50 objects 
 + Response 200 (application/json)
 
     + Attributes
-        + data (array[Bulk Seasonal Timeframes])
+        + data (Bulk Seasonal Timeframes)
 
 ## Seasonal Timeframes Bulk - Coming Soon [/courses/{courseId}/teesheets/{teesheetId}/seasons/{seasonId}/timeframes/bulk{?include}]
 
@@ -1038,7 +1038,7 @@ Please note these bulk creation and updating endpoints can only take 50 objects 
     + Headers 
         x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
     + Attributes
-        + data (array[Bulk Seasonal Timeframes])
+        + data (Bulk Seasonal Timeframes)
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
@@ -1052,7 +1052,7 @@ Please note these bulk creation and updating endpoints can only take 50 objects 
 
     + Attributes
     
-        + data (array[Bulk Seasonal Timeframes])
+        + data (Bulk Seasonal Timeframes)
         
 ### Update [PUT]
 
@@ -1061,7 +1061,7 @@ Please note these bulk creation and updating endpoints can only take 50 objects 
     + Headers 
         x-authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJhdWQiOiJmb3JldXBzb2Z0d2FyZS5jb20iLCJpYXQiOjE0Nzg5MDQxMDIsImV4cCI6MTUxMDAwODEwMiwibGV2ZWwiOjMsImNpZCI6OTAzOSwiZW1wbG95ZWUiOnRydWUsInVpZCI6MTYzNywiZW1wSWQiOjE2MzcsImFwcElkIjo2NDgyNzI4LCJwcmljZUNsYXNzSWQiOm51bGx9.ooY5m1n3qurbJhkRzrviVPVailuKnLXbImHO8-y-p9ryejEpeE-IUrS_APJpAQcGTxY7YCQL_qhRgRbeSriW8A
     + Attributes
-        + data (array[Bulk Seasonal Timeframes])
+        + data (Bulk Seasonal Timeframes)
         
 + Parameters
     + courseId : 9039 - A course id that the user has permission to access.
@@ -1075,7 +1075,7 @@ Please note these bulk creation and updating endpoints can only take 50 objects 
 
     + Attributes
     
-        + data (array[Bulk Seasonal Timeframes])
+        + data (Bulk Seasonal Timeframes)
 
 ## Seasons [/courses/{courseId}/teesheets/{teesheetId}/seasons{?include}]
 
@@ -2551,8 +2551,6 @@ This event triggers when:
     + isManaged: true (boolean)
 
 ## Bulk Seasonal Timeframes
-+ type: seasons (string,required)
-+ id: 2 (string,optional)
 + timeframes (array)
     + attributes (object)
         + name: Default (string)
@@ -2570,10 +2568,11 @@ This event triggers when:
         + startTime: 0 (number)
         + endTime: 2400 (number)
         + `default`: false (boolean)
+        + priceClassId: 1 (number)
+        + seasonId: 1 (number)
+        + id: 1 (number)
 
 ## Bulk Seasons
-+ type: seasons (string,required)
-+ id: 2 (string,optional)
 + seasons (array)
     + attributes (object)
         + name: Default Season (string)
@@ -2581,8 +2580,6 @@ This event triggers when:
         + endDate: `0000-12-31` (string)
         + isManaged: true (boolean)
         + timeframes (array)
-            + type: seasons (string,required)
-            + id: 8 (string,optional)
             + attributes (object)
                 + name: Default (string)
                 + monday: false (boolean)
@@ -2599,6 +2596,7 @@ This event triggers when:
                 + startTime: 0 (number)
                 + endTime: 2400 (number)
                 + `default`: false (boolean)
+                + priceClassId: 1 (number)
             
 
 ## Seasonal Timeframes
