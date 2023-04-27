@@ -1445,7 +1445,9 @@ Courses have the ability to choose which fields are required. The API respects t
         + data (object)
             + type: account_transaction (string)
             + attributes (object)
-                + account_type: member (string, required)
+                + account_type: member (required, enum)
+                    + Members
+                        + customer
                 + amount: 19.99 (number, required)
                 + description: A description of the transaction (string, required)
                 + comment: Extra details about the transaction (string, required)
