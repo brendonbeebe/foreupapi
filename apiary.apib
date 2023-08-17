@@ -994,9 +994,9 @@ Tee time pricing is extremely flexible. There are three important parts to tee t
 
 [![name](https://s3-us-west-2.amazonaws.com/foreup.course.images/Blank+Diagram+-+Page+1.png)](https://s3-us-west-2.amazonaws.com/foreup.course.images/Blank+Diagram+-+Page+1.png)
 
-# Coming Soon
+# New Bulk Endpoints
 
-We are excited to announce upcoming changes to our tee time pricing endpoints to allow for bulk creation and updating. These changes should significantly reduce the load on our servers and make managing your pricing more efficient. 
+We are excited to release changes to our tee time pricing endpoints to allow for bulk creation and updating. These changes should significantly reduce the load on our servers and make managing your pricing more efficient. 
 
 ## Rate Limits
 
@@ -1010,7 +1010,7 @@ The rate limits will be per route and user.
 Please note these bulk creation and updating endpoints can only take 50 objects per request.
 
 
-### Seasons Bulk Create - Coming Soon [POST /courses/{courseId}/teesheets/{teesheetId}/seasons/bulk{?include}]
+### Seasons Bulk Create [POST /courses/{courseId}/teesheets/{teesheetId}/seasons/bulk{?include}]
 
 + Request (application/json)
 
@@ -1031,7 +1031,7 @@ Please note these bulk creation and updating endpoints can only take 50 objects 
     + Attributes
         + data (Bulk Seasonal Timeframes)
 
-## Seasonal Timeframes Bulk - Coming Soon [/courses/{courseId}/teesheets/{teesheetId}/seasons/{seasonId}/timeframes/bulk{?include}]
+## Seasonal Timeframes Bulk [/courses/{courseId}/teesheets/{teesheetId}/seasons/{seasonId}/timeframes/bulk{?include}]
 
 ### Create [POST]
 
